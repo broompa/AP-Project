@@ -71,7 +71,7 @@ public class mainScreenController {
 		
 	}
     public void credits(ActionEvent event) throws IOException {
-	Parent root = FXMLLoader.load(getClass().getResource("creditsScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("creditsScreen.fxml"));
         Scene sc = newGameButton.getScene();
         root.translateYProperty().set(sc.getHeight());
         container.getChildren().add(root);

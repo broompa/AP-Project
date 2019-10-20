@@ -72,8 +72,7 @@ public class userDetailsController {
             textFieldAge.setText("");
         }
         else {
-            System.out.println("under if");
-                        userScreenLabel.setText("User Creation Succesful.");
+            userScreenLabel.setText("User Creation Succesful.");
                 
                 }
    
