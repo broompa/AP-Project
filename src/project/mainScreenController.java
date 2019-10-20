@@ -45,27 +45,21 @@ public class mainScreenController {
     
     
     public void newGame(ActionEvent event) throws IOException {
-                Parent root = FXMLLoader.load(getClass().getResource("userDetails.fxml"));
-                Scene sc = newGameButton.getScene();
-                root.translateYProperty().set(sc.getHeight());
-                
-                container.getChildren().add(root);
-                Timeline t = new Timeline();
-                
-                KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-                KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-                
-                t.getKeyFrames().add(kf);
-                t.setOnFinished(t1->{
-                   container.getChildren().remove(anchorRoot);
-                });
-                t.play();
-                
-            
-		
-	}
+        Parent root = FXMLLoader.load(getClass().getResource("userDetails.fxml"));
+        Scene sc = newGameButton.getScene();
+        root.translateYProperty().set(sc.getHeight());
+        container.getChildren().add(root);
+        Timeline t = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+        t.getKeyFrames().add(kf);
+        t.setOnFinished(t1->{
+           container.getChildren().remove(anchorRoot);
+        });
+        t.play();
+    }
     public void resumeGame(ActionEvent event) throws IOException {
-		
+	
 		
 	}
     public void exitGame(ActionEvent event) throws IOException {
@@ -77,7 +71,18 @@ public class mainScreenController {
 		
 	}
     public void credits(ActionEvent event) throws IOException {
-		
+	Parent root = FXMLLoader.load(getClass().getResource("creditsScreen.fxml"));
+        Scene sc = newGameButton.getScene();
+        root.translateYProperty().set(sc.getHeight());
+        container.getChildren().add(root);
+        Timeline t = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+        t.getKeyFrames().add(kf);
+        t.setOnFinished(t1->{
+           container.getChildren().remove(anchorRoot);
+        });
+        t.play();
 		
 	}
     public void leaderboard(ActionEvent event) throws IOException {
