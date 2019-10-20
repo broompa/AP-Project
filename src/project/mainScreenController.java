@@ -37,6 +37,8 @@ public class mainScreenController {
     
     @FXML
     private Button newGameButton;
+    @FXML
+    private Button resumeGameButton;
     
     
     
@@ -59,7 +61,18 @@ public class mainScreenController {
         t.play();
     }
     public void resumeGame(ActionEvent event) throws IOException {
-	
+	Parent root = FXMLLoader.load(getClass().getResource("resumeGame.fxml"));
+        Scene sc = resumeGameButton.getScene();
+        root.translateYProperty().set(sc.getHeight());
+        container.getChildren().add(root);
+        Timeline t = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+        t.getKeyFrames().add(kf);
+        t.setOnFinished(t1->{
+           container.getChildren().remove(anchorRoot);
+        });
+        t.play();
 		
 	}
     public void exitGame(ActionEvent event) throws IOException {
