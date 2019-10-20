@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="project.creditsScreenController">
+    <stylesheets>
+        <URL value="@creditsScreen.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@creditsScreen.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="189.0" layoutY="336.0" prefHeight="25.0" prefWidth="102.0" text="Made by :-" textFill="WHITE" />
+      <Label layoutX="145.0" layoutY="362.0" prefHeight="18.0" prefWidth="162.0" text="Aman Kumar Gupta(2018217)" textFill="WHITE" />
+      <Label layoutX="145.0" layoutY="380.0" prefHeight="18.0" prefWidth="134.0" text="Lavanya Verma(2018155)" textFill="WHITE" />
+   </children>
+</AnchorPane>
