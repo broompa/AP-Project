@@ -25,7 +25,7 @@
             <Label fx:id="userScreenLabel" layoutX="351.0" layoutY="86.0" prefHeight="36.0" prefWidth="156.0" />
             <TextField fx:id="textFieldUsername" layoutX="351.0" layoutY="148.0" promptText="Enter Username" />
             <TextField fx:id="textFieldAge" layoutX="351.0" layoutY="207.0" promptText="Enter Age" />
-            <Label layoutX="285.0" layoutY="147.0" prefHeight="26.0" prefWidth="54.0" text="Username" />
+            <Label layoutX="266.0" layoutY="147.0" prefHeight="26.0" prefWidth="73.0" text="Username" />
             <Label layoutX="285.0" layoutY="206.0" prefHeight="26.0" prefWidth="54.0" text="Age" />
             <Button fx:id="userScreenBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Back" />
          </children>
