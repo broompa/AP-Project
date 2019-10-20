@@ -22,7 +22,7 @@ public class Project extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
-        
+        ///123
         stage.setScene(scene);
         stage.show();
     }
