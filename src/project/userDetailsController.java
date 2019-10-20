@@ -16,6 +16,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
@@ -31,9 +33,21 @@ public class userDetailsController {
     
     @FXML
     private Button userScreenBack;
+    
+    @FXML
+    private TextField textFieldUsername;
+    
+    @FXML
+    private TextField textFieldAge;
+    
+    @FXML 
+    private Button userProceed;
+    
+    @FXML
+    private Label userScreenLabel;
 
    public void user_back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+          Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
         Scene sc = userScreenBack.getScene();
         root.translateYProperty().set(-sc.getHeight());
                 
@@ -49,6 +63,21 @@ public class userDetailsController {
         });
         t.play();
     }
+   
+   public void user_proceed(ActionEvent event) throws IOException{
+       System.out.println("func");
+        if (User.doesExists(textFieldUsername.getText())){
+            userScreenLabel.setText("Already Exists, choose another name.");
+            textFieldUsername.setText("");
+            textFieldAge.setText("");
+        }
+        else {
+            System.out.println("under if");
+                        userScreenLabel.setText("User Creation Succesful.");
+                
+                }
+   
+   }
        
     
 }
