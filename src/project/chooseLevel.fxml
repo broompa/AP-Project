@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.chooseLevelController{">
+<StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.chooseLevelController">
    <children>
       <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="500.0" prefWidth="800.0" styleClass="mainFxmlClass">
           <stylesheets>
