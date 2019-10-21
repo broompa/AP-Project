@@ -58,11 +58,7 @@ public class mainScreenController {
         });
         t.play();
     }
-<<<<<<< Updated upstream
-    public void resumeGame(ActionEvent event) throws IOException {
-	
-		
-=======
+    
     public void resumeGamebtn(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("resumeGame.fxml"));
         Scene sc = newGameButton.getScene();
@@ -76,7 +72,6 @@ public class mainScreenController {
            container.getChildren().remove(anchorRoot);
         });
         t.play();
->>>>>>> Stashed changes
 	}
     public void exitGame(ActionEvent event) throws IOException {
         System.exit(0);
