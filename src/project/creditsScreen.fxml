@@ -21,8 +21,8 @@
                </image>
             </ImageView>
             <Label layoutX="321.0" layoutY="336.0" prefHeight="25.0" prefWidth="102.0" text="Made by :-" textFill="WHITE" />
-            <Label layoutX="278.0" layoutY="362.0" prefHeight="18.0" prefWidth="171.0" text="Aman Kumar Gupta(2018217)" textFill="WHITE" />
-            <Label layoutX="278.0" layoutY="380.0" prefHeight="18.0" prefWidth="134.0" text="Lavanya Verma(2018155)" textFill="WHITE" />
+            <Label layoutX="278.0" layoutY="362.0" prefHeight="18.0" prefWidth="259.0" text="Aman Kumar Gupta(2018217)" textFill="WHITE" />
+            <Label layoutX="278.0" layoutY="380.0" prefHeight="18.0" prefWidth="233.0" text="Lavanya Verma(2018155)" textFill="WHITE" />
             <Button fx:id="userScreenBack" layoutY="14.0" mnemonicParsing="false" onAction="#user_back" prefHeight="26.0" prefWidth="55.0" text="Back" />
          </children>
       </AnchorPane>

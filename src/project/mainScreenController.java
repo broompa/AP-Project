@@ -58,11 +58,6 @@ public class mainScreenController {
         });
         t.play();
     }
-<<<<<<< Updated upstream
-    public void resumeGame(ActionEvent event) throws IOException {
-	
-		
-=======
     public void resumeGamebtn(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("resumeGame.fxml"));
         Scene sc = newGameButton.getScene();
@@ -76,7 +71,6 @@ public class mainScreenController {
            container.getChildren().remove(anchorRoot);
         });
         t.play();
->>>>>>> Stashed changes
 	}
     public void exitGame(ActionEvent event) throws IOException {
         System.exit(0);
@@ -102,7 +96,18 @@ public class mainScreenController {
 		
 	}
     public void leaderboard(ActionEvent event) throws IOException {
-		
+	Parent root = FXMLLoader.load(getClass().getResource("leaderBoardScreen.fxml"));
+        Scene sc = newGameButton.getScene();
+        root.translateYProperty().set(sc.getHeight());
+        container.getChildren().add(root);
+        Timeline t = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+        t.getKeyFrames().add(kf);
+        t.setOnFinished(t1->{
+           container.getChildren().remove(anchorRoot);
+        });
+        t.play();	
 		
 	}
     

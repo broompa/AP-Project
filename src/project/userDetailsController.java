@@ -65,7 +65,6 @@ public class userDetailsController {
     }
    
    public void user_proceed(ActionEvent event) throws IOException{
-       System.out.println("func");
         if (User.doesExists(textFieldUsername.getText())){
             userScreenLabel.setText("Already Exists, choose another name.");
             textFieldUsername.setText("");
@@ -73,8 +72,21 @@ public class userDetailsController {
         }
         else {
             userScreenLabel.setText("User Creation Succesful.");
-                
-                }
+            System.out.println("0000");
+            Parent root = FXMLLoader.load(getClass().getResource("chooseLevel.fxml"));
+            System.out.println("1111");
+            Scene sc = userScreenBack.getScene();
+            root.translateYProperty().set(sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();    
+            }
    
    }
        

@@ -21,8 +21,11 @@ public class User {
     private String name ;
     /// Level type object
     
-    public User(String name ){
-        this.name =name ;
+    public User(String name){
+        this.name =name;
+        this.currentLevel=0;
+        this.isLevelCompleted=true;
+        this.diamonds=0;
     }
     
     public static boolean doesExists(String name ){
