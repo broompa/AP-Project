@@ -8,14 +8,14 @@ package project;
 import java.io.File;
 import java.util.HashMap;
 import java.util.regex.Matcher;
-
+import java.io.*;
 import java.util.regex.Pattern;
 
 /**
  *
  * @author verma
  */
-public class User {
+public class User implements Serializable{
     private int diamonds;
     private int currentLevel;
     private boolean isLevelCompleted;
@@ -30,7 +30,7 @@ public class User {
     }
     
     public static boolean doesExists(String name ){
-        File file = new File(System.getProperty("user.dir")+"\\src\\project");
+        File file = new File(System.getProperty("user.dir")+"\\src\\project\\userFiles");
         File [] ls = file.listFiles();
         
         for (File fs : ls){
@@ -53,7 +53,7 @@ public class User {
     
     public static String[] getPlayerList(){
         System.out.println("123");
-        File file = new File(System.getProperty("user.dir")+"\\src\\project");
+        File file = new File(System.getProperty("user.dir")+"\\src\\project\\userFiles");
         File[] ls = file.listFiles();
         HashMap <String,String> Player_list = new HashMap<String,String>();
         for (File fs : ls){
