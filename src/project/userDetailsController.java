@@ -65,6 +65,8 @@ public class userDetailsController {
     }
    
    public void user_proceed(ActionEvent event) throws IOException{
+
+        
         if (User.doesExists(textFieldUsername.getText())){
             userScreenLabel.setText("Already Exists, choose another name.");
             textFieldUsername.setText("");

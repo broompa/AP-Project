@@ -30,10 +30,12 @@ public class User {
     }
     
     public static boolean doesExists(String name ){
-        File file = new File(System.getProperty("user.dir"));
+        File file = new File(System.getProperty("user.dir")+"\\src\\project");
         File [] ls = file.listFiles();
+        
         for (File fs : ls){
-            if (fs.toString().endsWith(".zzz")&& name.equals(parsePlayer(fs.toString()))){
+            System.out.println(fs);
+            if (fs.toString().endsWith(".zzz")&& name.trim().equals(parsePlayer(fs.toString()))){
                 return true;
                 
             }
@@ -45,13 +47,13 @@ public class User {
         Matcher m = pat.matcher(s);
         m.find();
         String g = m.group(0);
-        return g.substring(0,g.lastIndexOf("."));
+        return g.substring(0,g.lastIndexOf(".")).trim();
         
     }   
     
     public static String[] getPlayerList(){
         System.out.println("123");
-        File file = new File(System.getProperty("user.dir")+"\\src");
+        File file = new File(System.getProperty("user.dir")+"\\src\\project");
         File[] ls = file.listFiles();
         
         
