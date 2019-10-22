@@ -50,15 +50,17 @@ public class User {
     }   
     
     public static String[] getPlayerList(){
-        File file = new File(System.getProperty("user.dir"));
-        File [] ls = file.listFiles();
+        System.out.println("123");
+        File file = new File(System.getProperty("user.dir")+"\\src");
+        File[] ls = file.listFiles();
         
         
         HashMap <String,String> Player_list = new HashMap<String,String>();
         for (File fs : ls){
+            System.out.println(fs.toString());
             if (fs.toString().endsWith(".zzz")){
-        
                 Player_list.put(parsePlayer(fs.toString()),fs.toString());
+                System.out.println(parsePlayer(fs.toString()));
             }
         }
         String [] arr = Player_list.keySet().toArray(new String[0]);
