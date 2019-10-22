@@ -5,8 +5,10 @@
  */
 package project;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -17,11 +19,27 @@ import javafx.stage.Stage;
  */
 public class Project extends Application {
     
+    private static User user;// current user
+    private static Group g ;
+    static AnimationTimer anim;
+    public static void setUser(User user1 ){ user = user1;
+        anim.start();
+    }
+    
+    
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws Exception { 
+        
         Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
-        User current_user;
-        Scene scene = new Scene(root);
+        anim = new AnimationTimer(){
+            @Override 
+            public void handle(long now ){
+                user.update ();
+            }
+        };
+        
+        g = new Group(root);
+        Scene scene = new Scene(g);
         stage.setScene(scene);
         stage.show();
     }
@@ -29,6 +47,11 @@ public class Project extends Application {
     /**
      * @param args the command line arguments
      */
+    public static void addToGroup(Group p){
+        if (g.getChildren().contains(p)){
+            return ;}
+        g.getChildren().add(p);
+    }
     public static void main(String[] args) {
         launch(args);
     }

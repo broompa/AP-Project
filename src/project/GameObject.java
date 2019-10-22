@@ -13,10 +13,17 @@ import javafx.scene.Group;
  * @author verma
  */
 public abstract class GameObject {
-    private boolean isAlive ; 
-    private int health ;
-    private Timeline timeline;
-    private Group view;
+    protected boolean isAlive ; 
+    protected int health ;
+    protected Timeline timeline;
+    protected Group view;
+    
+    
+    public GameObject(){
+        isAlive = true;
+        health = 10;
+        
+    }
     
     
     public Group getView(){

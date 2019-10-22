@@ -93,7 +93,7 @@ public class userDetailsController {
             }
             else {
                 userScreenLabel.setText("User Creation Succesful.");
-                Parent root = FXMLLoader.load(getClass().getResource("chooseLevel.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("level1.fxml"));
                 Scene sc = userScreenBack.getScene();
                 root.translateYProperty().set(sc.getHeight());
                 container.getChildren().add(root);
@@ -104,7 +104,9 @@ public class userDetailsController {
                 t.setOnFinished(t1->{
                     container.getChildren().remove(anchorRoot);
                 });
-                t.play();    
+                t.play();
+                Project.setUser(new User(textFieldUsername.getText()));
+                
             }
         }
        catch(NumberFormatException e){

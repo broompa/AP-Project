@@ -8,7 +8,7 @@ package project;
 import java.io.File;
 import java.util.HashMap;
 import java.util.regex.Matcher;
-import java.io.*;
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
 /**
@@ -16,17 +16,26 @@ import java.util.regex.Pattern;
  * @author verma
  */
 public class User implements Serializable{
+
+    
     private int diamonds;
     private int currentLevel;
     private boolean isLevelCompleted;
     private String name ;
-    /// Level type object
+    private levelHandler level;
     
     public User(String name){
         this.name =name;
         this.currentLevel=0;
         this.isLevelCompleted=true;
         this.diamonds=0;
+        this.level = new levelHandler(1);
+    }
+    
+    
+    
+    public void update() {
+        level.update();       
     }
     
     public static boolean doesExists(String name ){
@@ -53,7 +62,7 @@ public class User implements Serializable{
     
     public static String[] getPlayerList(){
         System.out.println("123");
-        File file = new File(System.getProperty("user.dir")+"\\src\\project\\userFiles");
+        File file = new File(System.getProperty("user.dir")+"\\src\\project\\userFiles\\");
         File[] ls = file.listFiles();
         HashMap <String,String> Player_list = new HashMap<String,String>();
         for (File fs : ls){
