@@ -53,8 +53,6 @@ public class User {
         System.out.println("123");
         File file = new File(System.getProperty("user.dir")+"\\src");
         File[] ls = file.listFiles();
-        
-        
         HashMap <String,String> Player_list = new HashMap<String,String>();
         for (File fs : ls){
             System.out.println(fs.toString());

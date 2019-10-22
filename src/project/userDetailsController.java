@@ -6,6 +6,8 @@
 package project;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -13,6 +15,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -65,30 +68,50 @@ public class userDetailsController {
     }
    
    public void user_proceed(ActionEvent event) throws IOException{
-        if (User.doesExists(textFieldUsername.getText())){
-            userScreenLabel.setText("Already Exists, choose another name.");
-            textFieldUsername.setText("");
-            textFieldAge.setText("");
-        }
-        else {
-            userScreenLabel.setText("User Creation Succesful.");
-            System.out.println("0000");
-            Parent root = FXMLLoader.load(getClass().getResource("chooseLevel.fxml"));
-            System.out.println("1111");
-            Scene sc = userScreenBack.getScene();
-            root.translateYProperty().set(sc.getHeight());
-            container.getChildren().add(root);
-            Timeline t = new Timeline();
-            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-            t.getKeyFrames().add(kf);
-            t.setOnFinished(t1->{
-                container.getChildren().remove(anchorRoot);
-            });
-            t.play();    
+       int age=0;
+       try{
+           age=Integer.parseInt(textFieldAge.getText());
+           if (textFieldUsername.getText().trim().equals("")) {
+                userScreenLabel.setText("Username cannot be empty");
+                textFieldUsername.setText("");
+                textFieldAge.setText("");
             }
-   
+            else if(textFieldAge.getText().trim().equals("")){
+                userScreenLabel.setText("Age cannot be empty");
+                textFieldUsername.setText("");
+                textFieldAge.setText("");
+            }
+            else if(age>100){
+                userScreenLabel.setText("Age cannot be more than 100");
+                textFieldUsername.setText("");
+                textFieldAge.setText("");
+            }
+            else if (User.doesExists(textFieldUsername.getText())){
+                userScreenLabel.setText("Already Exists, choose another name.");
+                textFieldUsername.setText("");
+                textFieldAge.setText("");
+            }
+            else {
+                userScreenLabel.setText("User Creation Succesful.");
+                Parent root = FXMLLoader.load(getClass().getResource("chooseLevel.fxml"));
+                Scene sc = userScreenBack.getScene();
+                root.translateYProperty().set(sc.getHeight());
+                container.getChildren().add(root);
+                Timeline t = new Timeline();
+                KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+                KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+                t.getKeyFrames().add(kf);
+                t.setOnFinished(t1->{
+                    container.getChildren().remove(anchorRoot);
+                });
+                t.play();    
+            }
+        }
+       catch(NumberFormatException e){
+           userScreenLabel.setText("Age has to ba a number");
+           textFieldAge.setText("");
+           textFieldAge.setText("");
+    }
    }
-       
-    
 }
+
