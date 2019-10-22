@@ -71,12 +71,12 @@ public class userDetailsController {
        int age=0;
        try{
            age=Integer.parseInt(textFieldAge.getText());
-           if (textFieldUsername.getText().trim().equals("")) {
+           if (textFieldUsername.getText().isEmpty()|| textFieldUsername.getText().toCharArray().length==0) {
                 userScreenLabel.setText("Username cannot be empty");
                 textFieldUsername.setText("");
                 textFieldAge.setText("");
             }
-            else if(textFieldAge.getText().trim().equals("")){
+            else if(textFieldAge.getText().isEmpty()|| textFieldAge.getText().length()==0){
                 userScreenLabel.setText("Age cannot be empty");
                 textFieldUsername.setText("");
                 textFieldAge.setText("");
