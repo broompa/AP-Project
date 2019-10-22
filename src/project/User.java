@@ -6,6 +6,7 @@
 package project;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 
 import java.util.regex.Pattern;
@@ -47,6 +48,23 @@ public class User {
         return g.substring(0,g.lastIndexOf("."));
         
     }   
+    
+    public static String[] getPlayerList(){
+        File file = new File(System.getProperty("user.dir"));
+        File [] ls = file.listFiles();
+        
+        
+        HashMap <String,String> Player_list = new HashMap<String,String>();
+        for (File fs : ls){
+            if (fs.toString().endsWith(".zzz")){
+        
+                Player_list.put(parsePlayer(fs.toString()),fs.toString());
+            }
+        }
+        String [] arr = Player_list.keySet().toArray(new String[0]);
+        return arr;
+        
+    }
     
     
 }
