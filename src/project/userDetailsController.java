@@ -108,7 +108,7 @@ public class userDetailsController {
             }
         }
        catch(NumberFormatException e){
-           userScreenLabel.setText("Age has to ba a number");
+           userScreenLabel.setText("Age has to be a number");
            textFieldAge.setText("");
            textFieldAge.setText("");
     }
