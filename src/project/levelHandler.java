@@ -24,6 +24,10 @@ public class levelHandler {
     private float sunTime ;
     private long lastSunAdded;
     private int sunToken;
+    private ArrayList<LawnMower> lawnMowerList ; 
+    
+    
+    
     
     public levelHandler(int level){
         this.level = level;
@@ -33,6 +37,8 @@ public class levelHandler {
         zombieList = new ArrayList<ArrayList<Zombie>>();
         peaList = new ArrayList<ArrayList<Pea>>();
         sunList = new ArrayList<Sun>();
+        lawnMowerList = new ArrayList<LawnMower>();        
+        
         
         
         
@@ -40,6 +46,24 @@ public class levelHandler {
         plantList.add(new ArrayList<Plant>());
         zombieList.add(new ArrayList<Zombie>());
         peaList.add(new ArrayList<Pea>());
+        switch(x){
+            case 0 :
+                lawnMowerList.add(new LawnMower(198,28));
+                break;
+            case 1 :
+                lawnMowerList.add(new LawnMower(198,117));
+                break;
+            case 2 :
+                lawnMowerList.add(new LawnMower(198,202));
+                break;
+            case 3 :
+                lawnMowerList.add(new LawnMower(198,294));
+                break;
+            case 4 :
+                lawnMowerList.add(new LawnMower(198,380));
+                break;
+                
+        }
         
         }
         sunToken= 0;
@@ -88,6 +112,19 @@ public class levelHandler {
         spawnZombies();
         shineSun();
         
+        for (int x = 0 ; x< lawnMowerList.size();x++){
+            if (lawnMowerList.get(x).getIsAlive()){
+            lawnMowerList.get(x).update();
+            Project.addToGroup(lawnMowerList.get(x).getView());
+            }else{
+                Project.removeFromGroup(lawnMowerList.get(x).getView());
+                lawnMowerList.remove(lawnMowerList.get(x));
+             
+             
+            }
+        }
+        
+        
         for (int x = 0 ; x<plantList.size();x++){
             for (int i =  0 ; i < plantList.get(x).size();i++){
                 plantList.get(x).get(i).update();
@@ -96,8 +133,15 @@ public class levelHandler {
         }
         for (int x = 0 ; x<zombieList.size();x++){
             for (int i =  0 ; i < zombieList.get(x).size();i++){
+                if (zombieList.get(x).get(i).getIsAlive()){
                 zombieList.get(x).get(i).update();
-                 Project.addToGroup(zombieList.get(x).get(i).getView());
+                 Project.addToGroup(zombieList.get(x).get(i).getView());}
+                else {
+                Project.removeFromGroup(zombieList.get(x).get(i).getView());
+                zombieList.get(x).remove(zombieList.get(x).get(i));
+                ///////////////increment score
+                
+                }
             }
         }
         for (int x = 0 ; x<peaList.size();x++){
@@ -119,6 +163,15 @@ public class levelHandler {
             }
         }
         
+        
+        for (int x = 0 ; x<lawnMowerList.size();x++){
+            for (int i = 0 ; i < zombieList.get(x).size(); i++){
+                if (lawnMowerList.get(x).isColliding(zombieList.get(x).get(i)) && lawnMowerList.get(x).getIsAlive() && zombieList.get(x).get(i).getIsAlive() ){
+                    zombieList.get(x).get(i).setIsAlive(false);
+                    lawnMowerList.get(x).moveNow();
+                }
+            }
+        } 
         
         //////////////////to be edited
     }

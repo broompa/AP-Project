@@ -124,7 +124,7 @@ public class Zombie extends GameObject {
         
         
         
-        speed = 0.3f;// to be edited
+        speed = 1f;// to be edited
         damage = 1;
     
         view.setTranslateX(750);
