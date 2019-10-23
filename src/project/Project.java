@@ -52,6 +52,17 @@ public class Project extends Application {
             return ;}
         g.getChildren().add(p);
     }
+    
+    public static void removeFromGroup(Group p){
+        if (g.getChildren().contains(p)){
+            g.getChildren().remove(p);
+        }
+    }
+    
+    
+    
+    
+    
     public static void main(String[] args) {
         launch(args);
     }

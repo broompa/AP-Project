@@ -19,7 +19,11 @@ public class levelHandler {
     private ArrayList<ArrayList<Plant>> plantList;
     private ArrayList<ArrayList<Zombie>> zombieList;
     private ArrayList<ArrayList<Pea>> peaList;
-    private float spawnTime;
+    private ArrayList<Sun> sunList;
+    private float spawnTime; // Zombie 
+    private float sunTime ;
+    private long lastSunAdded;
+    private int sunToken;
     
     public levelHandler(int level){
         this.level = level;
@@ -28,7 +32,7 @@ public class levelHandler {
         plantList = new ArrayList<ArrayList<Plant>>();
         zombieList = new ArrayList<ArrayList<Zombie>>();
         peaList = new ArrayList<ArrayList<Pea>>();
-        
+        sunList = new ArrayList<Sun>();
         
         
         
@@ -38,8 +42,10 @@ public class levelHandler {
         peaList.add(new ArrayList<Pea>());
         
         }
-        
+        sunToken= 0;
         lastZombieAdded = 0L;
+        lastSunAdded = 0L;
+        sunTime = 5;
         System.out.println("Level wow");
         
        
@@ -53,28 +59,35 @@ public class levelHandler {
             case 1 :
                 zombieCount = 2 ;
                 spawnTime = 3;//to be changed
+         
                 break;
             case 2:
                 zombieCount = 10;
                 spawnTime = 7;
+         
                 break;
             case 3 :
                 zombieCount = 15 ;
                 spawnTime = 4;
+         
                 break;
             case 4:
                 zombieCount = 20;
                 spawnTime = 2;
+         
                 break;
             case 5 :
                 zombieCount = 25;
                 spawnTime = 1;
+         
                 break;
         }
     }
     
     public void update(){
         spawnZombies();
+        shineSun();
+        
         for (int x = 0 ; x<plantList.size();x++){
             for (int i =  0 ; i < plantList.get(x).size();i++){
                 plantList.get(x).get(i).update();
@@ -94,6 +107,19 @@ public class levelHandler {
             }
         }
         
+        for (int x = 0 ; x<sunList.size();x++){
+            if (sunList.get(x).getIsAlive()){
+            sunList.get(x).update();
+            Project.addToGroup(sunList.get(x).getView());}
+            else{
+                Project.removeFromGroup(sunList.get(x).getView());
+                sunList.remove(sunList.get(x));
+                sunToken += 50;
+                System.out.println(sunToken);
+            }
+        }
+        
+        
         //////////////////to be edited
     }
     
@@ -107,7 +133,12 @@ public class levelHandler {
         }
     }
     
-    
+    public void shineSun(){
+        if (System.currentTimeMillis()-lastSunAdded>=sunTime*1000){
+            sunList.add(new Sun());
+            lastSunAdded = System.currentTimeMillis();
+        }
+    }
     
     
 }

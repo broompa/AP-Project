@@ -25,6 +25,10 @@ public abstract class GameObject {
         
     }
     
+    public boolean getIsAlive(){
+        return isAlive;
+    }
+    
     
     public Group getView(){
         return view;
