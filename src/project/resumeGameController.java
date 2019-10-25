@@ -61,16 +61,16 @@ public class resumeGameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("4444444444444444444444444444444");
+//        System.out.println("4444444444444444444444444444444");
         String[] arr = User.getPlayerList();
 //        ObservableList<String> options = FXCollections.observableArrayList("1","2","3");
 //        chooseUser = new ComboBox(options);
-        System.out.println(arr.length);
+//        System.out.println(arr.length);
         chooseUser.getItems().addAll(arr);
 //        chooseUser.getSelectionModel().select();
 
 
-        System.out.println("4444444444444444444444444444444");
+//        System.out.println("4444444444444444444444444444444");
     }
     
 }
