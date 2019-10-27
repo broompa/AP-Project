@@ -70,7 +70,7 @@ public class levelHandler {
         lastZombieAdded = 0L;
         lastSunAdded = 0L;
         sunTime = 5;
-        System.out.println("Level wow");
+//        System.out.println("Level wow");
         
        
     }
@@ -158,7 +158,7 @@ public class levelHandler {
             else{
                 Project.removeFromGroup(sunList.get(x).getView());
                 sunList.remove(sunList.get(x));
-                sunToken += 50;
+                sunToken += 25;
                 System.out.println(sunToken);
             }
         }
