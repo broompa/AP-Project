@@ -136,7 +136,7 @@ public class levelHandler {
                 if (zombieList.get(x).get(i).getIsAlive()){
                 zombieList.get(x).get(i).update();
                  Project.addToGroup(zombieList.get(x).get(i).getView());}
-                else {
+                else if (System.currentTimeMillis()-zombieList.get(x).get(i).getDeadTime()>550){
                 Project.removeFromGroup(zombieList.get(x).get(i).getView());
                 zombieList.get(x).remove(zombieList.get(x).get(i));
                 ///////////////increment score

@@ -18,13 +18,6 @@
                   <Image url="@background.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="L" alignment="CENTER" layoutX="126.0" layoutY="21.0" prefHeight="46.0" prefWidth="110.0" text="0">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="yLabel" layoutX="102.0" layoutY="318.0" prefHeight="62.0" prefWidth="110.0" text="Label" textFill="RED" />
-            <Label layoutX="28.0" layoutY="119.0" prefHeight="32.0" prefWidth="73.0" text="Label" textFill="RED" fx:id="xLabel" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="506.0" fitWidth="811.0" pickOnBounds="true" preserveRatio="true">
