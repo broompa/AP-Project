@@ -53,7 +53,7 @@ public class Zombie extends GameObject {
         view = new Group(im1);
         move = true ;
         speed = 1f;// to be edited
-        damage = 1f;
+        damage = 0.05f;
     
         
         timeline.getKeyFrames().add(new KeyFrame(
@@ -247,7 +247,7 @@ public class Zombie extends GameObject {
     
     @Override
     public void update() {
-        if (this.health<= 0){ isAlive= false;}
+        if (this.health<= 0){setIsAlive(false);}
         
         if (isAlive && move){
             view.setTranslateX(view.getTranslateX()-speed);   }
