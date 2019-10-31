@@ -5,14 +5,38 @@
  */
 package project;
 
+import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author verma
  */
 public class Pea extends GameObject {
-
+    private float speed;
+    private final float damage ;
+    final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/Pea.png")));
+    
+    
+    public Pea(double x , double y ){
+        view = new Group(im1);
+        damage = 5;
+        speed = 2;
+        view.setTranslateX(x);
+        view.setTranslateY(y);
+    }
+    
+    public double getDamage(){ return this.damage;}
+    
+    
+    
+    
     @Override
     public void update() {
+        if (isAlive){
+            view.setTranslateX(view.getTranslateX()+speed);
+        }
         
     }
     

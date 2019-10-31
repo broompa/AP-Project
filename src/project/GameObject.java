@@ -14,7 +14,7 @@ import javafx.scene.Group;
  */
 public abstract class GameObject {
     protected boolean isAlive ; 
-    protected int health ;
+    protected double health ;
     protected Timeline timeline;
     protected Group view;
     
@@ -24,6 +24,26 @@ public abstract class GameObject {
         health = 10;
         
     }
+    
+    
+    
+    
+    public void setHealth(double health){
+        this.health = health ;
+    }
+    public double getHealth(){
+        return health ;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public boolean getIsAlive(){
         return isAlive;

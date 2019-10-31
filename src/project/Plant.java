@@ -5,21 +5,17 @@
  */
 package project;
 
+import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 /**
  *
  * @author verma
  */
-public abstract class Plant extends GameObject {
+public abstract class Plant extends GameObject {/////test shooter class
     private int timeToLive; 
     private static long lastAdded; // stores added time of plant
     
-    
-    
-    
-    
-    
-    public Plant(){
-        
-    }
     
 }

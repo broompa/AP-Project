@@ -8,6 +8,7 @@ package project;
 import java.util.ArrayList;
 import java.util.Random;
 
+
 /**
  *
  * @author verma
@@ -16,9 +17,9 @@ public class levelHandler {
     private int level;
     private int zombieCount;
     private long lastZombieAdded;
-    private ArrayList<ArrayList<Plant>> plantList;
+    private static ArrayList<ArrayList<Plant>> plantList;
     private ArrayList<ArrayList<Zombie>> zombieList;
-    private ArrayList<ArrayList<Pea>> peaList;
+    private static ArrayList<ArrayList<Pea>> peaList;
     private ArrayList<Sun> sunList;
     private float spawnTime; // Zombie 
     private float sunTime ;
@@ -81,8 +82,8 @@ public class levelHandler {
     public void setZombieCount(){
         switch(level){
             case 1 :
-                zombieCount = 5 ;
-                spawnTime = 3;//to be changed
+                zombieCount = 25 ;
+                spawnTime = 2;//to be changed
          
                 break;
             case 2:
@@ -112,6 +113,8 @@ public class levelHandler {
         spawnZombies();
         shineSun();
         
+        
+        ////////////////////////////////////////////////////////////////////
         for (int x = 0 ; x< lawnMowerList.size();x++){
             if (lawnMowerList.get(x).getIsAlive()){
             lawnMowerList.get(x).update();
@@ -123,12 +126,15 @@ public class levelHandler {
              
             }
         }
-        
-        
         for (int x = 0 ; x<plantList.size();x++){
-            for (int i =  0 ; i < plantList.get(x).size();i++){
-                plantList.get(x).get(i).update();
-                Project.addToGroup(plantList.get(x).get(i).getView());
+            for (int i =  0 ; i < plantList.get(x).size();i++){ 
+                if (plantList.get(x).get(i).getIsAlive()){
+                    plantList.get(x).get(i).update();
+                    Project.addToGroup(plantList.get(x).get(i).getView()); }
+                else {
+                    Project.removeFromGroup(plantList.get(x).get(i).getView());
+                    plantList.get(x).remove(plantList.get(x).get(i));
+                }
             }
         }
         for (int x = 0 ; x<zombieList.size();x++){
@@ -146,11 +152,17 @@ public class levelHandler {
         }
         for (int x = 0 ; x<peaList.size();x++){
             for (int i =  0 ; i < peaList.get(x).size();i++){
-                peaList.get(x).get(i).update();
-                 Project.addToGroup(peaList.get(x).get(i).getView());
+                if (peaList.get(x).get(i).getIsAlive()){
+                    peaList.get(x).get(i).update();
+                    Project.addToGroup(peaList.get(x).get(i).getView());
+                }else {
+                    Project.removeFromGroup(peaList.get(x).get(i).getView());
+                    peaList.get(x).remove(peaList.get(x).get(i));
+
+                }
             }
         }
-        
+        ///////////////////////////////////////////////////////////
         for (int x = 0 ; x<sunList.size();x++){
             if (sunList.get(x).getIsAlive()){
             sunList.get(x).update();
@@ -173,6 +185,36 @@ public class levelHandler {
             }
         } 
         
+        for (int x = 0 ; x<5;x++){
+            for(int i = 0 ; i<zombieList.get(x).size();i++){
+                
+                for (int t = 0 ; t<peaList.get(x).size();t++){
+                    if ( peaList.get(x).get(t).getIsAlive() && peaList.get(x).get(t).isColliding(zombieList.get(x).get(i))){
+                        peaList.get(x).get(t).setIsAlive(false);
+                        zombieList.get(x).get(i).setHealth(zombieList.get(x).get(i).getHealth()- peaList.get(x).get(t).getDamage() );
+                    }
+                }
+                
+            }
+        }
+        
+        for (int x = 0 ; x<5;x++){
+            for(int i = 0 ; i<zombieList.get(x).size();i++){
+                boolean zMove = true ;
+                for (int t = 0 ; t<plantList.get(x).size();t++){
+                    if (plantList.get(x).get(t).isColliding(zombieList.get(x).get(i))){
+                        plantList.get(x).get(t).setHealth(plantList.get(x).get(t).getHealth() - zombieList.get(x).get(i).getDamage() );
+                        zMove= false;
+                    }
+                }
+                zombieList.get(x).get(i).setMove(zMove);
+            }
+        }
+        
+        
+        
+        
+        
         //////////////////to be edited
     }
     
@@ -192,6 +234,28 @@ public class levelHandler {
             lastSunAdded = System.currentTimeMillis();
         }
     }
+    public static void addPlant(double x , double y, String s ){
+        if (s.equals("shooter")){
+           if(28<=y && y<117){
+               plantList.get(0).add(new Shooter(x,y,0) );
+           }
+           else if (117<=y && y<202){
+               plantList.get(1).add(new Shooter(x,y,1));
+          
+           }
+           else if (202<=y && y<294){
+               plantList.get(2).add(new Shooter(x,y,2));
+           }
+           else if (294<=y && y<380){
+               plantList.get(3).add(new Shooter(x,y,3));
+           }else if(y<=380 && y<471){
+               plantList.get(4).add(new Shooter(x,y,4));
+           }
+        }
+    }
     
+    public static void addPea(double x , double y,int row){
+        peaList.get(row).add(new Pea(x , y));
+    }
     
 }

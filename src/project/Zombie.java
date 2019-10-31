@@ -22,8 +22,8 @@ public class Zombie extends GameObject {
     private float speed ;
     private float damage ;
     private long deadTime; // store time instant when zombie's isAlive set to false
-    Timeline deadLine ; // dead timeline animation
-    
+    private Timeline deadLine ; // dead timeline animation
+    private boolean move; 
     
     final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/1.png")));
     final ImageView im2= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/2.png")));
@@ -51,6 +51,10 @@ public class Zombie extends GameObject {
         timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE); 
         view = new Group(im1);
+        move = true ;
+        speed = 1f;// to be edited
+        damage = 0.01f;
+    
         
         timeline.getKeyFrames().add(new KeyFrame(
                 Duration.millis(100),(ActionEvent e) -> {
@@ -188,9 +192,7 @@ public class Zombie extends GameObject {
         
         
         /////////////////////////////////////////////////////
-        speed = 1f;// to be edited
-        damage = 1;
-    
+        
         view.setTranslateX(750);
         switch(row){
             case 1 :
@@ -212,7 +214,7 @@ public class Zombie extends GameObject {
         
     }
 
-    
+    public void setMove(boolean move){ this.move = move;} 
     
     public void setDeadTime(long now){
         this.deadTime = now;
@@ -240,10 +242,14 @@ public class Zombie extends GameObject {
     }
     
     
+    public float getDamage(){ return this.damage;}
+    
     
     @Override
     public void update() {
-        if (isAlive){
+        if (this.health<= 0){ isAlive= false;}
+        
+        if (isAlive && move){
             view.setTranslateX(view.getTranslateX()-speed);   }
     }
         

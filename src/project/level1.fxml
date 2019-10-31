@@ -11,7 +11,7 @@
    <children>
       <AnchorPane>
          <children>
-            <AnchorPane id="AnchorPane" fx:id="anchorRoot" layoutY="6.900000095367432" onMouseClicked="#clickTest" prefHeight="500.0" prefWidth="800.0" styleClass="mainFxmlClass">
+            <AnchorPane id="AnchorPane" fx:id="anchorRoot" layoutY="6.900000095367432" onMouseReleased="#clickTest" prefHeight="500.0" prefWidth="800.0" styleClass="mainFxmlClass">
                 <stylesheets>
                     <URL value="@level1.css" />
                 </stylesheets>

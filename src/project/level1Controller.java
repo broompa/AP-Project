@@ -63,6 +63,13 @@ public class level1Controller  {
      public void clickTest(MouseEvent e) throws IOException{
         double x = e.getX();
         double y = e.getY();
+        
+        
+        if (isSelected=="shooter" && x>=198 && x<=753  && y>=28 &&y<=471){
+            levelHandler.addPlant(x,y,isSelected);
+        }
+        
+        
         if(x>4 && x< 75){
             if (y>4 && y<47){ 
                 isSelected="shooter";
@@ -72,6 +79,7 @@ public class level1Controller  {
             }
             else {
                 isSelected =null;
+                
             }
         }
         else {
