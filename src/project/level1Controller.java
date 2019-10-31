@@ -65,7 +65,7 @@ public class level1Controller  {
         double y = e.getY();
         
         
-        if (isSelected=="shooter" && x>=198 && x<=753  && y>=28 &&y<=471){
+        if (isSelected!=null && x>=198 && x<=753  && y>=28 &&y<=471){
             levelHandler.addPlant(x,y,isSelected);
         }
         

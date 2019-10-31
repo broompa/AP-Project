@@ -20,7 +20,7 @@ public class levelHandler {
     private static ArrayList<ArrayList<Plant>> plantList;
     private ArrayList<ArrayList<Zombie>> zombieList;
     private static ArrayList<ArrayList<Pea>> peaList;
-    private ArrayList<Sun> sunList;
+    private static ArrayList<Sun> sunList;
     private float spawnTime; // Zombie 
     private float sunTime ;
     private long lastSunAdded;
@@ -162,7 +162,7 @@ public class levelHandler {
                 }
             }
         }
-        ///////////////////////////////////////////////////////////
+        
         for (int x = 0 ; x<sunList.size();x++){
             if (sunList.get(x).getIsAlive()){
             sunList.get(x).update();
@@ -175,7 +175,7 @@ public class levelHandler {
             }
         }
         
-        
+        /////////////////////////////////////////////////////////////////////////
         for (int x = 0 ; x<lawnMowerList.size();x++){
             for (int i = 0 ; i < zombieList.get(x).size(); i++){
                 if (lawnMowerList.get(x).isColliding(zombieList.get(x).get(i)) && lawnMowerList.get(x).getIsAlive() && zombieList.get(x).get(i).getIsAlive() ){
@@ -230,7 +230,7 @@ public class levelHandler {
     
     public void shineSun(){
         if (System.currentTimeMillis()-lastSunAdded>=sunTime*1000){
-            sunList.add(new Sun());
+            sunList.add(new Sun(true, 0,0));// coordinate doesn't affect anything because move is true. move - represents transition
             lastSunAdded = System.currentTimeMillis();
         }
     }
@@ -240,8 +240,7 @@ public class levelHandler {
                plantList.get(0).add(new Shooter(x,y,0) );
            }
            else if (117<=y && y<202){
-               plantList.get(1).add(new Shooter(x,y,1));
-          
+               plantList.get(1).add(new Shooter(x,y,1));  
            }
            else if (202<=y && y<294){
                plantList.get(2).add(new Shooter(x,y,2));
@@ -252,10 +251,34 @@ public class levelHandler {
                plantList.get(4).add(new Shooter(x,y,4));
            }
         }
+        else if (s.equals("sunflower")){
+           if(28<=y && y<117){
+               plantList.get(0).add(new Sunflower(x,y) );
+           }
+           else if (117<=y && y<202){
+               plantList.get(1).add(new Sunflower(x,y));  
+           }
+           else if (202<=y && y<294){
+               plantList.get(2).add(new Sunflower(x,y));
+           }
+           else if (294<=y && y<380){
+               plantList.get(3).add(new Sunflower(x,y));
+           }else if(y<=380 && y<471){
+               plantList.get(4).add(new Sunflower(x,y));
+           }
+        } 
+        
+        
+        
+        
     }
+    
     
     public static void addPea(double x , double y,int row){
         peaList.get(row).add(new Pea(x , y));
+    }
+    public static void addSun(double x , double y ){
+        sunList.add(new Sun(false, x, y));
     }
     
 }

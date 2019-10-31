@@ -53,7 +53,7 @@ public class Zombie extends GameObject {
         view = new Group(im1);
         move = true ;
         speed = 1f;// to be edited
-        damage = 0.01f;
+        damage = 1f;
     
         
         timeline.getKeyFrames().add(new KeyFrame(
