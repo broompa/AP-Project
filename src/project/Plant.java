@@ -11,6 +11,15 @@ package project;
  */
 public abstract class Plant extends GameObject {
     private int timeToLive; 
-    private long lastAdded; // stores added time of plant
+    private static long lastAdded; // stores added time of plant
+    
+    
+    
+    
+    
+    
+    public Plant(){
+        
+    }
     
 }

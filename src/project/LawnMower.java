@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
  */
 public class LawnMower extends GameObject {
     private boolean move ;
-   
+    private double speed;
     
     ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/lawn_mower.gif")));
     public LawnMower(int x , int y ){
@@ -23,12 +23,15 @@ public class LawnMower extends GameObject {
         move = false;
         view.setTranslateX(x);
         view.setTranslateY(y);
+        speed =  0.5;
     }
     
     @Override
     public void update() {
         if (move){
-            view.setTranslateX(view.getTranslateX()+0.5);
+            speed+=0.02;
+            
+            view.setTranslateX(view.getTranslateX()+speed);
             if (view.getTranslateX()>=753){
             isAlive = false;}
         }

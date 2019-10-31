@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.level1Controller">
+<StackPane fx:id="container" onMouseClicked="#clickTest" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.level1Controller">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="anchorRoot" onMouseClicked="#clickTest" prefHeight="500.0" prefWidth="800.0" styleClass="mainFxmlClass">
-          <stylesheets>
-              <URL value="@level1.css" />
-          </stylesheets>
+      <AnchorPane>
          <children>
-            <ImageView fitHeight="429.0" fitWidth="841.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" scaleY="1.2">
-               <image>
-                  <Image url="@background.jpg" />
-               </image>
-            </ImageView>
+            <AnchorPane id="AnchorPane" fx:id="anchorRoot" layoutY="6.900000095367432" onMouseClicked="#clickTest" prefHeight="500.0" prefWidth="800.0" styleClass="mainFxmlClass">
+                <stylesheets>
+                    <URL value="@level1.css" />
+                </stylesheets>
+               <children>
+                  <ImageView fitHeight="429.0" fitWidth="841.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" scaleY="1.2">
+                     <image>
+                        <Image url="@background.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="506.0" fitWidth="811.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Bakcground_Level1.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="sunCount" layoutX="143.0" layoutY="14.0" text="Label" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="506.0" fitWidth="811.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Bakcground_Level1.PNG" />
-         </image>
-      </ImageView>
    </children>
 </StackPane>

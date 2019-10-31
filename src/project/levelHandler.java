@@ -23,7 +23,7 @@ public class levelHandler {
     private float spawnTime; // Zombie 
     private float sunTime ;
     private long lastSunAdded;
-    private int sunToken;
+    private static int sunToken;
     private ArrayList<LawnMower> lawnMowerList ; 
     
     
@@ -70,12 +70,12 @@ public class levelHandler {
         lastZombieAdded = 0L;
         lastSunAdded = 0L;
         sunTime = 5;
-//        System.out.println("Level wow");
         
        
     }
     
     
+    public static int getSunCount(){return sunToken;}
     
     
     public void setZombieCount(){
@@ -180,7 +180,7 @@ public class levelHandler {
         if (System.currentTimeMillis()-lastZombieAdded>=spawnTime*1000 && zombieCount-- > 0){
             Random r = new Random();
             int ran = r.nextInt(5);
-            zombieList.get(ran).add(new Zombie(1,ran));
+            zombieList.get(ran).add(new Zombie(ran));
             lastZombieAdded = System.currentTimeMillis();
             
         }

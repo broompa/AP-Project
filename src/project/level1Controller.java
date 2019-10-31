@@ -29,10 +29,12 @@ public class level1Controller  {
      * Initializes the controller class.
      */
     @FXML
-    private Label xLabel;
+    private Label sunCount;
     @FXML
     private Label yLabel;
     
+    
+    private static int sunValue ;
     
     @FXML
     private StackPane container;
@@ -40,12 +42,43 @@ public class level1Controller  {
     @FXML
     private AnchorPane anchorRoot;
     
+    private String isSelected = null;
+    
+    
+    
+    
+    public static void  setSunCount(int val ){
+        sunValue += val;
+        
+    }
+    
+    
+    
+    
+    
+    
     
     
     // test function to check pixel boundation
      public void clickTest(MouseEvent e) throws IOException{
-         xLabel.setText(Double.toString(e.getSceneX()));
-         yLabel.setText(Double.toString(e.getSceneY()));
+        double x = e.getX();
+        double y = e.getY();
+        if(x>4 && x< 75){
+            if (y>4 && y<47){ 
+                isSelected="shooter";
+            }
+            else if (y>62 && y<111){
+                isSelected="sunflower"; 
+            }
+            else {
+                isSelected =null;
+            }
+        }
+        else {
+            isSelected = null;
+        }
+        
+        
     }
     
 }

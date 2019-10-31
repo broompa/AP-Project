@@ -46,7 +46,7 @@ public class Zombie extends GameObject {
     final ImageView Im7= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Dead/7.png")));
     final ImageView Im8= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Dead/8.png")));
 
-    Zombie(int ran,int row) {
+    Zombie(int row) {
         //////////////////////////////////////////
         timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE); 
@@ -234,9 +234,9 @@ public class Zombie extends GameObject {
         deadLine.play();
         FadeTransition fadeout = new FadeTransition(Duration.millis(540),view);
         fadeout.setFromValue(1.0);
-        fadeout.setToValue(0.0);
+        fadeout.setToValue(0.2);
         fadeout.play();
-        
+    
     }
     
     
