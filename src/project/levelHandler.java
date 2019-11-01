@@ -175,7 +175,6 @@ public class levelHandler {
             }
         }
         
-        /////////////////////////////////////////////////////////////////////////
         for (int x = 0 ; x<lawnMowerList.size();x++){
             for (int i = 0 ; i < zombieList.get(x).size(); i++){
                 if (lawnMowerList.get(x).isColliding(zombieList.get(x).get(i)) && lawnMowerList.get(x).getIsAlive() && zombieList.get(x).get(i).getIsAlive() ){
