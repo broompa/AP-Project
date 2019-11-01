@@ -49,19 +49,19 @@ public class levelHandler {
         peaList.add(new ArrayList<Pea>());
         switch(x){
             case 0 :
-                lawnMowerList.add(new LawnMower(198,28));
+                lawnMowerList.add(new LawnMower(155,90));
                 break;
             case 1 :
-                lawnMowerList.add(new LawnMower(198,117));
+                lawnMowerList.add(new LawnMower(155,170));
                 break;
             case 2 :
-                lawnMowerList.add(new LawnMower(198,202));
+                lawnMowerList.add(new LawnMower(155,250));
                 break;
             case 3 :
-                lawnMowerList.add(new LawnMower(198,294));
+                lawnMowerList.add(new LawnMower(155,330));
                 break;
             case 4 :
-                lawnMowerList.add(new LawnMower(198,380));
+                lawnMowerList.add(new LawnMower(155,410));
                 break;
                 
         }
@@ -82,8 +82,8 @@ public class levelHandler {
     public void setZombieCount(){
         switch(level){
             case 1 :
-                zombieCount = 25 ;
-                spawnTime = 2;//to be changed
+                zombieCount = 50 ;
+                spawnTime = 1;//to be changed
          
                 break;
             case 2:
@@ -121,7 +121,7 @@ public class levelHandler {
             Project.addToGroup(lawnMowerList.get(x).getView());
             }else{
                 Project.removeFromGroup(lawnMowerList.get(x).getView());
-                lawnMowerList.remove(lawnMowerList.get(x));
+                //lawnMowerList.remove(lawnMowerList.get(x));
              
              
             }
@@ -142,7 +142,7 @@ public class levelHandler {
                 if (zombieList.get(x).get(i).getIsAlive()){
                 zombieList.get(x).get(i).update();
                  Project.addToGroup(zombieList.get(x).get(i).getView());}
-                else if (System.currentTimeMillis()-zombieList.get(x).get(i).getDeadTime()>550){
+                else if (System.currentTimeMillis()-zombieList.get(x).get(i).getDeadTime()>700){
                 Project.removeFromGroup(zombieList.get(x).get(i).getView());
                 zombieList.get(x).remove(zombieList.get(x).get(i));
                 ///////////////increment score
@@ -179,6 +179,8 @@ public class levelHandler {
         for (int x = 0 ; x<lawnMowerList.size();x++){
             for (int i = 0 ; i < zombieList.get(x).size(); i++){
                 if (lawnMowerList.get(x).isColliding(zombieList.get(x).get(i)) && lawnMowerList.get(x).getIsAlive() && zombieList.get(x).get(i).getIsAlive() ){
+                    System.out.println("uuhch");
+                    
                     zombieList.get(x).get(i).setIsAlive(false);
                     lawnMowerList.get(x).moveNow();
                 }

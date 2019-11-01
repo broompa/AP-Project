@@ -87,13 +87,6 @@ public class Shooter extends Plant{
         
         
     } 
-    
-    
-    
-    
-    
-   
-  
     @Override
     public void update() {
        if (this.health <= 0){ this.isAlive = false;}
@@ -107,4 +100,3 @@ public class Shooter extends Plant{
     }
     
 }
-

@@ -29,7 +29,7 @@ public class LawnMower extends GameObject {
     @Override
     public void update() {
         if (move){
-            speed+=0.02;
+            speed+=0.01;
             
             view.setTranslateX(view.getTranslateX()+speed);
             if (view.getTranslateX()>=753){

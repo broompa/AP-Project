@@ -195,21 +195,22 @@ public class Zombie extends GameObject {
         
         view.setTranslateX(750);
         switch(row){
+            case 0 :
+                view.setTranslateY(70);
+                break;
             case 1 :
-                view.setTranslateY(100);
+                view.setTranslateY(150);
                 break;
             case 2 :
-                view.setTranslateY(200);
+                view.setTranslateY(230);
                 break;    
             case 3 :
-                view.setTranslateY(300);
+                view.setTranslateY(310);
                 break;
             case 4 :
                 view.setTranslateY(400);
                 break;
-            case 5 :
-                view.setTranslateY(500);
-                break;
+            
         }
         
     }
@@ -234,7 +235,7 @@ public class Zombie extends GameObject {
         this.deadTime= System.currentTimeMillis();
         timeline.stop();
         deadLine.play();
-        FadeTransition fadeout = new FadeTransition(Duration.millis(540),view);
+        FadeTransition fadeout = new FadeTransition(Duration.millis(800),view);
         fadeout.setFromValue(1.0);
         fadeout.setToValue(0.2);
         fadeout.play();
