@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,12 +18,36 @@
                   <Image url="@mainScreen.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="newGameButton" layoutX="34.0" layoutY="419.0" mnemonicParsing="false" onAction="#newGame" prefHeight="42.0" prefWidth="128.0" text="New Game" />
-            <Button fx:id="resumeGameButton" layoutX="220.0" layoutY="419.0" mnemonicParsing="false" onAction="#resumeGamebtn" prefHeight="42.0" prefWidth="128.0" text="Resume Game" />
-            <Button fx:id="exitButton" layoutX="658.0" layoutY="24.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="42.0" prefWidth="128.0" text="Exit" />
-            <Button fx:id="almanacButton" layoutX="594.0" layoutY="419.0" mnemonicParsing="false" onAction="#almanac" prefHeight="42.0" prefWidth="128.0" text="Almanac" />
-            <Button fx:id="leaderboardButton" layoutX="400.0" layoutY="419.0" mnemonicParsing="false" onAction="#leaderboard" prefHeight="42.0" prefWidth="128.0" text="Leaderboard" />
-            <Button fx:id="creditsButton" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#credits" prefHeight="42.0" prefWidth="128.0" text="Credits" />
+            <ImageView fx:id="newgameButton" fitHeight="121.0" fitWidth="128.0" layoutX="34.0" layoutY="419.0" onMouseClicked="#newGame" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@newgameButton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="resumegameButton" fitHeight="121.0" fitWidth="128.0" layoutX="214.0" layoutY="419.0" onMouseClicked="#resumeGame" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resumegameButton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="almanacButton" fitHeight="121.0" fitWidth="128.0" layoutX="594.0" layoutY="419.0" onMouseClicked="#almanac" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@almanacButton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="leaderboardButton" fitHeight="121.0" fitWidth="128.0" layoutX="400.0" layoutY="419.0" onMouseClicked="#leaderboard" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@leaderboardButton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="exitButton" fitHeight="121.0" fitWidth="128.0" layoutX="658.0" layoutY="25.0" onMouseClicked="#exitGame" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@exitButton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="creditsButton" fitHeight="121.0" fitWidth="128.0" layoutX="14.0" layoutY="25.0" onMouseClicked="#credits" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@creditsButton.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
