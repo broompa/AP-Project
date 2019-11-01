@@ -19,12 +19,12 @@
                   <Image url="@mainScreen.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="newGameButton" layoutX="336.0" layoutY="143.0" mnemonicParsing="false" onAction="#newGame" prefHeight="42.0" prefWidth="128.0" text="New Game" />
-            <Button fx:id="resumeGameButton" layoutX="336.0" layoutY="207.0" mnemonicParsing="false" onAction="#resumeGamebtn" prefHeight="42.0" prefWidth="128.0" text="Resume Game" />
-            <Button fx:id="exitButton" layoutX="336.0" layoutY="429.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="42.0" prefWidth="128.0" text="Exit" />
-            <Button fx:id="almanacButton" layoutX="336.0" layoutY="259.0" mnemonicParsing="false" onAction="#almanac" prefHeight="42.0" prefWidth="128.0" text="Almanac" />
-            <Button fx:id="leaderboardButton" layoutX="336.0" layoutY="321.0" mnemonicParsing="false" onAction="#leaderboard" prefHeight="42.0" prefWidth="128.0" text="Leaderboard" />
-            <Button fx:id="creditsButton" layoutX="336.0" layoutY="377.0" mnemonicParsing="false" onAction="#credits" prefHeight="42.0" prefWidth="128.0" text="Credits" />
+            <Button fx:id="newGameButton" layoutX="34.0" layoutY="419.0" mnemonicParsing="false" onAction="#newGame" prefHeight="42.0" prefWidth="128.0" text="New Game" />
+            <Button fx:id="resumeGameButton" layoutX="220.0" layoutY="419.0" mnemonicParsing="false" onAction="#resumeGamebtn" prefHeight="42.0" prefWidth="128.0" text="Resume Game" />
+            <Button fx:id="exitButton" layoutX="658.0" layoutY="24.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="42.0" prefWidth="128.0" text="Exit" />
+            <Button fx:id="almanacButton" layoutX="594.0" layoutY="419.0" mnemonicParsing="false" onAction="#almanac" prefHeight="42.0" prefWidth="128.0" text="Almanac" />
+            <Button fx:id="leaderboardButton" layoutX="400.0" layoutY="419.0" mnemonicParsing="false" onAction="#leaderboard" prefHeight="42.0" prefWidth="128.0" text="Leaderboard" />
+            <Button fx:id="creditsButton" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#credits" prefHeight="42.0" prefWidth="128.0" text="Credits" />
          </children>
       </AnchorPane>
    </children>
