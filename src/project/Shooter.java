@@ -83,9 +83,6 @@ public class Shooter extends Plant{
         }
         
      return ls;
-        
-        
-        
     } 
     @Override
     public void update() {
