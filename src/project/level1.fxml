@@ -6,29 +6,26 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <StackPane fx:id="container" onMouseClicked="#clickTest" onMouseEntered="#updateSunCountLabel" onMouseExited="#updateSunCountLabel" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.level1Controller">
    <children>
-      <AnchorPane>
+      <AnchorPane />
+      <AnchorPane id="AnchorPane" fx:id="anchorRoot" onMouseReleased="#clickTest" prefHeight="500.0" prefWidth="800.0" styleClass="mainFxmlClass">
+          <stylesheets>
+              <URL value="@level1.css" />
+          </stylesheets>
          <children>
-            <AnchorPane id="AnchorPane" fx:id="anchorRoot" layoutY="6.900000095367432" onMouseReleased="#clickTest" prefHeight="500.0" prefWidth="800.0" styleClass="mainFxmlClass">
-                <stylesheets>
-                    <URL value="@level1.css" />
-                </stylesheets>
-               <children>
-                  <ImageView fitHeight="429.0" fitWidth="841.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" scaleY="1.2">
-                     <image>
-                        <Image url="@background.jpg" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="506.0" fitWidth="811.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Bakcground_Level1.PNG" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="sunCount" layoutX="143.0" layoutY="14.0" text="Label" />
-               </children>
-            </AnchorPane>
+            <ImageView fitHeight="510.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Background_Level1.PNG" />
+               </image>
+            </ImageView>
+            <Label fx:id="sunCount" layoutX="202.0" layoutY="50.0" prefHeight="18.0" prefWidth="35.0" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
