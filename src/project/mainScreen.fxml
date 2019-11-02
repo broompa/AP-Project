@@ -18,6 +18,16 @@
                   <Image url="@mainScreen.jpg" />
                </image>
             </ImageView>
+            <ImageView fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Snow.gif" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="646.0" fitWidth="500.0" layoutX="300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Snow.gif" />
+               </image>
+            </ImageView>
             <ImageView fx:id="newgameButton" fitHeight="121.0" fitWidth="128.0" layoutX="34.0" layoutY="419.0" onMouseClicked="#newGame" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@newgameButton.png" />
