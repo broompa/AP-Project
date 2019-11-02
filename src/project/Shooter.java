@@ -89,7 +89,7 @@ public class Shooter extends Plant{
        if (this.health <= 0){ this.isAlive = false;}
        if (System.currentTimeMillis()-lastShoot>shootInterval*1000){
            lastShoot=System.currentTimeMillis();
-           levelHandler.addPea(view.getTranslateX(),view.getTranslateY(),row);
+           levelHandler.addPea(view.getTranslateX()+30,view.getTranslateY(),row);
        }
        
        

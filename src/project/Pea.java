@@ -16,8 +16,8 @@ import javafx.scene.image.ImageView;
 public class Pea extends GameObject {
     private float speed;
     private final float damage ;
-    final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/Pea.png")));
-    
+    final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/fireball.gif")));
+    //final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/Pea.gif")));
     
     public Pea(double x , double y ){
         view = new Group(im1);
@@ -36,6 +36,7 @@ public class Pea extends GameObject {
     public void update() {
         if (isAlive){
             view.setTranslateX(view.getTranslateX()+speed);
+            
         }
         
     }
