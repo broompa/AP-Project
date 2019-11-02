@@ -171,7 +171,7 @@ public class levelHandler {
                 Project.removeFromGroup(sunList.get(x).getView());
                 sunList.remove(sunList.get(x));
                 sunToken += 25;
-                System.out.println(sunToken);
+                level1Controller.setSunCount(level1Controller.getSunCount()+10);
             }
         }
         

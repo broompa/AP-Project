@@ -43,11 +43,20 @@ public class level1Controller  {
     
     
     public static void  setSunCount(int val ){
-        sunValue += val;
+        sunValue = val;
     }
     
+    public static int getSunCount(){ return sunValue;}
     
     
+    
+    
+    
+    
+    
+    public void updateSunCountLabel(MouseEvent e ) throws IOException{
+          sunCount.setText(Integer.toString( sunValue));
+    }
     
     
     
