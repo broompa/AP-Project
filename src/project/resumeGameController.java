@@ -12,16 +12,15 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
@@ -40,37 +39,38 @@ public class resumeGameController implements Initializable {
     @FXML
     private ComboBox chooseUser; 
     @FXML
-    private Button userScreenBack;
-   public void user_back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
-        Scene sc = userScreenBack.getScene();
-        root.translateYProperty().set(-sc.getHeight());
-                
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-                
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-                
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot);
+    private ImageView backButton;
+    
+    public void user_back() throws IOException{
+        backButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                Parent root;
+                try {
+                    root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+                    Scene sc = backButton.getScene();
+                    root.translateYProperty().set(-sc.getHeight());
+                    container.getChildren().add(root);
+                    Timeline t = new Timeline();
+                    KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+                    KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+                    t.getKeyFrames().add(kf);
+                    t.setOnFinished(t1->{
+                        container.getChildren().remove(anchorRoot);
+                    });
+                    t.play();
+                }catch (IOException ex) {
+                    System.out.println("IO Error");
+                    System.exit(0);
+                }
+                }
         });
-        t.play();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        System.out.println("4444444444444444444444444444444");
         String[] arr = User.getPlayerList();
-//        ObservableList<String> options = FXCollections.observableArrayList("1","2","3");
-//        chooseUser = new ComboBox(options);
-//        System.out.println(arr.length);
         chooseUser.getItems().addAll(arr);
-//        chooseUser.getSelectionModel().select();
-
-
-//        System.out.println("4444444444444444444444444444444");
     }
     
 }

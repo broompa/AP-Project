@@ -82,8 +82,8 @@ public class levelHandler {
     public void setZombieCount(){
         switch(level){
             case 1 :
-                zombieCount = 50 ;
-                spawnTime = 1;//to be changed
+                zombieCount = 5 ;
+                spawnTime = 6;//to be changed
          
                 break;
             case 2:

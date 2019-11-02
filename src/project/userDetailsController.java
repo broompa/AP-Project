@@ -51,7 +51,7 @@ public class userDetailsController {
                 try {
                     root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
                     Scene sc = backButton.getScene();
-                    root.translateYProperty().set(sc.getHeight());
+                    root.translateYProperty().set(-sc.getHeight());
                     container.getChildren().add(root);
                     Timeline t = new Timeline();
                     KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
@@ -74,7 +74,7 @@ public class userDetailsController {
             public void handle(MouseEvent event) {
             try{
                 int age=Integer.parseInt(textFieldAge.getText());
-                if (textFieldUsername.getText().isEmpty()|| textFieldUsername.getText().toCharArray().length==0) {
+                if (textFieldUsername.getText().isEmpty()|| textFieldUsername.getText().length()==0) {
                     userScreenLabel.setText("Username cannot be empty");
                     textFieldUsername.setText("");
                     textFieldAge.setText("");
