@@ -45,7 +45,7 @@ public class levelHandler {
         ///////////////////////////////////////////////
         progress = new ProgressBar(0);
         progress.setLayoutX(50);
-        progress.setRotate(180);
+//        progress.setRotate(180);
         
         
         Project.addToGroup(new Group(progress));
@@ -190,7 +190,7 @@ public class levelHandler {
                 Project.removeFromGroup(sunList.get(x).getView());
                 sunList.remove(sunList.get(x));
                 sunToken += 25;
-                level1Controller.setSunCount(level1Controller.getSunCount()+10);
+                level1Controller.setSunCount(level1Controller.getSunCount()+25);
             }
         }
         
