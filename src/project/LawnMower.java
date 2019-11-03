@@ -32,7 +32,7 @@ public class LawnMower extends GameObject {
             speed+=0.01;
             
             view.setTranslateX(view.getTranslateX()+speed);
-            if (view.getTranslateX()>=753){
+            if (view.getTranslateX()>=1006){
             isAlive = false;}
         }
         

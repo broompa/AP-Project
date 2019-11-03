@@ -33,45 +33,45 @@ public class Sun extends GameObject{
         if (move){
             Random r = new Random();
 
-            int ran = r.nextInt(9);
+            int ran = r.nextInt(8);
             switch(ran){
                 case 0:
-                    view.setTranslateX(200);
+                    view.setTranslateX(340);
                     break;
-                case 1:
-                    view.setTranslateX(265);
-                    break;
+//                case 1:
+//                    view.setTranslateX(265);
+//                    break;
                 case 2:
-                    view.setTranslateX(325);
+                    view.setTranslateX(437);
                     break;
                 case 3:
-                    view.setTranslateX(390);
+                    view.setTranslateX(625);
                     break;
                 case 4:
-                    view.setTranslateX(445);
+                    view.setTranslateX(707);
                     break;    
                 case 5:
-                    view.setTranslateX(508);
+                    view.setTranslateX(802);
                     break;
                 case 6:
-                    view.setTranslateX(574);
+                    view.setTranslateX(901);
                     break;
                 case 7:
-                    view.setTranslateX(636);
+                    view.setTranslateX(994);
                     break;
-                case 8:
-                    view.setTranslateX(691);
+                case 1:
+                    view.setTranslateX(1076);
                     break;
             }
             switch(r.nextInt(3)){
                 case 0:
-                    stopLine = 294;
+                    stopLine = 441;
                     break;
                 case 1:   
-                    stopLine = 380;
+                    stopLine = 570;
                     break;
-            case 2:
-                    stopLine = 202;
+                case 2:
+                    stopLine = 303;
                     break;
             }
         }

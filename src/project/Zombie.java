@@ -193,22 +193,22 @@ public class Zombie extends GameObject {
         
         /////////////////////////////////////////////////////
         
-        view.setTranslateX(750);
+        view.setTranslateX(1125);
         switch(row){
             case 0 :
-                view.setTranslateY(70);
+                view.setTranslateY(105);
                 break;
             case 1 :
-                view.setTranslateY(150);
+                view.setTranslateY(225);
                 break;
             case 2 :
-                view.setTranslateY(230);
+                view.setTranslateY(345);
                 break;    
             case 3 :
-                view.setTranslateY(310);
+                view.setTranslateY(465);
                 break;
             case 4 :
-                view.setTranslateY(400);
+                view.setTranslateY(600);
                 break;
             
         }

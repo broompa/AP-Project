@@ -49,19 +49,19 @@ public class levelHandler {
         peaList.add(new ArrayList<Pea>());
         switch(x){
             case 0 :
-                lawnMowerList.add(new LawnMower(155,90));
+                lawnMowerList.add(new LawnMower(220,135));
                 break;
             case 1 :
-                lawnMowerList.add(new LawnMower(155,170));
+                lawnMowerList.add(new LawnMower(220,255));
                 break;
             case 2 :
-                lawnMowerList.add(new LawnMower(155,250));
+                lawnMowerList.add(new LawnMower(220,375));
                 break;
             case 3 :
-                lawnMowerList.add(new LawnMower(155,330));
+                lawnMowerList.add(new LawnMower(220,495));
                 break;
             case 4 :
-                lawnMowerList.add(new LawnMower(155,410));
+                lawnMowerList.add(new LawnMower(220,615));
                 break;
                 
         }
