@@ -90,16 +90,19 @@ public class level1Controller  {
         double y = e.getY();
         System.out.println("("+x+","+y+")");
         
-        if (isSelected!=null && x>=198 && x<=753  && y>=28 &&y<=471){
+        if (isSelected!=null && x>=296 && x<=1166  && y>=137 &&y<=669){
+            System.out.println("in grid");
             levelHandler.addPlant(x,y,isSelected);
         }
         
         
-        if(x>4 && x< 75){
-            if (y>4 && y<47){ 
+        if(y>6 && y< 98){
+            if (x>384 && x<440){ 
+                System.out.println("shooter selected");
                 isSelected="shooter";
             }
-            else if (y>62 && y<111){
+            else if (x>451 && x<507){
+                System.out.println("sunflower selected");
                 isSelected="sunflower"; 
             }
             else {

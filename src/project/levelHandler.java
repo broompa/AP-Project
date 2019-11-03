@@ -257,7 +257,7 @@ public class levelHandler {
     public static void addPlant(double x , double y, String s ){
         if (s.equals("shooter")){
            if(28<=y && y<117){
-               plantList.get(0).add(new Shooter(x,y,0) );
+               plantList.get(0).add(new Shooter(x,y,0));
            }
            else if (117<=y && y<202){
                plantList.get(1).add(new Shooter(x,y,1));  
