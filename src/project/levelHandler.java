@@ -7,6 +7,8 @@ package project;
 
 import java.util.ArrayList;
 import java.util.Random;
+import javafx.scene.Group;
+import javafx.scene.control.ProgressBar;
 
 
 /**
@@ -15,7 +17,7 @@ import java.util.Random;
  */
 public class levelHandler {
     private int level;
-    private int zombieCount;
+    private double zombieCount;
     private long lastZombieAdded;
     private static ArrayList<ArrayList<Plant>> plantList;
     private ArrayList<ArrayList<Zombie>> zombieList;
@@ -26,23 +28,37 @@ public class levelHandler {
     private long lastSunAdded;
     private static int sunToken;
     private ArrayList<LawnMower> lawnMowerList ; 
-    
+    private ProgressBar progress ;
+    private double progressBarOffset;  // progress bar
     
     
     
     public levelHandler(int level){
         this.level = level;
         setZombieCount();
-        
+        progressBarOffset = zombieCount;
         plantList = new ArrayList<ArrayList<Plant>>();
         zombieList = new ArrayList<ArrayList<Zombie>>();
         peaList = new ArrayList<ArrayList<Pea>>();
         sunList = new ArrayList<Sun>();
         lawnMowerList = new ArrayList<LawnMower>();        
+        ///////////////////////////////////////////////
+        progress = new ProgressBar(0);
+        progress.setLayoutX(50);
+        progress.setRotate(180);
+        
+        
+        Project.addToGroup(new Group(progress));
         
         
         
         
+        
+        
+        
+        
+        
+        //////////////////////////////////////////
         for (int x = 0 ; x<5 ;x++){
         plantList.add(new ArrayList<Plant>());
         zombieList.add(new ArrayList<Zombie>());
@@ -112,6 +128,9 @@ public class levelHandler {
     public void update(){
         spawnZombies();
         shineSun();
+        progress.setProgress((double)((progressBarOffset-zombieCount)/(progressBarOffset)) );
+        
+        
         
         
         ////////////////////////////////////////////////////////////////////
@@ -121,7 +140,7 @@ public class levelHandler {
             Project.addToGroup(lawnMowerList.get(x).getView());
             }else{
                 Project.removeFromGroup(lawnMowerList.get(x).getView());
-                //lawnMowerList.remove(lawnMowerList.get(x));
+                
              
              
             }
