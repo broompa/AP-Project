@@ -25,7 +25,7 @@ public class levelHandler {
     private static ArrayList<ArrayList<Pea>> peaList;
     private static ArrayList<Sun> sunList;
     private float spawnTime; // Zombie 
-    private float sunTime ;
+    private final float sunTime ;
     private long lastSunAdded;
     private static int sunToken;
     private ArrayList<LawnMower> lawnMowerList ; 
@@ -250,7 +250,6 @@ public class levelHandler {
             int ran = r.nextInt(5);
             zombieList.get(ran).add(new Zombie(ran));
             lastZombieAdded = System.currentTimeMillis();
-            
         }
     }
     
@@ -265,7 +264,7 @@ public class levelHandler {
             if(y>106 && y<222){
                if(!plantgrid[0][0]){
                    if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
+                       plantList.get(0).add(new Shooter(x,y,0,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(0).add(new Sunflower(x,y));
@@ -276,7 +275,7 @@ public class levelHandler {
             if(y>222 && y<343){
                if(!plantgrid[0][1]){
                    if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
+                       plantList.get(1).add(new Shooter(x,y,1,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(1).add(new Sunflower(x,y));
@@ -287,10 +286,10 @@ public class levelHandler {
             if(y>343 && y<463){
                if(!plantgrid[0][2]){
                    if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
+                       plantList.get(2).add(new Shooter(332,367,2,x,y));
                    }
                    else if(s.equals("sunflower")){
-                       plantList.get(2).add(new Sunflower(x,y));
+                       plantList.get(2).add(new Sunflower(332,367));
                    }
                    plantgrid[0][2]=true;
                }
@@ -298,7 +297,7 @@ public class levelHandler {
             if(y>463 && y<579){
                if(!plantgrid[0][3]){
                    if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
+                       plantList.get(3).add(new Shooter(x,y,3,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(3).add(new Sunflower(x,y));
@@ -309,7 +308,7 @@ public class levelHandler {
            if(y>579 && y<709){
                if(!plantgrid[0][4]){
                    if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
+                       plantList.get(4).add(new Shooter(x,y,4,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(4).add(new Sunflower(x,y));
@@ -323,7 +322,7 @@ public class levelHandler {
             if(y>106 && y<222){
                if(!plantgrid[1][0]){
                    if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
+                       plantList.get(0).add(new Shooter(x,y,0,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(0).add(new Sunflower(x,y));
@@ -334,7 +333,7 @@ public class levelHandler {
             if(y>222 && y<343){
                if(!plantgrid[1][1]){
                    if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
+                       plantList.get(1).add(new Shooter(x,y,1,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(1).add(new Sunflower(x,y));
@@ -345,7 +344,7 @@ public class levelHandler {
             if(y>343 && y<463){
                if(!plantgrid[1][2]){
                    if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
+                       plantList.get(2).add(new Shooter(x,y,2,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(2).add(new Sunflower(x,y));
@@ -356,7 +355,7 @@ public class levelHandler {
             if(y>463 && y<579){
                if(!plantgrid[1][3]){
                    if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
+                       plantList.get(3).add(new Shooter(x,y,3,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(3).add(new Sunflower(x,y));
@@ -367,7 +366,7 @@ public class levelHandler {
            if(y>579 && y<709){
                if(!plantgrid[1][4]){
                    if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
+                       plantList.get(4).add(new Shooter(x,y,4,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(4).add(new Sunflower(x,y));
@@ -380,7 +379,7 @@ public class levelHandler {
             if(y>106 && y<222){
                if(!plantgrid[2][0]){
                    if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
+                       plantList.get(0).add(new Shooter(x,y,0,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(0).add(new Sunflower(x,y));
@@ -391,7 +390,7 @@ public class levelHandler {
             if(y>222 && y<343){
                if(!plantgrid[2][1]){
                    if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
+                       plantList.get(1).add(new Shooter(x,y,1,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(1).add(new Sunflower(x,y));
@@ -402,7 +401,7 @@ public class levelHandler {
             if(y>343 && y<463){
                if(!plantgrid[2][2]){
                    if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
+                       plantList.get(2).add(new Shooter(x,y,2,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(2).add(new Sunflower(x,y));
@@ -413,7 +412,7 @@ public class levelHandler {
             if(y>463 && y<579){
                if(!plantgrid[2][3]){
                    if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
+                       plantList.get(3).add(new Shooter(x,y,3,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(3).add(new Sunflower(x,y));
@@ -424,7 +423,7 @@ public class levelHandler {
            if(y>579 && y<709){
                if(!plantgrid[2][4]){
                    if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
+                       plantList.get(4).add(new Shooter(x,y,4,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(4).add(new Sunflower(x,y));
@@ -437,7 +436,7 @@ public class levelHandler {
             if(y>106 && y<222){
                if(!plantgrid[3][0]){
                    if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
+                       plantList.get(0).add(new Shooter(x,y,0,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(0).add(new Sunflower(x,y));
@@ -448,7 +447,7 @@ public class levelHandler {
             if(y>222 && y<343){
                if(!plantgrid[3][1]){
                    if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
+                       plantList.get(1).add(new Shooter(x,y,1,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(1).add(new Sunflower(x,y));
@@ -459,7 +458,7 @@ public class levelHandler {
             if(y>343 && y<463){
                if(!plantgrid[3][2]){
                    if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
+                       plantList.get(2).add(new Shooter(x,y,2,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(2).add(new Sunflower(x,y));
@@ -470,7 +469,7 @@ public class levelHandler {
             if(y>463 && y<579){
                if(!plantgrid[3][3]){
                    if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
+                       plantList.get(3).add(new Shooter(x,y,3,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(3).add(new Sunflower(x,y));
@@ -481,7 +480,7 @@ public class levelHandler {
            if(y>579 && y<709){
                if(!plantgrid[3][4]){
                    if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
+                       plantList.get(4).add(new Shooter(x,y,4,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(4).add(new Sunflower(x,y));
@@ -494,7 +493,7 @@ public class levelHandler {
             if(y>106 && y<222){
                if(!plantgrid[4][0]){
                    if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
+                       plantList.get(0).add(new Shooter(x,y,0,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(0).add(new Sunflower(x,y));
@@ -505,7 +504,7 @@ public class levelHandler {
             if(y>222 && y<343){
                if(!plantgrid[4][1]){
                    if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
+                       plantList.get(1).add(new Shooter(x,y,1,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(1).add(new Sunflower(x,y));
@@ -516,7 +515,7 @@ public class levelHandler {
             if(y>343 && y<463){
                if(!plantgrid[4][2]){
                    if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
+                       plantList.get(2).add(new Shooter(x,y,2,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(2).add(new Sunflower(x,y));
@@ -527,7 +526,7 @@ public class levelHandler {
             if(y>463 && y<579){
                if(!plantgrid[4][3]){
                    if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
+                       plantList.get(3).add(new Shooter(x,y,3,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(3).add(new Sunflower(x,y));
@@ -538,7 +537,7 @@ public class levelHandler {
            if(y>579 && y<709){
                if(!plantgrid[4][4]){
                    if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
+                       plantList.get(4).add(new Shooter(x,y,4,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(4).add(new Sunflower(x,y));
@@ -551,7 +550,7 @@ public class levelHandler {
             if(y>106 && y<222){
                if(!plantgrid[5][0]){
                    if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
+                       plantList.get(0).add(new Shooter(x,y,0,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(0).add(new Sunflower(x,y));
@@ -562,7 +561,7 @@ public class levelHandler {
             if(y>222 && y<343){
                if(!plantgrid[5][1]){
                    if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
+                       plantList.get(1).add(new Shooter(x,y,1,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(1).add(new Sunflower(x,y));
@@ -573,7 +572,7 @@ public class levelHandler {
             if(y>343 && y<463){
                if(!plantgrid[5][2]){
                    if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
+                       plantList.get(2).add(new Shooter(x,y,2,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(2).add(new Sunflower(x,y));
@@ -584,7 +583,7 @@ public class levelHandler {
             if(y>463 && y<579){
                if(!plantgrid[5][3]){
                    if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
+                       plantList.get(3).add(new Shooter(x,y,3,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(3).add(new Sunflower(x,y));
@@ -595,7 +594,7 @@ public class levelHandler {
            if(y>579 && y<709){
                if(!plantgrid[5][4]){
                    if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
+                       plantList.get(4).add(new Shooter(x,y,4,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(4).add(new Sunflower(x,y));
@@ -608,7 +607,7 @@ public class levelHandler {
             if(y>106 && y<222){
                if(!plantgrid[6][0]){
                    if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
+                       plantList.get(0).add(new Shooter(x,y,0,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(0).add(new Sunflower(x,y));
@@ -619,7 +618,7 @@ public class levelHandler {
             if(y>222 && y<343){
                if(!plantgrid[6][1]){
                    if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
+                       plantList.get(1).add(new Shooter(x,y,1,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(1).add(new Sunflower(x,y));
@@ -630,7 +629,7 @@ public class levelHandler {
             if(y>343 && y<463){
                if(!plantgrid[6][2]){
                    if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
+                       plantList.get(2).add(new Shooter(x,y,2,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(2).add(new Sunflower(x,y));
@@ -641,7 +640,7 @@ public class levelHandler {
             if(y>463 && y<579){
                if(!plantgrid[6][3]){
                    if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
+                       plantList.get(3).add(new Shooter(x,y,3,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(3).add(new Sunflower(x,y));
@@ -652,7 +651,7 @@ public class levelHandler {
            if(y>579 && y<709){
                if(!plantgrid[6][4]){
                    if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
+                       plantList.get(4).add(new Shooter(x,y,4,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(4).add(new Sunflower(x,y));
@@ -665,7 +664,7 @@ public class levelHandler {
             if(y>106 && y<222){
                if(!plantgrid[7][0]){
                    if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
+                       plantList.get(0).add(new Shooter(x,y,0,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(0).add(new Sunflower(x,y));
@@ -676,7 +675,7 @@ public class levelHandler {
             if(y>222 && y<343){
                if(!plantgrid[7][1]){
                    if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
+                       plantList.get(1).add(new Shooter(x,y,1,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(1).add(new Sunflower(x,y));
@@ -687,7 +686,7 @@ public class levelHandler {
             if(y>343 && y<463){
                if(!plantgrid[7][2]){
                    if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
+                       plantList.get(2).add(new Shooter(x,y,2,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(2).add(new Sunflower(x,y));
@@ -698,7 +697,7 @@ public class levelHandler {
             if(y>463 && y<579){
                if(!plantgrid[7][3]){
                    if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
+                       plantList.get(3).add(new Shooter(x,y,3,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(3).add(new Sunflower(x,y));
@@ -709,7 +708,7 @@ public class levelHandler {
            if(y>579 && y<709){
                if(!plantgrid[7][4]){
                    if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
+                       plantList.get(4).add(new Shooter(x,y,4,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(4).add(new Sunflower(x,y));
@@ -722,7 +721,7 @@ public class levelHandler {
             if(y>106 && y<222){
                if(!plantgrid[8][0]){
                    if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
+                       plantList.get(0).add(new Shooter(x,y,0,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(0).add(new Sunflower(x,y));
@@ -733,7 +732,7 @@ public class levelHandler {
             if(y>222 && y<343){
                if(!plantgrid[8][1]){
                    if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
+                       plantList.get(1).add(new Shooter(x,y,1,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(1).add(new Sunflower(x,y));
@@ -744,7 +743,7 @@ public class levelHandler {
             if(y>343 && y<463){
                if(!plantgrid[8][2]){
                    if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
+                       plantList.get(2).add(new Shooter(x,y,2,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(2).add(new Sunflower(x,y));
@@ -755,7 +754,7 @@ public class levelHandler {
             if(y>463 && y<579){
                if(!plantgrid[8][3]){
                    if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
+                       plantList.get(3).add(new Shooter(x,y,3,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(3).add(new Sunflower(x,y));
@@ -766,7 +765,7 @@ public class levelHandler {
            if(y>579 && y<709){
                if(!plantgrid[8][4]){
                    if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
+                       plantList.get(4).add(new Shooter(x,y,4,x,y));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(4).add(new Sunflower(x,y));
@@ -781,18 +780,18 @@ public class levelHandler {
 
         // if (s.equals("shooter")){
         //    if(28<=y && y<117){
-        //        plantList.get(0).add(new Shooter(x,y,0));
+        //        plantList.get(0).add(new Shooter(x,y,0,x,y));
         //    }
         //    else if (117<=y && y<202){
-        //        plantList.get(1).add(new Shooter(x,y,1));  
+        //        plantList.get(1).add(new Shooter(x,y,1,x,y));  
         //    }
         //    else if (202<=y && y<294){
-        //        plantList.get(2).add(new Shooter(x,y,2));
+        //        plantList.get(2).add(new Shooter(x,y,2,x,y));
         //    }
         //    else if (294<=y && y<380){
-        //        plantList.get(3).add(new Shooter(x,y,3));
+        //        plantList.get(3).add(new Shooter(x,y,3,x,y));
         //    }else if(y<=380 && y<471){
-        //        plantList.get(4).add(new Shooter(x,y,4));
+        //        plantList.get(4).add(new Shooter(x,y,4,x,y));
         //    }
         // }
         // else if (s.equals("sunflower")){

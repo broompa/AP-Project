@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.ingameMenuController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="750.0" prefWidth="1200.0" styleClass="mainFxmlClass">
+          <stylesheets>
+              <URL value="@ingameMenu.css" />
+          </stylesheets>
+         <children>
+            <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mainScreen.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="saveandexitButton" fitHeight="52.0" fitWidth="154.0" layoutX="497.0" layoutY="257.0" onMouseClicked="#saveandexit" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@saveButton.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="backButton" fitHeight="49.0" fitWidth="179.0" layoutX="500.0" layoutY="456.0" onMouseClicked="#user_back" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backButton.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

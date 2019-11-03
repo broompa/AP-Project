@@ -22,7 +22,7 @@ public class Shooter extends Plant{
     private int row ;
     final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/pea_shooter.gif")));
     
-    public Shooter(double x , double y,int row){
+    public Shooter(double x , double y,int row,double gridlocationx,double gridlocationy){
         //////// to be imlpemented plant class feature /- time to live , last added
         lastShoot = 0L;
         this.row= row;
@@ -31,6 +31,10 @@ public class Shooter extends Plant{
         view = new Group(im1);
         view.setTranslateX(x);
         view.setTranslateY(y);
+        this.setx(gridlocationx);
+        this.sety(gridlocationy);
+//        this.x=gridlocationx;
+//        this.y=gridlocationy;
     }
     
     

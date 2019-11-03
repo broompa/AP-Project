@@ -27,6 +27,11 @@
                </font>
             </Label>
             <Button fx:id="save" layoutX="893.0" layoutY="14.0" mnemonicParsing="false" text="Save" />
+            <ImageView fx:id="menuButton" fitHeight="47.0" fitWidth="164.0" layoutX="1056.0" layoutY="3.0" onMouseClicked="#ingamemenu" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@menuButton.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

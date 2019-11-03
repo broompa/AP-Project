@@ -25,6 +25,12 @@ public class Project extends Application {
     public static void setUser(User user1 ){ user = user1;
         anim.start();
     }
+    public static void stopanimation(){
+        anim.stop();
+    }
+    public static void startanimation(){
+        anim.start();
+    }
     
     
     public static User getUser(){

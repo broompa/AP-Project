@@ -7,13 +7,22 @@ package project;
 
 
 import java.io.IOException;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -37,7 +46,8 @@ public class level1Controller  {
     
     
     private static int sunValue ;
-    
+    @FXML
+    private ImageView menuButton;
     @FXML
     private StackPane container;
     
@@ -46,7 +56,32 @@ public class level1Controller  {
     
     private String isSelected = null;
      
-    
+    public void ingamemenu() throws IOException{
+        menuButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                Parent root;
+                Project.stopanimation();
+                try {
+                    root = FXMLLoader.load(getClass().getResource("ingameMenu.fxml"));
+                    Scene sc = menuButton.getScene();
+                    root.translateYProperty().set(sc.getHeight());
+                    container.getChildren().add(root);
+                    Timeline t = new Timeline();
+                    KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+                    KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+                    t.getKeyFrames().add(kf);
+                    t.setOnFinished(t1->{
+                        container.getChildren().remove(anchorRoot);
+                    });
+                    t.play();
+                }catch (IOException ex) {
+                    System.out.println("IO Error");
+                    System.exit(0);
+                }
+                }
+        });
+    }
     
     
     public static void  setSunCount(int val ){
