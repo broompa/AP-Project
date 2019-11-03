@@ -20,17 +20,17 @@
                   <Image url="@creditsScreen.jpg" />
                </image>
             </ImageView>
-            <Label layoutX="493.0" layoutY="496.0" prefHeight="25.0" prefWidth="102.0" text="Made by :-" textFill="WHITE">
+            <Label layoutX="503.0" layoutY="102.0" prefHeight="54.0" prefWidth="249.0" text="Made by :" underline="true">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="48.0" />
                </font></Label>
-            <Label layoutX="435.0" layoutY="537.0" prefHeight="18.0" prefWidth="259.0" text="Aman Kumar Gupta(2018217)" textFill="WHITE">
+            <Label layoutX="64.0" layoutY="649.0" prefHeight="35.0" prefWidth="347.0" text="Aman Kumar Gupta(2018217)">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font></Label>
-            <Label layoutX="435.0" layoutY="574.0" prefHeight="18.0" prefWidth="233.0" text="Lavanya Verma(2018155)" textFill="WHITE">
+            <Label layoutX="860.0" layoutY="653.0" prefHeight="35.0" prefWidth="318.0" text="Lavanya Verma(2018155)">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="24.0" />
                </font></Label>
             <ImageView fx:id="backButton" fitHeight="56.0" fitWidth="160.0" layoutX="34.0" layoutY="24.0" onMouseClicked="#user_back" pickOnBounds="true" preserveRatio="true">
                <image>
