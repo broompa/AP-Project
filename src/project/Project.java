@@ -37,21 +37,10 @@ public class Project extends Application {
         return user;
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     @Override
     public void start(Stage stage) throws Exception { 
         
-        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("loadingScreen.fxml"));
         anim = new AnimationTimer(){
             @Override 
             public void handle(long now ){
