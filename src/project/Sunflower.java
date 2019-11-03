@@ -23,7 +23,7 @@ public class Sunflower extends Plant {
         view.setTranslateX(x);
         view.setTranslateY(y);
         lastShine = System.currentTimeMillis();
-        shineInterval= 5;
+        shineInterval= 20;
         
     }
     
