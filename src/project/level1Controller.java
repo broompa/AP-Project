@@ -7,7 +7,9 @@ package project;
 
 
 import java.io.IOException;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +29,11 @@ public class level1Controller  {
     private Label sunCount;
     @FXML
     private Label yLabel;
+    
+    @FXML
+    private Button save;
+    
+    
     
     
     private static int sunValue ;
@@ -48,6 +55,21 @@ public class level1Controller  {
     
     public static int getSunCount(){ return sunValue;}
     
+    
+    
+    
+    
+    public void save() throws IOException{
+       save.setOnMouseClicked(new EventHandler<MouseEvent>(){
+           @Override
+           public void handle(MouseEvent e){
+               
+           
+           }
+       
+       });
+        
+    }
     
     
     

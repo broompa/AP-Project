@@ -27,6 +27,21 @@ public class Project extends Application {
     }
     
     
+    public static User getUser(){
+        return user;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @Override
     public void start(Stage stage) throws Exception { 
         
