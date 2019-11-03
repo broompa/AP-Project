@@ -11,33 +11,33 @@
 
 <StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.userDetailsController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="500.0" prefWidth="800.0" styleClass="mainFxmlClass">
+      <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="750.0" prefWidth="1200.0" styleClass="mainFxmlClass">
           <stylesheets>
               <URL value="@userDetails.css" />
           </stylesheets>
          <children>
-            <ImageView fitHeight="528.0" fitWidth="890.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="750.0" fitWidth="1207.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@userDetailsScreen.jpg" />
+                  <Image url="@userDetailsScreen.PNG" />
                </image>
             </ImageView>
-            <Label fx:id="userScreenLabel" layoutX="286.0" layoutY="61.0" prefHeight="36.0" prefWidth="278.0" />
-            <TextField fx:id="textFieldUsername" layoutX="351.0" layoutY="148.0" promptText="Enter Username" />
-            <TextField fx:id="textFieldAge" layoutX="351.0" layoutY="207.0" promptText="Enter Age" />
-            <Label layoutX="240.0" layoutY="147.0" prefHeight="27.0" prefWidth="100.0" text="Username">
+            <Label fx:id="userScreenLabel" layoutX="766.0" layoutY="307.0" prefHeight="36.0" prefWidth="278.0" />
+            <TextField fx:id="textFieldUsername" layoutX="482.0" layoutY="289.0" prefHeight="34.0" prefWidth="219.0" promptText="Enter Username" />
+            <TextField fx:id="textFieldAge" layoutX="484.0" layoutY="367.0" prefHeight="34.0" prefWidth="220.0" promptText="Enter Age" />
+            <Label layoutX="323.0" layoutY="279.0" prefHeight="59.0" prefWidth="143.0" text="Username" textFill="#ffe6e6">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Label>
-            <Label layoutX="239.0" layoutY="206.0" prefHeight="26.0" prefWidth="100.0" text="Age">
+            <Label layoutX="322.0" layoutY="354.0" prefHeight="40.0" prefWidth="91.0" text="Age" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Label>
-            <ImageView fx:id="proceedButton" fitHeight="36.0" fitWidth="149.0" layoutX="363.0" layoutY="270.0" onMouseClicked="#user_proceed" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="proceedButton" fitHeight="52.0" fitWidth="150.0" layoutX="522.0" layoutY="469.0" onMouseClicked="#user_proceed" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@proceedButton.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="backButton" fitHeight="36.0" fitWidth="110.0" layoutX="26.0" layoutY="22.0" onMouseClicked="#user_back" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="backButton" fitHeight="37.0" fitWidth="113.0" layoutX="26.0" layoutY="22.0" onMouseClicked="#user_back" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@backButton.png" />
                </image>
