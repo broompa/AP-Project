@@ -10,12 +10,12 @@
 
 <StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.loadingScreenController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1200.0" styleClass="mainFxmlClass">
+      <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="750.0" prefWidth="1200.0" styleClass="mainFxmlClass">
           <stylesheets>
               <URL value="@loadingscreen.css" />
           </stylesheets>
          <children>
-            <ImageView fitHeight="813.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitHeight="813.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Background/Background4.jpg" />
                </image>
