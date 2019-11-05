@@ -5,9 +5,12 @@
  */
 package project;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -43,6 +46,43 @@ public class ingameMenuController implements Initializable {
     private ImageView saveandexitButton;
     
     
+    
+    
+//    public void saveGame(MouseEvent e ) throws Exception{
+//        Project.saveGame();
+//        Parent root;
+//                
+//                try {
+//                    root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+//                    Scene sc = menuButton.getScene();
+//                    root.translateYProperty().set(sc.getHeight());
+//                    container.getChildren().add(root);
+//                    Timeline t = new Timeline();
+//                    KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+//                    KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+//                    t.getKeyFrames().add(kf);
+//                    t.setOnFinished(t1->{
+//                        container.getChildren().remove(anchorRoot);
+//                    });
+//                    t.play();
+//                }catch (IOException ex) {
+//                    System.out.println("IO Error");
+//                    System.exit(0);
+//                }
+//        
+//    }
+//    
+//    
+//    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public void user_back() throws IOException{
         backButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
@@ -69,10 +109,15 @@ public class ingameMenuController implements Initializable {
                 }
         });
     }
-    public void saveandexit() throws IOException{
+    public void saveAndExit() throws IOException,FileNotFoundException{
         saveandexitButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
+                try {
+                    Project.saveGame();
+                } catch (IOException ex) {
+                    Logger.getLogger(ingameMenuController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 Parent root;
                 try {
                     root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));

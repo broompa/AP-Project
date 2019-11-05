@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  */
 public class User implements Serializable{
 
-    
+    private static final long serialVersionUID = 42L;
     private int diamonds;
     private int currentLevel;
     private boolean isLevelCompleted;
@@ -32,14 +32,14 @@ public class User implements Serializable{
         this.level = new levelHandler(1);
     }
     
-    
+    public String getName(){return name;}
     
     public void update() {
         level.update();       
     }
     
     public static boolean doesExists(String name ){
-        File file = new File(System.getProperty("user.dir")+"\\src\\project\\userFiles");
+        File file = new File(System.getProperty("user.dir")+"\\userFiles\\");
         File [] ls = file.listFiles();
         
         for (File fs : ls){
@@ -62,7 +62,7 @@ public class User implements Serializable{
     
     public static String[] getPlayerList(){
 //        System.out.println("123");
-        File file = new File(System.getProperty("user.dir")+"\\src\\project\\userFiles\\");
+        File file = new File(System.getProperty("user.dir")+"\\userFiles\\");
         File[] ls = file.listFiles();
         HashMap <String,String> Player_list = new HashMap<String,String>();
         for (File fs : ls){
@@ -75,6 +75,10 @@ public class User implements Serializable{
         String [] arr = Player_list.keySet().toArray(new String[0]);
         return arr;
         
+    }
+    public void load (){
+        level.load();
+    
     }
     
     

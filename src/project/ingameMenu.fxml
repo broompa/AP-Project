@@ -18,7 +18,7 @@
                   <Image url="@mainScreen.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="saveandexitButton" fitHeight="52.0" fitWidth="154.0" layoutX="497.0" layoutY="257.0" onMouseClicked="#saveandexit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="saveandexitButton" fitHeight="52.0" fitWidth="154.0" layoutX="498.0" layoutY="262.0" onMouseClicked="#saveAndExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@saveButton.png" />
                </image>

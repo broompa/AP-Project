@@ -17,13 +17,25 @@ public class LawnMower extends GameObject {
     private boolean move ;
     private double speed;
     
-    ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/lawn_mower.gif")));
+    // transient ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/lawn_mower.gif")));
     public LawnMower(int x , int y ){
-        view = new Group(im1);
+        setImage();
         move = false;
         view.setTranslateX(x);
         view.setTranslateY(y);
         speed =  0.5;
+    }
+    
+    
+    private void setImage(){
+    view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/lawn_mower.gif"))));
+    view.setTranslateX(px);
+    view.setTranslateY(py);
+    }
+    
+    public void load(){
+        setImage();
+        
     }
     
     @Override
@@ -35,6 +47,7 @@ public class LawnMower extends GameObject {
             if (view.getTranslateX()>=1006){
             isAlive = false;}
         }
+        updateCoordiante();
         
     }
     

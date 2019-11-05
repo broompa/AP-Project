@@ -5,6 +5,7 @@
  */
 package project;
 
+import java.io.Serializable;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
 
@@ -12,12 +13,12 @@ import javafx.scene.Group;
  *
  * @author verma
  */
-public abstract class GameObject {
+public abstract class GameObject implements Serializable {
     protected boolean isAlive ; 
     protected double health ;
-    protected Timeline timeline;
-    protected Group view;
-    
+    transient protected Timeline timeline;
+    transient protected Group view = new Group();
+    protected double px , py ;
     
     public GameObject(){
         isAlive = true;
@@ -25,7 +26,10 @@ public abstract class GameObject {
         
     }
     
-    
+    public void updateCoordiante(){
+        px = view.getTranslateX();
+        py = view.getTranslateY();
+    }
     
     
     public void setHealth(double health){
@@ -35,7 +39,7 @@ public abstract class GameObject {
         return health ;
     }
     
-    
+    public abstract void load(); 
     
     
     

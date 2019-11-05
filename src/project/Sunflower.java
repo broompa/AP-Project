@@ -15,11 +15,11 @@ import javafx.scene.image.ImageView;
  */
 public class Sunflower extends Plant {
     
-    ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/sun_flower.gif")));
+    //ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/sun_flower.gif")));
     private long lastShine ;//  sun time count , just a fancy name 
     private int shineInterval ;
     public Sunflower(double x , double y){
-        view = new Group(im1);
+        setImage();
         view.setTranslateX(x);
         view.setTranslateY(y);
         lastShine = System.currentTimeMillis();
@@ -38,6 +38,20 @@ public class Sunflower extends Plant {
           lastShine =System.currentTimeMillis();
           levelHandler.addSun(view.getTranslateX(), view.getTranslateY());
       }
+      updateCoordiante();
+    }
+    
+    
+    private void setImage(){
+        view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/sun_flower.gif"))));
+        
+    }
+
+    @Override
+    public void load() {
+        setImage();
+        view.setTranslateX(px);
+        view.setTranslateY(py);
     }
     
 }

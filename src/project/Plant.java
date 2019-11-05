@@ -16,20 +16,4 @@ import javafx.scene.image.ImageView;
 public abstract class Plant extends GameObject {/////test shooter class
     private int timeToLive; 
     private static long lastAdded; // stores added time of plant
-    private double x;
-    private double y;
-//    Plant(int x,int y){
-//        this.x=x;
-//        this.y=y;
-//    }
-    public double getx(){
-        return this.x;}
-    public double gety(){
-        return this.y;
-    }
-    public void setx(double x){
-         this.x=x;}
-    public void sety(double y){
-        this.y=y;
-    }
 }

@@ -5,6 +5,10 @@
  */
 package project;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +28,7 @@ public class Project extends Application {
     private static Group g1; 
     static AnimationTimer anim;
     public static void setUser(User user1 ){ user = user1;
-        anim.start();
+        startAnimation();
     }
     public static void stopAnimation(){
         anim.stop();
@@ -33,15 +37,31 @@ public class Project extends Application {
     }
     public static void startAnimation(){
         anim.start();
+        if (g1.getChildren().contains(g)){
+            return;
+        }
         g1.getChildren().add(g);
     }
     
     
     
-    public static void saveGame(){
-        
+    public static void saveGame() throws FileNotFoundException, IOException{
+        System.out.println(System.getProperty("user.dir"));
+        FileOutputStream fos = new FileOutputStream(System.getProperty("user.dir")+"//userFiles//"+user.getName()+".zzz");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+	oos.writeObject(user);
+	oos.close();
+	fos.close();
+        System.out.println("Data Stored Successfully");
+        g1.getChildren().remove(g);
+        g = new Group();
+        g1.getChildren().add(g);
+        user = null;
     
     }
+    
+    
+    
     
     
     public static User getUser(){
@@ -51,7 +71,7 @@ public class Project extends Application {
     @Override
     public void start(Stage stage) throws Exception { 
         
-        Parent root = FXMLLoader.load(getClass().getResource("loadingScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
         anim = new AnimationTimer(){
             @Override 
             public void handle(long now ){

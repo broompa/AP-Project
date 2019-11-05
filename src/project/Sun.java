@@ -19,10 +19,10 @@ import javafx.scene.input.MouseEvent;
 public class Sun extends GameObject{
     private int stopLine; // stop y coordinate
     private boolean move ;
-    ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/sun.gif")));
+    //ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/sun.gif")));
     
     public Sun(boolean move, double x , double y){
-        view = new Group(im1);
+        setImage();
         this.move = move ;
         view.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
@@ -82,10 +82,21 @@ public class Sun extends GameObject{
         }
     }
     
+    
+    
     @Override
     public void update() {
         if (view.getTranslateY()<stopLine && move){
         view.setTranslateY(view.getTranslateY()+0.5);}
     }
-    
+
+    @Override
+    public void load() {
+        setImage();
+        view.setTranslateX(px);
+        view.setTranslateY(py);
+    }
+    private void setImage (){
+        view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/sun.gif"))));
+   }
 }

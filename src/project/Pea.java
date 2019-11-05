@@ -16,20 +16,22 @@ import javafx.scene.image.ImageView;
 public class Pea extends GameObject {
     private float speed;
     private final float damage ;
-    final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/fireball.gif")));
+   // final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/fireball.gif")));
     //final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/Pea.gif")));
     
     public Pea(double x , double y ){
-        view = new Group(im1);
         damage = 5;
         speed = 2;
+        setImage();
         view.setTranslateX(x);
         view.setTranslateY(y);
     }
     
     public double getDamage(){ return this.damage;}
     
-    
+    private void setImage (){
+        view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/fireball.gif"))));
+    }
     
     
     @Override
@@ -39,6 +41,13 @@ public class Pea extends GameObject {
             
         }
         
+    }
+
+    @Override
+    public void load() {
+        setImage();
+        view.setTranslateX(px);
+        view.setTranslateY(py);
     }
     
     
