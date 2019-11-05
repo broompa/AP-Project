@@ -21,15 +21,26 @@ public class Project extends Application {
     
     private static User user;// current user
     private static Group g ;
+    private static Group g1; 
     static AnimationTimer anim;
     public static void setUser(User user1 ){ user = user1;
         anim.start();
     }
-    public static void stopanimation(){
+    public static void stopAnimation(){
         anim.stop();
+        g1.getChildren().remove(g);
+        
     }
-    public static void startanimation(){
+    public static void startAnimation(){
         anim.start();
+        g1.getChildren().add(g);
+    }
+    
+    
+    
+    public static void saveGame(){
+        
+    
     }
     
     
@@ -48,8 +59,9 @@ public class Project extends Application {
             }
         };
         
-        g = new Group(root);
-        Scene scene = new Scene(g);
+        g = new Group();
+        g1 = new Group(root,g);
+        Scene scene = new Scene(g1);
         stage.setScene(scene);
         stage.show();
     }

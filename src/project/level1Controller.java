@@ -61,7 +61,7 @@ public class level1Controller  {
             @Override
             public void handle(MouseEvent event) {
                 Parent root;
-                Project.stopanimation();
+                
                 try {
                     root = FXMLLoader.load(getClass().getResource("ingameMenu.fxml"));
                     Scene sc = menuButton.getScene();
@@ -79,6 +79,7 @@ public class level1Controller  {
                     System.out.println("IO Error");
                     System.exit(0);
                 }
+                Project.stopAnimation();
                 }
         });
     }

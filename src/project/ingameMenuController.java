@@ -48,7 +48,7 @@ public class ingameMenuController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 Parent root;
-                Project.startanimation();
+                Project.startAnimation();
                 try {
                     root = FXMLLoader.load(getClass().getResource("level1.fxml"));
                     Scene sc = backButton.getScene();
