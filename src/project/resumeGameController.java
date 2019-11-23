@@ -47,67 +47,50 @@ public class resumeGameController implements Initializable {
     
     public void resume(MouseEvent e) throws Exception{
         try{
-            
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(System.getProperty("user.dir")+"//userFiles//"+chooseUser.getValue().toString()+".zzz"));
             User g = (User) in.readObject();
             g.load();
             Project.setUser(g);
             Parent root = null;
             try {
-                        root = FXMLLoader.load(getClass().getResource("level1.fxml"));
-                        Scene sc = backButton.getScene();
-                        root.translateYProperty().set(-sc.getHeight());
-                        container.getChildren().add(root);
-                        Timeline t = new Timeline();
-                        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-                        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-                        t.getKeyFrames().add(kf);
-                        t.setOnFinished(t1->{
-                            container.getChildren().remove(anchorRoot);
-                        });
-                        t.play();
-                    }catch (IOException ex) {
-                        System.out.println("IO Error");
-                        System.exit(0);
-                    }
-        }catch(NullPointerException ee){
+                root = FXMLLoader.load(getClass().getResource("level1.fxml"));
+                Scene sc = backButton.getScene();
+                root.translateYProperty().set(-sc.getHeight());
+                container.getChildren().add(root);
+                Timeline t = new Timeline();
+                KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+                KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+                t.getKeyFrames().add(kf);
+                t.setOnFinished(t1->{
+                    container.getChildren().remove(anchorRoot);
+                });
+                t.play();
+            }
+            catch (IOException ex) {
+                System.out.println("IO Error");
+                System.exit(0);
+            }
+        }
+        catch(NullPointerException ee){
             System.out.println("Please select a profile.");
         }
     }
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    public void user_back() throws IOException{
-        backButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                Parent root;
-                try {
-                    root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
-                    Scene sc = backButton.getScene();
-                    root.translateYProperty().set(-sc.getHeight());
-                    container.getChildren().add(root);
-                    Timeline t = new Timeline();
-                    KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-                    KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-                    t.getKeyFrames().add(kf);
-                    t.setOnFinished(t1->{
-                        container.getChildren().remove(anchorRoot);
-                    });
-                    t.play();
-                }catch (IOException ex) {
-                    System.out.println("IO Error");
-                    System.exit(0);
-                }
-                }
+    public void user_back(MouseEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+        Scene sc = backButton.getScene();
+        root.translateYProperty().set(-sc.getHeight());
+        container.getChildren().add(root);
+        Timeline t = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+        t.getKeyFrames().add(kf);
+        t.setOnFinished(t1->{
+            container.getChildren().remove(anchorRoot);
         });
+        t.play();
     }
 
     @Override

@@ -44,14 +44,50 @@ public class userDetailsController {
     private Label userScreenLabel;
 
     public void user_back() throws IOException{
-        backButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
+        
+        Parent    root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+        Scene sc = backButton.getScene();
+        root.translateYProperty().set(-sc.getHeight());
+        container.getChildren().add(root);
+        Timeline t = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+        t.getKeyFrames().add(kf);
+        t.setOnFinished(t1->{
+            container.getChildren().remove(anchorRoot);
+        });
+        t.play();
+    }
+   public void user_proceed(MouseEvent event) throws IOException{
+        try{
+            int age=Integer.parseInt(textFieldAge.getText());
+            if (textFieldUsername.getText().isEmpty()|| textFieldUsername.getText().length()==0) {
+                userScreenLabel.setText("Username cannot be empty");
+                textFieldUsername.setText("");
+                textFieldAge.setText("");
+            }
+            else if(textFieldAge.getText().isEmpty()|| textFieldAge.getText().length()==0){
+                userScreenLabel.setText("Age cannot be empty");
+                textFieldUsername.setText("");
+                textFieldAge.setText("");
+            }
+            else if(age>100){
+                userScreenLabel.setText("Age cannot be more than 100");
+                textFieldUsername.setText("");
+                textFieldAge.setText("");
+            }
+            else if (User.doesExists(textFieldUsername.getText())){
+                userScreenLabel.setText("Already Exists, choose another name.");
+                textFieldUsername.setText("");
+                textFieldAge.setText("");
+            }
+            else {
+                userScreenLabel.setText("User Creation Succesful.");
                 Parent root;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("level1.fxml"));
                     Scene sc = backButton.getScene();
-                    root.translateYProperty().set(-sc.getHeight());
+                    root.translateYProperty().set(sc.getHeight());
                     container.getChildren().add(root);
                     Timeline t = new Timeline();
                     KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
@@ -61,69 +97,19 @@ public class userDetailsController {
                         container.getChildren().remove(anchorRoot);
                     });
                     t.play();
-                }catch (IOException ex) {
+                    Project.setUser(new User(textFieldUsername.getText()));
+                } catch (IOException ex) {
                     System.out.println("IO Error");
                     System.exit(0);
                 }
-                }
-        });
-    }
-   public void user_proceed() throws IOException{
-        proceedButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-            try{
-                int age=Integer.parseInt(textFieldAge.getText());
-                if (textFieldUsername.getText().isEmpty()|| textFieldUsername.getText().length()==0) {
-                    userScreenLabel.setText("Username cannot be empty");
-                    textFieldUsername.setText("");
-                    textFieldAge.setText("");
-                }
-                else if(textFieldAge.getText().isEmpty()|| textFieldAge.getText().length()==0){
-                    userScreenLabel.setText("Age cannot be empty");
-                    textFieldUsername.setText("");
-                    textFieldAge.setText("");
-                }
-                else if(age>100){
-                    userScreenLabel.setText("Age cannot be more than 100");
-                    textFieldUsername.setText("");
-                    textFieldAge.setText("");
-                }
-                else if (User.doesExists(textFieldUsername.getText())){
-                    userScreenLabel.setText("Already Exists, choose another name.");
-                    textFieldUsername.setText("");
-                    textFieldAge.setText("");
-                }
-                else {
-                    userScreenLabel.setText("User Creation Succesful.");
-                    Parent root;
-                    try {
-                        root = FXMLLoader.load(getClass().getResource("level1.fxml"));
-                        Scene sc = backButton.getScene();
-                        root.translateYProperty().set(sc.getHeight());
-                        container.getChildren().add(root);
-                        Timeline t = new Timeline();
-                        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-                        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-                        t.getKeyFrames().add(kf);
-                        t.setOnFinished(t1->{
-                            container.getChildren().remove(anchorRoot);
-                        });
-                        t.play();
-                        Project.setUser(new User(textFieldUsername.getText()));
-                    } catch (IOException ex) {
-                        System.out.println("IO Error");
-                        System.exit(0);
-                    }
-                }
-            }
-            catch(NumberFormatException e){
-                userScreenLabel.setText("Age has to be a number");
-                textFieldAge.setText("");
-                textFieldAge.setText("");
             }
         }
-    });
+        catch(NumberFormatException e){
+            userScreenLabel.setText("Age has to be a number");
+            textFieldAge.setText("");
+            textFieldAge.setText("");
+        }
     }
+
 }
 

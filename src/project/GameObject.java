@@ -39,16 +39,7 @@ public abstract class GameObject implements Serializable {
         return health ;
     }
     
-    public abstract void load(); 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public abstract void load();   
     public boolean getIsAlive(){
         return isAlive;
     }

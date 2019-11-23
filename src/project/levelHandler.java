@@ -63,8 +63,8 @@ public class levelHandler implements Serializable {
     public void setZombieCount(){
         switch(level){
             case 1 :
-                zombieCount = 5 ;
-                spawnTime = 6;//to be changed
+                zombieCount =15 ;
+                spawnTime = 3;//to be changed
          
                 break;
             case 2:
@@ -193,8 +193,8 @@ public class levelHandler implements Serializable {
         ////////////////////////////////////////////////////////////////////
         for (int x = 0 ; x< lawnMowerList.size();x++){
             if (lawnMowerList.get(x).getIsAlive()){
-            lawnMowerList.get(x).update();
-            Project.addToGroup(lawnMowerList.get(x).getView());
+                lawnMowerList.get(x).update();
+                Project.addToGroup(lawnMowerList.get(x).getView());
             }else{
                 Project.removeFromGroup(lawnMowerList.get(x).getView());
                 
@@ -216,11 +216,11 @@ public class levelHandler implements Serializable {
         for (int x = 0 ; x<zombieList.size();x++){
             for (int i =  0 ; i < zombieList.get(x).size();i++){
                 if (zombieList.get(x).get(i).getIsAlive()){
-                zombieList.get(x).get(i).update();
-                 Project.addToGroup(zombieList.get(x).get(i).getView());}
+                    zombieList.get(x).get(i).update();
+                    Project.addToGroup(zombieList.get(x).get(i).getView());}
                 else if (System.currentTimeMillis()-zombieList.get(x).get(i).getDeadTime()>700){
-                Project.removeFromGroup(zombieList.get(x).get(i).getView());
-                zombieList.get(x).remove(zombieList.get(x).get(i));
+                    Project.removeFromGroup(zombieList.get(x).get(i).getView());
+                    zombieList.get(x).remove(zombieList.get(x).get(i));
                 ///////////////increment score
                 
                 }
@@ -241,8 +241,8 @@ public class levelHandler implements Serializable {
         
         for (int x = 0 ; x<sunList.size();x++){
             if (sunList.get(x).getIsAlive()){
-            sunList.get(x).update();
-            Project.addToGroup(sunList.get(x).getView());}
+                sunList.get(x).update();
+                Project.addToGroup(sunList.get(x).getView());}
             else{
                 Project.removeFromGroup(sunList.get(x).getView());
                 sunList.remove(sunList.get(x));
@@ -311,558 +311,60 @@ public class levelHandler implements Serializable {
         }
     }
     public static void addPlant(double x , double y, String s ){
-        if(x>288 && x<405){
             if(y>106 && y<222){
-               if(!plantgrid[0][0]){
-                   if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(0).add(new Sunflower(x,y));
-                   }
-                   plantgrid[0][0]=true;
+                if(s.equals("shooter")){
+                    plantList.get(0).add(new Shooter(x,y,0));
+                }
+                else if(s.equals("sunflower")){
+                    plantList.get(0).add(new Sunflower(x,y));
+                }else if(s.equals("walnut")){
+                    plantList.get(0).add(new Walnut(x, y));
+                }                 
+            }
+            else if(y>222 && y<343){
+                if(s.equals("shooter")){
+                    plantList.get(1).add(new Shooter(x,y,1));
+                }
+                else if(s.equals("sunflower")){
+                    plantList.get(1).add(new Sunflower(x,y));
+                }else if(s.equals("walnut")){
+                    plantList.get(1).add(new Walnut(x, y));
                 }
             }
-            if(y>222 && y<343){
-               if(!plantgrid[0][1]){
-                   if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(1).add(new Sunflower(x,y));
-                   }
-                   plantgrid[0][1]=true;
-               }
-           }
-            if(y>343 && y<463){
-               if(!plantgrid[0][2]){
-                   if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(332,367,2));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(2).add(new Sunflower(332,367));
-                   }
-                   plantgrid[0][2]=true;
-               }
-           }
-            if(y>463 && y<579){
-               if(!plantgrid[0][3]){
+            else if(y>343 && y<463){
+                if(s.equals("shooter")){
+                    plantList.get(2).add(new Shooter(332,367,2));
+                }
+                else if(s.equals("sunflower")){
+                    plantList.get(2).add(new Sunflower(332,367));
+                }else if(s.equals("walnut")){
+                    plantList.get(2).add(new Walnut(x, y));
+                }
+            }
+            else if(y>463 && y<579){
                    if(s.equals("shooter")){
                        plantList.get(3).add(new Shooter(x,y,3));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(3).add(new Sunflower(x,y));
-                   }
-                   plantgrid[0][3]=true;
-               }
-           }
-           if(y>579 && y<709){
-               if(!plantgrid[0][4]){
+                   }else if(s.equals("walnut")){
+                        plantList.get(3).add(new Walnut(x, y));
+                }
+            }
+            else if(y>579 && y<709){
                    if(s.equals("shooter")){
                        plantList.get(4).add(new Shooter(x,y,4));
                    }
                    else if(s.equals("sunflower")){
                        plantList.get(4).add(new Sunflower(x,y));
-                   }
-                   plantgrid[0][4]=true;
-               }
-           }
-        }
+                   }else if(s.equals("walnut")){
+                        plantList.get(4).add(new Walnut(x, y));
+                }
+            }
+        
         //405 490 595 681 783 871 962 1047 1152
-        else if(x>405 && x<490){
-            if(y>106 && y<222){
-               if(!plantgrid[1][0]){
-                   if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(0).add(new Sunflower(x,y));
-                   }
-                   plantgrid[1][0]=true;
-                }
-            }
-            if(y>222 && y<343){
-               if(!plantgrid[1][1]){
-                   if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(1).add(new Sunflower(x,y));
-                   }
-                   plantgrid[1][1]=true;
-               }
-           }
-            if(y>343 && y<463){
-               if(!plantgrid[1][2]){
-                   if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(2).add(new Sunflower(x,y));
-                   }
-                   plantgrid[1][2]=true;
-               }
-           }
-            if(y>463 && y<579){
-               if(!plantgrid[1][3]){
-                   if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(3).add(new Sunflower(x,y));
-                   }
-                   plantgrid[1][3]=true;
-               }
-           }
-           if(y>579 && y<709){
-               if(!plantgrid[1][4]){
-                   if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(4).add(new Sunflower(x,y));
-                   }
-                   plantgrid[1][4]=true;
-               }
-           }
-        }
-        else if(x>490 && x<595){
-            if(y>106 && y<222){
-               if(!plantgrid[2][0]){
-                   if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(0).add(new Sunflower(x,y));
-                   }
-                   plantgrid[2][0]=true;
-                }
-            }
-            if(y>222 && y<343){
-               if(!plantgrid[2][1]){
-                   if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(1).add(new Sunflower(x,y));
-                   }
-                   plantgrid[2][1]=true;
-               }
-           }
-            if(y>343 && y<463){
-               if(!plantgrid[2][2]){
-                   if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(2).add(new Sunflower(x,y));
-                   }
-                   plantgrid[2][2]=true;
-               }
-           }
-            if(y>463 && y<579){
-               if(!plantgrid[2][3]){
-                   if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(3).add(new Sunflower(x,y));
-                   }
-                   plantgrid[2][3]=true;
-               }
-           }
-           if(y>579 && y<709){
-               if(!plantgrid[2][4]){
-                   if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(4).add(new Sunflower(x,y));
-                   }
-                   plantgrid[2][4]=true;
-               }
-           }
-        }
-        else if(x>595 && x<681){
-            if(y>106 && y<222){
-               if(!plantgrid[3][0]){
-                   if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(0).add(new Sunflower(x,y));
-                   }
-                   plantgrid[3][0]=true;
-                }
-            }
-            if(y>222 && y<343){
-               if(!plantgrid[3][1]){
-                   if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(1).add(new Sunflower(x,y));
-                   }
-                   plantgrid[3][1]=true;
-               }
-           }
-            if(y>343 && y<463){
-               if(!plantgrid[3][2]){
-                   if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(2).add(new Sunflower(x,y));
-                   }
-                   plantgrid[3][2]=true;
-               }
-           }
-            if(y>463 && y<579){
-               if(!plantgrid[3][3]){
-                   if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(3).add(new Sunflower(x,y));
-                   }
-                   plantgrid[3][3]=true;
-               }
-           }
-           if(y>579 && y<709){
-               if(!plantgrid[3][4]){
-                   if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(4).add(new Sunflower(x,y));
-                   }
-                   plantgrid[3][4]=true;
-               }
-           }
-        }
-        else if(x>681 && x<783){
-            if(y>106 && y<222){
-               if(!plantgrid[4][0]){
-                   if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(0).add(new Sunflower(x,y));
-                   }
-                   plantgrid[4][0]=true;
-                }
-            }
-            if(y>222 && y<343){
-               if(!plantgrid[4][1]){
-                   if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(1).add(new Sunflower(x,y));
-                   }
-                   plantgrid[4][1]=true;
-               }
-           }
-            if(y>343 && y<463){
-               if(!plantgrid[4][2]){
-                   if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(2).add(new Sunflower(x,y));
-                   }
-                   plantgrid[4][2]=true;
-               }
-           }
-            if(y>463 && y<579){
-               if(!plantgrid[4][3]){
-                   if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(3).add(new Sunflower(x,y));
-                   }
-                   plantgrid[4][3]=true;
-               }
-           }
-           if(y>579 && y<709){
-               if(!plantgrid[4][4]){
-                   if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(4).add(new Sunflower(x,y));
-                   }
-                   plantgrid[4][4]=true;
-               }
-           }
-        }
-        else if(x>783 && x<871){
-            if(y>106 && y<222){
-               if(!plantgrid[5][0]){
-                   if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(0).add(new Sunflower(x,y));
-                   }
-                   plantgrid[5][0]=true;
-                }
-            }
-            if(y>222 && y<343){
-               if(!plantgrid[5][1]){
-                   if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(1).add(new Sunflower(x,y));
-                   }
-                   plantgrid[5][1]=true;
-               }
-           }
-            if(y>343 && y<463){
-               if(!plantgrid[5][2]){
-                   if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(2).add(new Sunflower(x,y));
-                   }
-                   plantgrid[5][2]=true;
-               }
-           }
-            if(y>463 && y<579){
-               if(!plantgrid[5][3]){
-                   if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(3).add(new Sunflower(x,y));
-                   }
-                   plantgrid[5][3]=true;
-               }
-           }
-           if(y>579 && y<709){
-               if(!plantgrid[5][4]){
-                   if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(4).add(new Sunflower(x,y));
-                   }
-                   plantgrid[5][4]=true;
-               }
-           }
-        }
-        else if(x>871 && x<962){
-            if(y>106 && y<222){
-               if(!plantgrid[6][0]){
-                   if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(0).add(new Sunflower(x,y));
-                   }
-                   plantgrid[6][0]=true;
-                }
-            }
-            if(y>222 && y<343){
-               if(!plantgrid[6][1]){
-                   if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(1).add(new Sunflower(x,y));
-                   }
-                   plantgrid[6][1]=true;
-               }
-           }
-            if(y>343 && y<463){
-               if(!plantgrid[6][2]){
-                   if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(2).add(new Sunflower(x,y));
-                   }
-                   plantgrid[6][2]=true;
-               }
-           }
-            if(y>463 && y<579){
-               if(!plantgrid[6][3]){
-                   if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(3).add(new Sunflower(x,y));
-                   }
-                   plantgrid[6][3]=true;
-               }
-           }
-           if(y>579 && y<709){
-               if(!plantgrid[6][4]){
-                   if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(4).add(new Sunflower(x,y));
-                   }
-                   plantgrid[6][4]=true;
-               }
-           }
-        }
-        else if(x>962 && x<1047){
-            if(y>106 && y<222){
-               if(!plantgrid[7][0]){
-                   if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(0).add(new Sunflower(x,y));
-                   }
-                   plantgrid[7][0]=true;
-                }
-            }
-            if(y>222 && y<343){
-               if(!plantgrid[7][1]){
-                   if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(1).add(new Sunflower(x,y));
-                   }
-                   plantgrid[7][1]=true;
-               }
-           }
-            if(y>343 && y<463){
-               if(!plantgrid[7][2]){
-                   if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(2).add(new Sunflower(x,y));
-                   }
-                   plantgrid[7][2]=true;
-               }
-           }
-            if(y>463 && y<579){
-               if(!plantgrid[7][3]){
-                   if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(3).add(new Sunflower(x,y));
-                   }
-                   plantgrid[7][3]=true;
-               }
-           }
-           if(y>579 && y<709){
-               if(!plantgrid[7][4]){
-                   if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(4).add(new Sunflower(x,y));
-                   }
-                   plantgrid[7][4]=true;
-               }
-           }
-        }
-        else if(x>1047 && x<1152){
-            if(y>106 && y<222){
-               if(!plantgrid[8][0]){
-                   if(s.equals("shooter")){
-                       plantList.get(0).add(new Shooter(x,y,0));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(0).add(new Sunflower(x,y));
-                   }
-                   plantgrid[8][0]=true;
-                }
-            }
-            if(y>222 && y<343){
-               if(!plantgrid[8][1]){
-                   if(s.equals("shooter")){
-                       plantList.get(1).add(new Shooter(x,y,1));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(1).add(new Sunflower(x,y));
-                   }
-                   plantgrid[8][1]=true;
-               }
-           }
-            if(y>343 && y<463){
-               if(!plantgrid[8][2]){
-                   if(s.equals("shooter")){
-                       plantList.get(2).add(new Shooter(x,y,2));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(2).add(new Sunflower(x,y));
-                   }
-                   plantgrid[8][2]=true;
-               }
-           }
-            if(y>463 && y<579){
-               if(!plantgrid[8][3]){
-                   if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(3).add(new Sunflower(x,y));
-                   }
-                   plantgrid[8][3]=true;
-               }
-           }
-           if(y>579 && y<709){
-               if(!plantgrid[8][4]){
-                   if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
-                   }
-                   else if(s.equals("sunflower")){
-                       plantList.get(4).add(new Sunflower(x,y));
-                   }
-                   plantgrid[8][4]=true;
-               }
-           }
-        }
         
 
-
-
-        // if (s.equals("shooter")){
-        //    if(28<=y && y<117){
-        //        plantList.get(0).add(new Shooter(x,y,0,x,y));
-        //    }
-        //    else if (117<=y && y<202){
-        //        plantList.get(1).add(new Shooter(x,y,1,x,y));  
-        //    }
-        //    else if (202<=y && y<294){
-        //        plantList.get(2).add(new Shooter(x,y,2,x,y));
-        //    }
-        //    else if (294<=y && y<380){
-        //        plantList.get(3).add(new Shooter(x,y,3,x,y));
-        //    }else if(y<=380 && y<471){
-        //        plantList.get(4).add(new Shooter(x,y,4,x,y));
-        //    }
-        // }
-        // else if (s.equals("sunflower")){
-        //    if(28<=y && y<117){
-        //        plantList.get(0).add(new Sunflower(x,y) );
-        //    }
-        //    else if (117<=y && y<202){
-        //        plantList.get(1).add(new Sunflower(x,y));  
-        //    }
-        //    else if (202<=y && y<294){
-        //        plantList.get(2).add(new Sunflower(x,y));
-        //    }
-        //    else if (294<=y && y<380){
-        //        plantList.get(3).add(new Sunflower(x,y));
-        //    }else if(y<=380 && y<471){
-        //        plantList.get(4).add(new Sunflower(x,y));
-        //    }
-        // }
-        
-        
         
         
     }

@@ -56,33 +56,24 @@ public class level1Controller  {
     
     private String isSelected = null;
      
-    public void ingamemenu() throws IOException{
-        menuButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event) {
-                Parent root;
-                
-                try {
-                    root = FXMLLoader.load(getClass().getResource("ingameMenu.fxml"));
-                    Scene sc = menuButton.getScene();
-                    root.translateYProperty().set(sc.getHeight());
-                    container.getChildren().add(root);
-                    Timeline t = new Timeline();
-                    KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-                    KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-                    t.getKeyFrames().add(kf);
-                    t.setOnFinished(t1->{
-                        container.getChildren().remove(anchorRoot);
-                    });
-                    t.play();
-                }catch (IOException ex) {
-                    System.out.println("IO Error");
-                    System.exit(0);
-                }
-                Project.stopAnimation();
-                }
+    public void inGameMenu(MouseEvent event ) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("ingameMenu.fxml"));
+        Scene sc = menuButton.getScene();
+        root.translateYProperty().set(sc.getHeight());
+        container.getChildren().add(root);
+        Timeline t = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+        t.getKeyFrames().add(kf);
+        t.setOnFinished(t1->{
+            container.getChildren().remove(anchorRoot);
         });
+        t.play();
+
+        Project.stopAnimation();
     }
+       
+    
     
     
     public static void  setSunCount(int val ){
@@ -91,21 +82,6 @@ public class level1Controller  {
     
     public static int getSunCount(){ return sunValue;}
     
-    
-    
-    
-    
-    public void save() throws IOException{
-       save.setOnMouseClicked(new EventHandler<MouseEvent>(){
-           @Override
-           public void handle(MouseEvent e){
-               
-           
-           }
-       
-       });
-        
-    }
     
     
     
@@ -140,6 +116,10 @@ public class level1Controller  {
             else if (x>451 && x<507){
                 System.out.println("sunflower selected");
                 isSelected="sunflower"; 
+            }
+            else if (x<574 && x> 520){
+                System.out.println("walnut");
+                isSelected = "walnut";
             }
             else {
                 isSelected =null;

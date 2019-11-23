@@ -110,9 +110,14 @@ public class Zombie extends GameObject {
     @Override
     public void update() {
         if (this.health<= 0){setIsAlive(false);}
+        if (view.getTranslateX()<285){
+            throw new ZombieReached();
+        }
+        
         
         if (isAlive && move){
-            view.setTranslateX(view.getTranslateX()-speed);   }
+            view.setTranslateX(view.getTranslateX()-speed);
+        }
         updateCoordiante();
     }
     

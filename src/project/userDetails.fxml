@@ -21,7 +21,10 @@
                   <Image url="@userDetailsScreen.PNG" />
                </image>
             </ImageView>
-            <Label fx:id="userScreenLabel" layoutX="766.0" layoutY="307.0" prefHeight="36.0" prefWidth="278.0" />
+            <Label fx:id="userScreenLabel" layoutX="402.0" layoutY="611.0" prefHeight="36.0" prefWidth="278.0" textFill="WHITE">
+               <font>
+                  <Font size="21.0" />
+               </font></Label>
             <TextField fx:id="textFieldUsername" layoutX="482.0" layoutY="289.0" prefHeight="34.0" prefWidth="219.0" promptText="Enter Username" />
             <TextField fx:id="textFieldAge" layoutX="484.0" layoutY="367.0" prefHeight="34.0" prefWidth="220.0" promptText="Enter Age" />
             <Label layoutX="323.0" layoutY="279.0" prefHeight="59.0" prefWidth="143.0" text="Username" textFill="#ffe6e6">
