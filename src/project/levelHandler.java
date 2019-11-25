@@ -17,9 +17,8 @@ import javafx.scene.control.ProgressBar;
  * @author verma
  */
 public class levelHandler implements Serializable {
-    private static boolean[][] plantgrid = new boolean[9][5];
     private int level;
-    private double zombieCount;
+    private int zombieCount;
     private long lastZombieAdded;
     private transient static ArrayList<ArrayList<Plant>> plantList;
     private ArrayList<ArrayList<Zombie>> zombieList;
@@ -32,15 +31,23 @@ public class levelHandler implements Serializable {
     private ArrayList<LawnMower> lawnMowerList ; 
     private transient ProgressBar progress ;
     private double progressBarOffset;  // progress bar
-    ////////////////////faltu
+    ////////////////////for serialization
     private  ArrayList<ArrayList<Plant>> plantList1;  
+    /// for zombie wave
+    
+    private int wState ;//wave state
+    private float wTimeGap;
+    private int wZombieCount;
+    private float wSpawnTime;
+    
+    
+    
+    
+    
     
     public levelHandler(int level){
-        for(int i=0;i<9;i++){
-            for(int j=0;j<5;j++){
-                plantgrid[i][j]=false;
-            }
-        }
+      
+      
         
         this.level = level;
         setZombieCount();
@@ -52,8 +59,11 @@ public class levelHandler implements Serializable {
         
         lawnMowerList = new ArrayList<LawnMower>();
         zombieList = new ArrayList<ArrayList<Zombie>>();
-        callMe();
+        containers();
         plantList1 = plantList;
+        wState=0;
+        setWaveParameters();
+        
     }
     
     
@@ -64,35 +74,35 @@ public class levelHandler implements Serializable {
         switch(level){
             case 1 :
                 zombieCount =15 ;
-                spawnTime = 3;//to be changed
-         
+                spawnTime = 2;//to be changed
+                wTimeGap = 4;
                 break;
             case 2:
                 zombieCount = 10;
                 spawnTime = 7;
-         
+                wTimeGap = 3;
                 break;
             case 3 :
                 zombieCount = 15 ;
                 spawnTime = 4;
-         
+                wTimeGap = 3;
                 break;
             case 4:
                 zombieCount = 20;
                 spawnTime = 2;
-         
+                wTimeGap = 3;
                 break;
             case 5 :
                 zombieCount = 25;
                 spawnTime = 1;
-         
+                wTimeGap = 3;
                 break;
         }
     }
     
     
     
-    public void callMe(){
+    public void containers(){
         ////////////
         
         plantList = new ArrayList<ArrayList<Plant>>();
@@ -160,7 +170,7 @@ public class levelHandler implements Serializable {
     
     public void load(){
        ////////////////////
-       callMe();
+       containers();
        plantList = plantList1;
        for (int x = 0 ; x< lawnMowerList.size();x++){
             lawnMowerList.get(x).load();
@@ -294,14 +304,48 @@ public class levelHandler implements Serializable {
         
         //////////////////to be edited
     }
+
+    private void setWaveParameters(){
+        System.out.println("Wave: "+wState);
+        switch(wState){
+            case 0:
+                wZombieCount = (int)zombieCount/5;
+                wSpawnTime = 2*spawnTime;
+                break;
+            case 1:
+                wZombieCount = (int)zombieCount/2;
+                wSpawnTime = (float)(1.5*spawnTime);
+                break;
+            case 2:
+                wZombieCount = zombieCount;
+                wSpawnTime = spawnTime;
+                break;
+        }
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public void spawnZombies(){
-        if (System.currentTimeMillis()-lastZombieAdded>=spawnTime*1000 && zombieCount-- > 0){
-            Random r = new Random();
-            int ran = r.nextInt(5);
+        if (System.currentTimeMillis()-lastZombieAdded>=wSpawnTime*1000 && wZombieCount-- > 0){
+            
+            int ran = (int)(Math.random()*5);
             zombieList.get(ran).add(new Zombie(ran));
             lastZombieAdded = System.currentTimeMillis();
+        }else if (wState<2 && wZombieCount < 0 && System.currentTimeMillis()-lastZombieAdded>=wTimeGap*1000){
+            
+            wState++;
+            setWaveParameters();
         }
+    
+    
     }
     
     public void shineSun(){

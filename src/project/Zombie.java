@@ -111,7 +111,7 @@ public class Zombie extends GameObject {
     public void update() {
         if (this.health<= 0){setIsAlive(false);}
         if (view.getTranslateX()<285){
-            throw new ZombieReached();
+            //throw new ZombieReached();
         }
         
         
