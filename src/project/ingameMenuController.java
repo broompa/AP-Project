@@ -49,20 +49,21 @@ public class ingameMenuController implements Initializable {
     
     
     public void user_back(MouseEvent event) throws IOException{
-        Project.startAnimation();
-        Parent root = FXMLLoader.load(getClass().getResource("level1.fxml"));
-        Scene sc = backButton.getScene();
-        root.translateYProperty().set(-sc.getHeight());
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot);
-        });
-        t.play();
-
+        if (Project.setState(2)){
+            Project.startAnimation();
+            Parent root = FXMLLoader.load(getClass().getResource("level1.fxml"));
+            Scene sc = backButton.getScene();
+            root.translateYProperty().set(-sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
+        }
     }
     public void saveAndExit(MouseEvent event) throws IOException,FileNotFoundException{
         try {
@@ -70,19 +71,20 @@ public class ingameMenuController implements Initializable {
         } catch (IOException ex) {
             System.out.println("This is inGameMenuController");
         }
-        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
-        Scene sc = saveandexitButton.getScene();
-        root.translateYProperty().set(-sc.getHeight());
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot);
-        });
-        t.play();
-
+        if (Project.setState(0)){
+            Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+            Scene sc = saveandexitButton.getScene();
+            root.translateYProperty().set(-sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
+        }
     }
     /**
      * Initializes the controller class.

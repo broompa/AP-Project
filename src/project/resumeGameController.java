@@ -53,18 +53,20 @@ public class resumeGameController implements Initializable {
             Project.setUser(g);
             Parent root = null;
             try {
-                root = FXMLLoader.load(getClass().getResource("level1.fxml"));
-                Scene sc = backButton.getScene();
-                root.translateYProperty().set(-sc.getHeight());
-                container.getChildren().add(root);
-                Timeline t = new Timeline();
-                KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-                KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-                t.getKeyFrames().add(kf);
-                t.setOnFinished(t1->{
-                    container.getChildren().remove(anchorRoot);
-                });
-                t.play();
+                if (Project.setState(2)){
+                    root = FXMLLoader.load(getClass().getResource("level1.fxml"));
+                    Scene sc = backButton.getScene();
+                    root.translateYProperty().set(-sc.getHeight());
+                    container.getChildren().add(root);
+                    Timeline t = new Timeline();
+                    KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+                    KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+                    t.getKeyFrames().add(kf);
+                    t.setOnFinished(t1->{
+                        container.getChildren().remove(anchorRoot);
+                    });
+                    t.play();
+                }
             }
             catch (IOException ex) {
                 System.out.println("IO Error");
@@ -79,18 +81,20 @@ public class resumeGameController implements Initializable {
     
     
     public void user_back(MouseEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
-        Scene sc = backButton.getScene();
-        root.translateYProperty().set(-sc.getHeight());
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot);
-        });
-        t.play();
+        if (Project.setState(0)){
+            Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+            Scene sc = backButton.getScene();
+            root.translateYProperty().set(-sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
+        }
     }
 
     @Override

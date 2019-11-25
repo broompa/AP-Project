@@ -38,18 +38,19 @@ public class creditsScreenController {
     private ImageView backButton;
 
     public void user_back() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
-        Scene sc = backButton.getScene();
-        root.translateYProperty().set(-sc.getHeight());
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot);
-        });
-        t.play();
-        
+        if(Project.setState(0)){
+            Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+            Scene sc = backButton.getScene();
+            root.translateYProperty().set(-sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
+        }
     }
 }

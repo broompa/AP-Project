@@ -43,7 +43,6 @@ public class User implements Serializable{
         File [] ls = file.listFiles();
         
         for (File fs : ls){
-//            System.out.println(fs);
             if (fs.toString().endsWith(".zzz")&& name.trim().equals(parsePlayer(fs.toString()))){
                 return true;
                 
@@ -61,15 +60,12 @@ public class User implements Serializable{
     }   
     
     public static String[] getPlayerList(){
-//        System.out.println("123");
         File file = new File(System.getProperty("user.dir")+"\\userFiles\\");
         File[] ls = file.listFiles();
         HashMap <String,String> Player_list = new HashMap<String,String>();
         for (File fs : ls){
-//            System.out.println(fs.toString());
             if (fs.toString().endsWith(".zzz")){
                 Player_list.put(parsePlayer(fs.toString()),fs.toString());
-//                System.out.println(parsePlayer(fs.toString()));
             }
         }
         String [] arr = Player_list.keySet().toArray(new String[0]);

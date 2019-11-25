@@ -52,33 +52,36 @@ public class mainScreenController{
     
     
     public void newGame() throws IOException{
-        
-        Parent root = FXMLLoader.load(getClass().getResource("userDetails.fxml"));
-        Scene sc = newgameButton.getScene();
-        root.translateYProperty().set(sc.getHeight());
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot); 
-        });
-        t.play();
+        if (Project.setState(1) ){
+            Parent root = FXMLLoader.load(getClass().getResource("userDetails.fxml"));
+            Scene sc = newgameButton.getScene();
+            root.translateYProperty().set(sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot); 
+            });
+            t.play();
+        }
     }
     public void resumeGame() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("resumeGame.fxml"));
-        Scene sc = resumegameButton.getScene();
-        root.translateYProperty().set(sc.getHeight());
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot);
-        });
-        t.play();
+        if (Project.setState(4)){
+            Parent root = FXMLLoader.load(getClass().getResource("resumeGame.fxml"));
+            Scene sc = resumegameButton.getScene();
+            root.translateYProperty().set(sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
+        }
     }
     
     public void exitGame() throws IOException{
@@ -86,41 +89,43 @@ public class mainScreenController{
     }
     
     public void almanac() throws IOException {
-        System.exit(0);        
+        if (Project.setState(5)){
+            System.exit(0);        
+        }
     }	
 	
     public void credits() throws IOException{
+        if(Project.setState(7)){
+            Parent root = FXMLLoader.load(getClass().getResource("creditsScreen.fxml"));
+            Scene sc = creditsButton.getScene();
+            root.translateYProperty().set(sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
         
-        Parent root = FXMLLoader.load(getClass().getResource("creditsScreen.fxml"));
-        Scene sc = creditsButton.getScene();
-        root.translateYProperty().set(sc.getHeight());
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot);
-        });
-        t.play();
-        
+        }
     }
     public void leaderboard() throws IOException{
-             
-        Parent  root = FXMLLoader.load(getClass().getResource("leaderBoardScreen.fxml"));
-        Scene sc = leaderboardButton.getScene();
-        root.translateYProperty().set(sc.getHeight());
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot);
-        });
-        t.play();
-    
+        if(Project.setState(6) ){ 
+            Parent  root = FXMLLoader.load(getClass().getResource("leaderBoardScreen.fxml"));
+            Scene sc = leaderboardButton.getScene();
+            root.translateYProperty().set(sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
+        }
     }
-    
     
 }

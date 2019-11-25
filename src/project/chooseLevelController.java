@@ -24,6 +24,7 @@ public class chooseLevelController  {
     @FXML
     private Button userScreenBack;
     public void user_back(ActionEvent event) throws IOException {
+        if(Project.setState(0)){
         Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
         Scene sc = userScreenBack.getScene();
         root.translateYProperty().set(-sc.getHeight());
@@ -36,5 +37,6 @@ public class chooseLevelController  {
             container.getChildren().remove(anchorRoot);
         });
         t.play();
+       }
     } 
 }

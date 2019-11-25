@@ -26,7 +26,8 @@ public class Project extends Application {
     private static User user;// current user
     private static Group g ;
     private static Group g1; 
-    static AnimationTimer anim;
+    private static AnimationTimer anim;
+    private static int state ;
     public static void setUser(User user1 ){ user = user1;
         startAnimation();
     }
@@ -71,6 +72,7 @@ public class Project extends Application {
     @Override
     public void start(Stage stage) throws Exception { 
         
+        state= 0;
         Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
         anim = new AnimationTimer(){
             @Override 
@@ -101,7 +103,14 @@ public class Project extends Application {
         }
     }
     
-    
+    public static boolean setState(int x){
+        if (x!=state ){
+            state = x;
+            return true;
+        }else {
+            return false;
+        }
+    }
     
     
     

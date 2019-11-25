@@ -57,20 +57,22 @@ public class level1Controller  {
     private String isSelected = null;
      
     public void inGameMenu(MouseEvent event ) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("ingameMenu.fxml"));
-        Scene sc = menuButton.getScene();
-        root.translateYProperty().set(sc.getHeight());
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot);
-        });
-        t.play();
+        if (Project.setState(3)){
+            Parent root = FXMLLoader.load(getClass().getResource("ingameMenu.fxml"));
+            Scene sc = menuButton.getScene();
+            root.translateYProperty().set(sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
 
-        Project.stopAnimation();
+            Project.stopAnimation();
+        }
     }
        
     

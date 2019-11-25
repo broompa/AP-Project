@@ -44,19 +44,20 @@ public class userDetailsController {
     private Label userScreenLabel;
 
     public void user_back() throws IOException{
-        
-        Parent    root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
-        Scene sc = backButton.getScene();
-        root.translateYProperty().set(-sc.getHeight());
-        container.getChildren().add(root);
-        Timeline t = new Timeline();
-        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-        t.getKeyFrames().add(kf);
-        t.setOnFinished(t1->{
-            container.getChildren().remove(anchorRoot);
-        });
-        t.play();
+        if (Project.setState(0)){
+            Parent    root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+            Scene sc = backButton.getScene();
+            root.translateYProperty().set(-sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
+        }
     }
    public void user_proceed(MouseEvent event) throws IOException{
         try{
@@ -83,21 +84,22 @@ public class userDetailsController {
             }
             else {
                 userScreenLabel.setText("User Creation Succesful.");
-                Parent root;
                 try {
-                    root = FXMLLoader.load(getClass().getResource("level1.fxml"));
-                    Scene sc = backButton.getScene();
-                    root.translateYProperty().set(sc.getHeight());
-                    container.getChildren().add(root);
-                    Timeline t = new Timeline();
-                    KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-                    KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-                    t.getKeyFrames().add(kf);
-                    t.setOnFinished(t1->{
-                        container.getChildren().remove(anchorRoot);
-                    });
-                    t.play();
-                    Project.setUser(new User(textFieldUsername.getText()));
+                    if(Project.setState(2)){
+                        Parent root = FXMLLoader.load(getClass().getResource("level1.fxml"));
+                        Scene sc = backButton.getScene();
+                        root.translateYProperty().set(sc.getHeight());
+                        container.getChildren().add(root);
+                        Timeline t = new Timeline();
+                        KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+                        KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+                        t.getKeyFrames().add(kf);
+                        t.setOnFinished(t1->{
+                            container.getChildren().remove(anchorRoot);
+                        });
+                        t.play();
+                        Project.setUser(new User(textFieldUsername.getText()));
+                    }
                 } catch (IOException ex) {
                     System.out.println("IO Error");
                     System.exit(0);
