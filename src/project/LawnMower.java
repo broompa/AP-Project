@@ -45,7 +45,7 @@ public class LawnMower extends GameObject {
             
             view.setTranslateX(view.getTranslateX()+speed);
             if (view.getTranslateX()>=1006){
-            isAlive = false;}
+                isAlive = false;}
         }
         updateCoordiante();
         

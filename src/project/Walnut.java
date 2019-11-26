@@ -16,12 +16,23 @@ import javafx.scene.image.ImageView;
  */
 public class Walnut extends Plant{
     private final double MAX_HEALTH = 20;
-    Walnut(double x , double y ){
+    public Walnut(double x , double y ){
        setImage();
        view.setTranslateX(x);
        view.setTranslateY(y);
        health = MAX_HEALTH;
     }
+    
+    public Walnut(int boxNum){
+        setImage();
+        setPosition(boxNum);
+        health = MAX_HEALTH;
+    
+    
+    
+    }
+    
+    
     
     
     

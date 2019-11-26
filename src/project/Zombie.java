@@ -26,26 +26,6 @@ public class Zombie extends GameObject {
     private boolean move; 
 //    
 //    final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/1.png")));
-//    final ImageView im2= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/2.png")));
-//    final ImageView im3= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/3.png")));
-//    final ImageView im4= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/4.png")));
-//    final ImageView im5= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/5.png")));
-//    final ImageView im6= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/6.png")));
-//    final ImageView im7= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/7.png")));
-//    final ImageView im8= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/8.png")));
-//    final ImageView im9= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/9.png")));
-//    final ImageView im10= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Walk/10.png")));
-//    
-//    
-//    final ImageView Im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Dead/1.png")));
-//    final ImageView Im2= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Dead/2.png")));
-//    final ImageView Im3= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Dead/3.png")));
-//    final ImageView Im4= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Dead/4.png")));
-//    final ImageView Im5= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Dead/5.png")));
-//    final ImageView Im6= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Dead/6.png")));
-//    final ImageView Im7= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Dead/7.png")));
-//    final ImageView Im8= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/ZombieOGA/Dead/8.png")));
-
     Zombie(int row) {
         //////////////////////////////////////////
         move = true ;
@@ -88,7 +68,8 @@ public class Zombie extends GameObject {
     @Override
     public void setIsAlive(boolean x){
         super.setIsAlive(x);
-        switchTimeLine();
+        if (!x){
+        switchTimeLine();}
     }
     
     

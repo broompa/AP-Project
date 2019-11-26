@@ -34,6 +34,7 @@ public class levelHandler implements Serializable {
     ////////////////////for serialization
     private  ArrayList<ArrayList<Plant>> plantList1;  
     /// for zombie wave
+    private static boolean[] placed = new boolean[45];
     
     private int wState ;//wave state
     private float wTimeGap;
@@ -47,7 +48,7 @@ public class levelHandler implements Serializable {
     
     public levelHandler(int level){
       
-      
+        
         
         this.level = level;
         setZombieCount();
@@ -75,7 +76,7 @@ public class levelHandler implements Serializable {
             case 1 :
                 zombieCount =15 ;
                 spawnTime = 2;//to be changed
-                wTimeGap = 4;
+                wTimeGap = 10;
                 break;
             case 2:
                 zombieCount = 10;
@@ -148,25 +149,6 @@ public class levelHandler implements Serializable {
     
     
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     public void load(){
        ////////////////////
@@ -288,13 +270,30 @@ public class levelHandler implements Serializable {
         for (int x = 0 ; x<5;x++){
             for(int i = 0 ; i<zombieList.get(x).size();i++){
                 boolean zMove = true ;
+                boolean willStayAlive = true ;
                 for (int t = 0 ; t<plantList.get(x).size();t++){
                     if (plantList.get(x).get(t).isColliding(zombieList.get(x).get(i))){
-                        plantList.get(x).get(t).setHealth(plantList.get(x).get(t).getHealth() - zombieList.get(x).get(i).getDamage() );
-                        zMove= false;
+                        if (plantList.get(x).get(t) instanceof PotatoMine){
+                            PotatoMine mine = (PotatoMine)plantList.get(x).get(t);
+                            if (mine.isBlasting()){
+                                willStayAlive = false;
+                            }
+                            else {
+                                mine.setHealth(0);
+                            }
+                        }
+                        else {
+                            plantList.get(x).get(t).setHealth(plantList.get(x).get(t).getHealth() - zombieList.get(x).get(i).getDamage() );
+                            zMove= false;
+                        }
+                        
+                        
                     }
                 }
                 zombieList.get(x).get(i).setMove(zMove);
+                if (willStayAlive == false){
+                    zombieList.get(x).get(i).setHealth(0);
+                }
             }
         }
         
@@ -323,19 +322,9 @@ public class levelHandler implements Serializable {
         }
     
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     public void spawnZombies(){
         if (System.currentTimeMillis()-lastZombieAdded>=wSpawnTime*1000 && wZombieCount-- > 0){
-            
+            level1Controller.setOpacity(0);
             int ran = (int)(Math.random()*5);
             zombieList.get(ran).add(new Zombie(ran));
             lastZombieAdded = System.currentTimeMillis();
@@ -343,6 +332,9 @@ public class levelHandler implements Serializable {
             
             wState++;
             setWaveParameters();
+        }else if (wZombieCount<=0){
+            level1Controller.setOpacity(1);
+            level1Controller.setWarning("Wave "+ (wState+1));
         }
     
     
@@ -354,55 +346,79 @@ public class levelHandler implements Serializable {
             lastSunAdded = System.currentTimeMillis();
         }
     }
-    public static void addPlant(double x , double y, String s ){
-            if(y>106 && y<222){
+    public static void addPlant(double x , double y,int boxNum, String s ){
+        
+        if (placed[boxNum-1]){
+            return;
+        }
+        placed[boxNum-1] = true;
+        
+        
+        
+        
+        if(y>106 && y<222){
                 if(s.equals("shooter")){
-                    plantList.get(0).add(new Shooter(x,y,0));
+                    plantList.get(0).add(new Shooter(boxNum,0));
                 }
                 else if(s.equals("sunflower")){
-                    plantList.get(0).add(new Sunflower(x,y));
+                    plantList.get(0).add(new Sunflower(boxNum));
                 }else if(s.equals("walnut")){
-                    plantList.get(0).add(new Walnut(x, y));
-                }                 
+                    plantList.get(0).add(new Walnut(boxNum));
+                }
+                else if (s.equals("PotatoMine")){
+                    plantList.get(0).add(new PotatoMine(boxNum));
+                }
             }
             else if(y>222 && y<343){
                 if(s.equals("shooter")){
-                    plantList.get(1).add(new Shooter(x,y,1));
+                    plantList.get(1).add(new Shooter(boxNum,1));
                 }
                 else if(s.equals("sunflower")){
-                    plantList.get(1).add(new Sunflower(x,y));
+                    plantList.get(1).add(new Sunflower(boxNum));
                 }else if(s.equals("walnut")){
-                    plantList.get(1).add(new Walnut(x, y));
+                    plantList.get(1).add(new Walnut(boxNum));
+                }
+                else if (s.equals("PotatoMine")){
+                    plantList.get(1).add(new PotatoMine(boxNum));
                 }
             }
             else if(y>343 && y<463){
                 if(s.equals("shooter")){
-                    plantList.get(2).add(new Shooter(332,367,2));
+                    plantList.get(2).add(new Shooter(boxNum,2));
                 }
                 else if(s.equals("sunflower")){
-                    plantList.get(2).add(new Sunflower(332,367));
+                    plantList.get(2).add(new Sunflower(boxNum));
                 }else if(s.equals("walnut")){
-                    plantList.get(2).add(new Walnut(x, y));
+                    plantList.get(2).add(new Walnut(boxNum));
+                }
+                else if (s.equals("PotatoMine")){
+                    plantList.get(2).add(new PotatoMine(boxNum));
                 }
             }
             else if(y>463 && y<579){
                    if(s.equals("shooter")){
-                       plantList.get(3).add(new Shooter(x,y,3));
+                       plantList.get(3).add(new Shooter(boxNum,3));
                    }
                    else if(s.equals("sunflower")){
-                       plantList.get(3).add(new Sunflower(x,y));
+                       plantList.get(3).add(new Sunflower(boxNum));
                    }else if(s.equals("walnut")){
-                        plantList.get(3).add(new Walnut(x, y));
+                        plantList.get(3).add(new Walnut(boxNum));
+                   }
+                else if (s.equals("PotatoMine")){
+                    plantList.get(3).add(new PotatoMine(boxNum));
                 }
             }
             else if(y>579 && y<709){
                    if(s.equals("shooter")){
-                       plantList.get(4).add(new Shooter(x,y,4));
+                       plantList.get(4).add(new Shooter(boxNum,4));
                    }
                    else if(s.equals("sunflower")){
-                       plantList.get(4).add(new Sunflower(x,y));
+                       plantList.get(4).add(new Sunflower(boxNum));
                    }else if(s.equals("walnut")){
-                        plantList.get(4).add(new Walnut(x, y));
+                        plantList.get(4).add(new Walnut(boxNum));
+                    }
+                else if (s.equals("PotatoMine")){
+                    plantList.get(4).add(new PotatoMine(boxNum));
                 }
             }
         

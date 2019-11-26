@@ -27,6 +27,12 @@ public class Sunflower extends Plant {
         
     }
     
+    public Sunflower(int boxNum){
+        setImage();
+        setPosition(boxNum);
+        lastShine = System.currentTimeMillis();
+        shineInterval = 20;
+    }
     
     
     

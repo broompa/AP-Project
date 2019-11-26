@@ -22,7 +22,15 @@ public class Shooter extends Plant{
     private int row ;
     //final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/pea_shooter.gif")));
     
-    public Shooter(double x , double y,int row){
+    public Shooter(int boxNum,int row){
+        //////// to be imlpemented plant class feature /- time to live , last added
+        lastShoot = 0L;
+        this.row= row;
+        shootInterval = 5;
+        setImage();
+        setPosition(boxNum);
+    }
+    public Shooter(double x , double y ,int row){
         //////// to be imlpemented plant class feature /- time to live , last added
         lastShoot = 0L;
         this.row= row;
@@ -35,6 +43,11 @@ public class Shooter extends Plant{
         view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/pea_shooter.gif"))));
         
     }
+    
+    
+    
+    
+    
     
     public void load(){
         setImage();

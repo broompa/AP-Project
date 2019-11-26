@@ -7,6 +7,8 @@ package project;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -45,6 +47,7 @@ public class level1Controller  {
     
     
     
+    
     private static int sunValue ;
     @FXML
     private ImageView menuButton;
@@ -54,8 +57,57 @@ public class level1Controller  {
     @FXML
     private AnchorPane anchorRoot;
     
+    @FXML
+    private Label warning;
+    
+    
     private String isSelected = null;
-     
+    
+    private static float  opacity ;
+    private static String wText;
+    
+    
+    private static final ArrayList<Integer> xPixels = new ArrayList<Integer>(Arrays.asList(305,405,495,589,680,775,871,956,1050)); 
+    private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,574));
+    
+    
+    
+    
+    public static int getXPixel(int x ){
+       int var = 0;
+        try {
+            var = xPixels.get(x);
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("xPixel Bug");
+        }
+        return var;
+    }
+    
+    
+    public static int getYPixel(int y ){
+       int var = 0;
+        try {
+            var = yPixels.get(y);
+        }
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("yPixel Bug");
+        }
+        return var;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public void inGameMenu(MouseEvent event ) throws IOException{
         if (Project.setState(3)){
             Parent root = FXMLLoader.load(getClass().getResource("ingameMenu.fxml"));
@@ -81,20 +133,30 @@ public class level1Controller  {
     public static void  setSunCount(int val ){
         sunValue = val;
     }
-    
     public static int getSunCount(){ return sunValue;}
+    public static void setOpacity(float o ){
+        opacity = o;
+    }
+    public static void setWarning (String x){
+        wText = x;
+    }
     
-    
-    
-    
-    
+    public static float getOpacity(){
+        return opacity;
+    }
+    public static String getWarning(){
+        return wText;
+    }
     
     
     public void updateSunCountLabel(MouseEvent e ) throws IOException{
           sunCount.setText(Integer.toString( sunValue));
+          warning.setText("Warning : "+wText +" is about to start" );
+          warning.setOpacity(opacity );
     }
     
     
+   
     
     
     
@@ -103,10 +165,10 @@ public class level1Controller  {
         double x = e.getX();
         double y = e.getY();
         System.out.println("("+x+","+y+")");
-        
-        if (isSelected!=null && x>=296 && x<=1166  && y>=137 &&y<=669){
+        if (isSelected!=null && x>=305 && x<=1144  && y>=116 &&y<=696){
             System.out.println("in grid");
-            levelHandler.addPlant(x,y,isSelected);
+            levelHandler.addPlant(x,y,getGridNumber(x, y),isSelected);
+            
         }
         
         
@@ -123,6 +185,9 @@ public class level1Controller  {
                 System.out.println("walnut");
                 isSelected = "walnut";
             }
+            else if (x>590 && x<645){
+                isSelected = "PotatoMine";
+            }
             else {
                 isSelected =null;
                 
@@ -134,5 +199,58 @@ public class level1Controller  {
         
         
     }
+     
+     private int getGridNumber(double x , double y){
+        int x_offset = -1;
+        int y_offset = -1;
+        if (305<=x && x<405){
+            x_offset = 1;
+        }
+        else if (405<=x && x<495){
+            x_offset =2 ;
+        }
+        else if (495<=x && x<589){
+            x_offset= 3;
+        }
+        else if (589<=x && x<680){
+            x_offset= 4;
+        }
+        else if (680<=x && x<775){
+            x_offset= 5;
+        }
+        else if (775<=x && x<871){
+            x_offset= 6;
+        }
+        else if (871<=x && x<956){
+            x_offset= 7;
+        }
+        else if (956<=x && x<1050){
+            x_offset= 8;
+        }
+        else if (1050<=x && x<1144){
+            x_offset= 9;
+        }
+        
+        if (115<=y && y<222){
+            y_offset = 0;
+        }
+        else if (222<=y && y<340){
+            y_offset =1 ;
+        }
+        else if (340<=y && y<463){
+            y_offset= 2;
+        }
+        else if (463<=y && y<574){
+            y_offset= 3;
+        }
+        else if (574<=y && y<697){
+            y_offset= 4;
+        }
+        
+        return 9*y_offset + x_offset;
+     }
+     
+     
+     
     
 }

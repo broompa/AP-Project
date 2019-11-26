@@ -16,10 +16,28 @@ import javafx.scene.image.ImageView;
  */
 public class PotatoMine extends Plant{
 
-    PotatoMine(double x, double y, int row){
+    
+    private long blastStart ;
+    private float gifTime;
+    private boolean blasting;
+    public PotatoMine(double x, double y){
         setImage();
         view.setTranslateX(x);
-        view.setTranslateY(y); 
+        view.setTranslateY(y);
+        blastStart = 0;
+        gifTime = 1.2f;
+        blasting = false;
+        health = 1;
+    }
+    
+    public PotatoMine(int boxNum){
+        setImage();
+        setPosition(boxNum);
+        blastStart = 0;
+        gifTime = 1.2f;
+        blasting = false;
+        health = 1;
+    
     }
     
     
@@ -27,6 +45,16 @@ public class PotatoMine extends Plant{
     private void setImage(){
         view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/potatoMine.gif"))));
     }
+    
+    
+    
+    public boolean isBlasting(){
+        if ( blastStart != 0 && System.currentTimeMillis()-blastStart >= 700){
+            return true;
+        }
+        return false;
+    }
+    
     
     
     @Override
@@ -38,7 +66,22 @@ public class PotatoMine extends Plant{
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        updateCoordiante();
+        
+        if (health<=0){
+            if (blastStart==0){ 
+                System.out.println("blast--> " + blastStart ) ;
+                blastStart = System.currentTimeMillis();
+                view.getChildren().setAll(new ImageView( new Image(getClass().getResourceAsStream("/project/resources/blast_potatoMine.gif"))));
+                
+            }
+            else if (System.currentTimeMillis()-blastStart>gifTime*1000){
+                isAlive = false;
+            }
+             
+            
+        }        
+        
     }
     
 }

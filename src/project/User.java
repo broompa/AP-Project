@@ -51,12 +51,17 @@ public class User implements Serializable{
         return false;
     }
     private static String parsePlayer(String s){
-        Pattern pat = Pattern.compile("[a-zA-Z0-9]+.zzz");
-        Matcher m = pat.matcher(s);
-        m.find();
-        String g = m.group(0);
-        return g.substring(0,g.lastIndexOf(".")).trim();
-        
+        try{
+            Pattern pat = Pattern.compile("[a-zA-Z0-9]+.zzz");
+            Matcher m = pat.matcher(s);
+            m.find();
+            String g = m.group(0);
+            return g.substring(0,g.lastIndexOf(".")).trim();
+        }
+        catch(IllegalStateException e){
+            System.out.println("parse Player error");
+            return "";
+        }
     }   
     
     public static String[] getPlayerList(){
