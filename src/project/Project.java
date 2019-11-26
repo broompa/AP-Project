@@ -77,9 +77,16 @@ public class Project extends Application {
         anim = new AnimationTimer(){
             @Override 
             public void handle(long now ){
-                user.update ();
+                try{
+                    user.update ();
+                }
+                catch(ZombieReached e){
+                    System.out.println("Zombie Won");
+                    System.exit(0);
+                }
             }
         };
+        
         
         g = new Group();
         g1 = new Group(root,g);
