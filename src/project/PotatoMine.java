@@ -73,7 +73,9 @@ public class PotatoMine extends Plant{
                 System.out.println("blast--> " + blastStart ) ;
                 blastStart = System.currentTimeMillis();
                 view.getChildren().setAll(new ImageView( new Image(getClass().getResourceAsStream("/project/resources/blast_potatoMine.gif"))));
-                
+                view.setTranslateY(view.getTranslateY()-13);
+                view.setTranslateX(view.getTranslateX()-5);
+            
             }
             else if (System.currentTimeMillis()-blastStart>gifTime*1000){
                 isAlive = false;
