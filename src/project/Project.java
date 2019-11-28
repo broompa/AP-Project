@@ -15,6 +15,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -82,7 +84,10 @@ public class Project extends Application {
                 }
                 catch(ZombieReached e){
                     System.out.println("Zombie Won");
-                    System.exit(0);
+                    Stage s = new Stage();
+                    s.setScene(new Scene(new Label("Zombie Won!"),150,150));
+                    s.show();
+                    stopAnimation();
                 }
             }
         };

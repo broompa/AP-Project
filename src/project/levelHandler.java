@@ -30,7 +30,7 @@ public class levelHandler implements Serializable {
     private static int sunToken;
     private ArrayList<LawnMower> lawnMowerList ; 
     private transient ProgressBar progress ;
-    private double progressBarOffset;  // progress bar
+    private double wZombieOffset;  // progress bar
     ////////////////////for serialization
     private  ArrayList<ArrayList<Plant>> plantList1;  
     /// for zombie wave
@@ -40,19 +40,18 @@ public class levelHandler implements Serializable {
     private float wTimeGap;
     private int wZombieCount;
     private float wSpawnTime;
+    private final int MAX_WAVE ;
     
-    
-    
+    double prev ;// temporary
     
     
     
     public levelHandler(int level){
-      
+      this.level = level;
         
+        MAX_WAVE = 3;// to be changed 
         
-        this.level = level;
         setZombieCount();
-        progressBarOffset = zombieCount;   
         sunToken= 0;
         lastZombieAdded = 0L;
         lastSunAdded = 0L;
@@ -177,9 +176,13 @@ public class levelHandler implements Serializable {
     public void update(){
         spawnZombies();
         shineSun();
-        progress.setProgress((double)((progressBarOffset-zombieCount)/(progressBarOffset)) );
         
-        
+//        if ((double)(((wZombieOffset- wZombieCount))/(MAX_WAVE*wZombieOffset)+(wState-1)/MAX_WAVE) != prev){
+//            System.out.println(("Progress: "+(double)(((wZombieOffset- wZombieCount)/(MAX_WAVE*wZombieOffset))+((wState-1)/MAX_WAVE))  ));
+//        }
+//        progress.setProgress((double)(((wZombieOffset- wZombieCount)/(MAX_WAVE*wZombieOffset))+((wState-1)/MAX_WAVE)) );
+//        prev =(double)((((wZombieOffset- wZombieCount))/(MAX_WAVE*wZombieOffset))+(wState-1)/MAX_WAVE) ;
+//        
         
         
         ////////////////////////////////////////////////////////////////////
@@ -307,19 +310,20 @@ public class levelHandler implements Serializable {
     private void setWaveParameters(){
         System.out.println("Wave: "+wState);
         switch(wState){
-            case 0:
+            case 1:
                 wZombieCount = (int)zombieCount/5;
                 wSpawnTime = 2*spawnTime;
                 break;
-            case 1:
+            case 2:
                 wZombieCount = (int)zombieCount/2;
                 wSpawnTime = (float)(1.5*spawnTime);
                 break;
-            case 2:
+            case 3:
                 wZombieCount = zombieCount;
                 wSpawnTime = spawnTime;
                 break;
         }
+        wZombieOffset = wZombieCount;
     
     }
     public void spawnZombies(){
@@ -328,11 +332,11 @@ public class levelHandler implements Serializable {
             int ran = (int)(Math.random()*5);
             zombieList.get(ran).add(new Zombie(ran));
             lastZombieAdded = System.currentTimeMillis();
-        }else if (wState<2 && wZombieCount < 0 && System.currentTimeMillis()-lastZombieAdded>=wTimeGap*1000){
+        }else if (wState<MAX_WAVE && wZombieCount < 0 && System.currentTimeMillis()-lastZombieAdded>=wTimeGap*1000){
             
             wState++;
             setWaveParameters();
-        }else if (wZombieCount<=0){
+        }else if (wZombieCount<=0 && wState< MAX_WAVE){
             level1Controller.setOpacity(1);
             level1Controller.setWarning("Wave "+ (wState+1));
         }
