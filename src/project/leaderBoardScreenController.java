@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -32,6 +33,26 @@ public class leaderBoardScreenController  {
     
     @FXML
     private AnchorPane anchorRoot;
+    @FXML
+    private Label user1;
+    @FXML
+    private Label user2;
+    @FXML
+    private Label user3;
+    @FXML
+    private Label user4;
+    @FXML
+    private Label user5;
+    @FXML
+    private Label score1;
+    @FXML
+    private Label score2;
+    @FXML
+    private Label score3;
+    @FXML
+    private Label score4;
+    @FXML
+    private Label score5;
     
     
     @FXML

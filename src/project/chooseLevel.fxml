@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="506.0" fitWidth="822.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@userDetailsScreen.jpg" />
+                  <Image url="@resources/Background/background_UserDetailsScreen.PNG" />
                </image>
             </ImageView>
             <Button fx:id="userScreenBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#user_back" prefHeight="30.0" prefWidth="64.0" text="Back" />

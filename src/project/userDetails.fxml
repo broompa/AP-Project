@@ -18,7 +18,7 @@
          <children>
             <ImageView fitHeight="750.0" fitWidth="1207.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@userDetailsScreen.PNG" />
+                  <Image url="@resources/Background/background_UserDetailsScreen.PNG" />
                </image>
             </ImageView>
             <Label fx:id="userScreenLabel" layoutX="402.0" layoutY="611.0" prefHeight="36.0" prefWidth="278.0" textFill="WHITE">
@@ -37,12 +37,12 @@
                </font></Label>
             <ImageView fx:id="proceedButton" fitHeight="52.0" fitWidth="150.0" layoutX="522.0" layoutY="469.0" onMouseClicked="#user_proceed" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@proceedButton.png" />
+                  <Image url="@resources/Game_Buttons/proceedButton.png" />
                </image>
             </ImageView>
             <ImageView fx:id="backButton" fitHeight="37.0" fitWidth="113.0" layoutX="26.0" layoutY="22.0" onMouseClicked="#user_back" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@backButton.png" />
+                  <Image url="@resources/Game_Buttons/backButton.png" />
                </image>
             </ImageView>
          </children>
