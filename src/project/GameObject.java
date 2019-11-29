@@ -19,7 +19,7 @@ public abstract class GameObject implements Serializable {
     transient protected Timeline timeline;
     transient protected Group view = new Group();
     protected double px , py ;
-    
+    private static final long serialVersionUID = 42L;
     public GameObject(){
         isAlive = true;
         health = 10;

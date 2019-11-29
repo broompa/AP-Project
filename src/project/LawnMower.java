@@ -16,7 +16,6 @@ import javafx.scene.image.ImageView;
 public class LawnMower extends GameObject {
     private boolean move ;
     private double speed;
-    
     // transient ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/lawn_mower.gif")));
     public LawnMower(int x , int y ){
         setImage();
