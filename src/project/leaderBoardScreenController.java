@@ -59,8 +59,9 @@ public class leaderBoardScreenController  {
                     System.out.println("IO Error");
                     System.exit(0);
                 }
-                }
-        });
-    }
+            }
+            
+    });
 
+}
 }

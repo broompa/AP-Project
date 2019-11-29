@@ -9,11 +9,11 @@ package project;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -68,9 +68,16 @@ public class level1Controller  {
     
     
     private static final ArrayList<Integer> xPixels = new ArrayList<Integer>(Arrays.asList(305,405,495,589,680,775,871,956,1050)); 
-    private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,574));
-    
-    
+    private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,584));
+    //private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,574));
+    private static HashMap<String, Integer>  cost = new HashMap<String , Integer>();
+    {// initialization
+        cost.put("shooter",25);
+        cost.put("sunflower",25);
+        cost.put("walnut",25);
+        cost.put("PotatoMine",25);
+        
+    }
     
     
     public static int getXPixel(int x ){
@@ -95,18 +102,6 @@ public class level1Controller  {
         }
         return var;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     public void inGameMenu(MouseEvent event ) throws IOException{
         if (Project.setState(3)){
@@ -151,24 +146,24 @@ public class level1Controller  {
     
     public void updateSunCountLabel(MouseEvent e ) throws IOException{
           sunCount.setText(Integer.toString( sunValue));
-          warning.setText("Warning : "+wText +" is about to start" );
+          warning.setText(wText );
           warning.setOpacity(opacity );
     }
+    
     
     
    
     
     
-    
     // test function to check pixel boundation
-     public void clickTest(MouseEvent e) throws IOException{
+    public void clickTest(MouseEvent e) throws IOException{
         double x = e.getX();
         double y = e.getY();
         System.out.println("("+x+","+y+")");
-        if (isSelected!=null && x>=305 && x<=1144  && y>=116 &&y<=696){
+        if (isSelected!=null && cost.get(isSelected)<=sunValue && x>=305 && x<=1144  && y>=116 &&y<=696){
             System.out.println("in grid");
             levelHandler.addPlant(x,y,getGridNumber(x, y),isSelected);
-            
+            sunValue = sunValue - cost.get(isSelected);
         }
         
         

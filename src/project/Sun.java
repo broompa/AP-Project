@@ -86,8 +86,9 @@ public class Sun extends GameObject{
     
     @Override
     public void update() {
-        if (view.getTranslateY()<stopLine && move){
-        view.setTranslateY(view.getTranslateY()+0.5);}
+        if (view.getTranslateY()<stopLine && move && isAlive){
+            view.setTranslateY(view.getTranslateY()+0.5);}
+        updateCoordiante();
     }
 
     @Override
@@ -99,4 +100,10 @@ public class Sun extends GameObject{
     private void setImage (){
         view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/sun.gif"))));
    }
+   
+   public String toString(){
+       return new String("Sun at ("+ px+","+py+")");
+   }
+    
+    
 }

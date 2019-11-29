@@ -6,9 +6,15 @@
 package project;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.regex.Pattern;
 
 /**
@@ -23,16 +29,37 @@ public class User implements Serializable{
     private boolean isLevelCompleted;
     private String name ;
     private levelHandler level;
+    private int score;
+    
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+        System.out.println("Score is "+ score);
+    }
+    
+    
     
     public User(String name){
         this.name =name;
-        this.currentLevel=0;
+        this.currentLevel=1;
         this.isLevelCompleted=true;
         this.diamonds=0;
         this.level = new levelHandler(1);
+        this.score= 0;
+        System.out.println(getUserList());
     }
     
     public String getName(){return name;}
+    
+    
+    
+    public void restart(){
+        this.level = new levelHandler(currentLevel);
+    }
+    
     
     public void update() {
         level.update();       
@@ -81,6 +108,35 @@ public class User implements Serializable{
         level.load();
     
     }
+    
+    public static ArrayList<User> getUserList() {
+        String [] arr = getPlayerList();
+        
+        ArrayList<User> list = new ArrayList<User>();
+        
+        for(String s : arr){
+            try{
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(System.getProperty("user.dir")+"//userFiles//"+s+".zzz"));
+            list.add((User)in.readObject());
+            }catch(Exception e){
+                e.printStackTrace();
+                System.out.println("User Comparator");
+            }
+        
+        }
+        
+        Collections.sort(list, UserComparator.getComparator());
+           
+        return list;
+            
+            
+        /*
+            
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(System.getProperty("user.dir")+"//userFiles//"+chooseUser.getValue().toString()+".zzz"));
+            User g = (User) in.readObject();
+            
+            */    
+    } 
     
     
 }

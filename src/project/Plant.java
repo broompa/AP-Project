@@ -41,6 +41,9 @@ public abstract class Plant extends GameObject {/////test shooter class
         
     
     }
+    public int getBoxNum(){
+        return boxNum;
+    }
 
 
 }

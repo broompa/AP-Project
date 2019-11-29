@@ -76,19 +76,22 @@ public class Project extends Application {
         
         state= 0;
         Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+        
         anim = new AnimationTimer(){
             @Override 
             public void handle(long now ){
+                Stage s = null;
                 try{
                     user.update ();
                 }
                 catch(ZombieReached e){
-                    System.out.println("Zombie Won");
-                    Stage s = new Stage();
-                    s.setScene(new Scene(new Label("Zombie Won!"),150,150));
-                    s.show();
                     stopAnimation();
+                    
                 }
+                catch(GameWinning e){
+                    // to be handled
+                }
+                
             }
         };
         
