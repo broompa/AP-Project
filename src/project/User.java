@@ -119,8 +119,8 @@ public class User implements Serializable{
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(System.getProperty("user.dir")+"//userFiles//"+s+".zzz"));
             list.add((User)in.readObject());
             }catch(Exception e){
-                e.printStackTrace();
-                System.out.println("User Comparator");
+               
+                System.out.println(s);
             }
         
         }
@@ -130,12 +130,7 @@ public class User implements Serializable{
         return list;
             
             
-        /*
-            
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(System.getProperty("user.dir")+"//userFiles//"+chooseUser.getValue().toString()+".zzz"));
-            User g = (User) in.readObject();
-            
-            */    
+        
     } 
     
     
