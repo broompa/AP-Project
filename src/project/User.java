@@ -40,6 +40,10 @@ public class User implements Serializable{
         System.out.println("Score is "+ score);
     }
     
+    public String toString(){
+        return new String(this.name + " :" + score);
+    
+}
     
     
     public User(String name){
