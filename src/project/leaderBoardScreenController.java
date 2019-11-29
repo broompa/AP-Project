@@ -65,7 +65,7 @@ public class leaderBoardScreenController  {
         ArrayList<User>  ar = User.getUserList();
         System.out.println(ar);
         System.out.println(Integer.toString(ar.get(0).getScore()));
-        score1.setText(Integer.toString(ar.get(0).getScore()));
+//        score1.setText(Integer.toString(ar.get(0).getScore()));
     }
 //    public void user_back() throws IOException{
 //        backButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
@@ -111,10 +111,12 @@ public class leaderBoardScreenController  {
         }
     }
     
-    public void backButtonEnter(MouseEvent e){
-        backButton.setImage(new Image(getClass().getResourceAsStream("/project/resources/Game_Buttons/exitButton.png")));
+    public void buttonEnter(MouseEvent e){
+//        backButton.setImage(new Image(getClass().getResourceAsStream("/project/resources/Game_Buttons/exitButton.png")));
+        backButton.setOpacity(0.75);
     }
-    public void backButtonExit(MouseEvent e ){
-        backButton.setImage(new Image(getClass().getResourceAsStream("/project/resources/Game_Buttons/backButton.png")));
+    public void buttonExit(MouseEvent e ){
+//        backButton.setImage(new Image(getClass().getResourceAsStream("/project/resources/Game_Buttons/backButton.png")));
+        backButton.setOpacity(1);
     }
 }

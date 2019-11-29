@@ -93,5 +93,16 @@ public class ingameMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+    public void saveButtonEnter(MouseEvent e){
+        saveandexitButton.setOpacity(0.75);
+    }
+    public void saveButtonExit(MouseEvent e ){
+        saveandexitButton.setOpacity(1);
+    }
+    public void backButtonEnter(MouseEvent e){
+        backButton.setOpacity(0.75);
+    }
+    public void backButtonExit(MouseEvent e ){
+        backButton.setOpacity(1);
+    }
 }

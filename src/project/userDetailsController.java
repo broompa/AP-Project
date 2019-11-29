@@ -112,6 +112,19 @@ public class userDetailsController {
             textFieldAge.setText("");
         }
     }
+    public void backButtonEnter(MouseEvent e){
+        backButton.setOpacity(0.75);
+    }
+    public void backButtonExit(MouseEvent e ){
+        backButton.setOpacity(1);
+    }
+    public void proceedButtonEnter(MouseEvent e){
+        proceedButton.setOpacity(0.75);
+    }
+    public void proceedButtonExit(MouseEvent e ){
+        proceedButton.setOpacity(1);
+    }
+   
 
 }
 

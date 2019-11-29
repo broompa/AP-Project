@@ -53,4 +53,10 @@ public class creditsScreenController {
             t.play();
         }
     }
+    public void backButtonEnter(MouseEvent e){
+        backButton.setOpacity(0.75);
+    }
+    public void backButtonExit(MouseEvent e ){
+        backButton.setOpacity(1);
+    }
 }

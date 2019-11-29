@@ -244,7 +244,12 @@ public class level1Controller  {
         
         return 9*y_offset + x_offset;
      }
-     
+    public void menuButtonEnter(MouseEvent e){
+        menuButton.setOpacity(0.75);
+    }
+    public void menuButtonExit(MouseEvent e ){
+        menuButton.setOpacity(1);
+    } 
      
      
     

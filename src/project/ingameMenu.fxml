@@ -18,12 +18,12 @@
                   <Image url="@resources/Background/background_MainScreen.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="saveandexitButton" fitHeight="52.0" fitWidth="154.0" layoutX="498.0" layoutY="262.0" onMouseClicked="#saveAndExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="saveandexitButton" fitHeight="52.0" fitWidth="154.0" layoutX="498.0" layoutY="262.0" onMouseClicked="#saveAndExit" onMouseEntered="#saveButtonEnter" onMouseExited="#saveButtonExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/saveButton.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="backButton" fitHeight="49.0" fitWidth="179.0" layoutX="500.0" layoutY="456.0" onMouseClicked="#user_back" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="backButton" fitHeight="49.0" fitWidth="179.0" layoutX="500.0" layoutY="456.0" onMouseClicked="#user_back" onMouseEntered="#backButtonEnter" onMouseExited="#backButtonExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/backButton.png" />
                </image>

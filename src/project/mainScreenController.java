@@ -127,5 +127,40 @@ public class mainScreenController{
             t.play();
         }
     }
-    
+    public void leaderboardButtonEnter(MouseEvent e){
+        leaderboardButton.setOpacity(0.75);
+    }
+    public void leaderboardButtonExit(MouseEvent e ){
+        leaderboardButton.setOpacity(1);
+    }
+    public void creditsButtonEnter(MouseEvent e){
+        creditsButton.setOpacity(0.75);
+    }
+    public void creditsButtonExit(MouseEvent e ){
+        creditsButton.setOpacity(1);
+    }
+    public void almanacButtonEnter(MouseEvent e){
+        almanacButton.setOpacity(0.75);
+    }
+    public void almanacButtonExit(MouseEvent e ){
+        almanacButton.setOpacity(1);
+    }
+    public void exitButtonEnter(MouseEvent e){
+        exitButton.setOpacity(0.75);
+    }
+    public void exitButtonExit(MouseEvent e ){
+        exitButton.setOpacity(1);
+    }
+    public void resumeButtonEnter(MouseEvent e){
+        resumegameButton.setOpacity(0.75);
+    }
+    public void resumeButtonExit(MouseEvent e ){
+        resumegameButton.setOpacity(1);
+    }
+    public void newgameButtonEnter(MouseEvent e){
+        newgameButton.setOpacity(0.75);
+    }
+    public void newgameButtonExit(MouseEvent e ){
+        newgameButton.setOpacity(1);
+    }
 }

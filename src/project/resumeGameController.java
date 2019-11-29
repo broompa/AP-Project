@@ -42,7 +42,8 @@ public class resumeGameController implements Initializable {
     private ComboBox chooseUser; 
     @FXML
     private ImageView backButton;
-    
+    @FXML
+    private ImageView proceedButton;
     
     
     public void resume(MouseEvent e) throws Exception{
@@ -101,6 +102,18 @@ public class resumeGameController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         String[] arr = User.getPlayerList();
         chooseUser.getItems().addAll(arr);
+    }
+    public void backButtonEnter(MouseEvent e){
+        backButton.setOpacity(0.75);
+    }
+    public void backButtonExit(MouseEvent e ){
+        backButton.setOpacity(1);
+    }
+    public void proceedButtonEnter(MouseEvent e){
+        proceedButton.setOpacity(0.75);
+    }
+    public void proceedButtonExit(MouseEvent e ){
+        proceedButton.setOpacity(1);
     }
     
 }

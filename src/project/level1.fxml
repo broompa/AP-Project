@@ -25,7 +25,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <ImageView fx:id="menuButton" fitHeight="47.0" fitWidth="164.0" layoutX="1056.0" layoutY="3.0" onMouseClicked="#inGameMenu" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="menuButton" fitHeight="47.0" fitWidth="164.0" layoutX="1056.0" layoutY="3.0" onMouseClicked="#inGameMenu" onMouseEntered="#menuButtonEnter" onMouseExited="#menuButtonExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/menuButton.png" />
                </image>
