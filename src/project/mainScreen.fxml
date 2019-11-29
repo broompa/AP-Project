@@ -15,47 +15,47 @@
          <children>
             <ImageView fitHeight="819.0" fitWidth="1203.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@mainScreen.jpg" />
+                  <Image url="@resources/Background/background_MainScreen.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="752.0" fitWidth="777.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Snow.gif" />
+                  <Image url="@resources/Background/Snow.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="775.0" fitWidth="754.0" layoutX="448.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Snow.gif" />
+                  <Image url="@resources/Background/Snow.gif" />
                </image>
             </ImageView>
             <ImageView fx:id="newgameButton" fitHeight="121.0" fitWidth="128.0" layoutX="134.0" layoutY="635.0" onMouseClicked="#newGame" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@newgameButton.png" />
+                  <Image url="@resources/Game_Buttons/newgameButton.png" />
                </image>
             </ImageView>
             <ImageView fx:id="resumegameButton" fitHeight="121.0" fitWidth="128.0" layoutX="429.0" layoutY="635.0" onMouseClicked="#resumeGame" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@resumegameButton.png" />
+                  <Image url="@resources/Game_Buttons/resumegameButton.png" />
                </image>
             </ImageView>
             <ImageView fx:id="almanacButton" fitHeight="121.0" fitWidth="128.0" layoutX="963.0" layoutY="637.0" onMouseClicked="#almanac" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@almanacButton.png" />
+                  <Image url="@resources/Game_Buttons/almanacButton.png" />
                </image>
             </ImageView>
             <ImageView fx:id="leaderboardButton" fitHeight="121.0" fitWidth="128.0" layoutX="719.0" layoutY="639.0" onMouseClicked="#leaderboard" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@leaderboardButton.png" />
+                  <Image url="@resources/Game_Buttons/leaderboardButton.png" />
                </image>
             </ImageView>
             <ImageView fx:id="exitButton" fitHeight="41.0" fitWidth="149.0" layoutX="1026.0" layoutY="45.0" onMouseClicked="#exitGame" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@exitButton.png" />
+                  <Image url="@resources/Game_Buttons/exitButton.png" />
                </image>
             </ImageView>
             <ImageView fx:id="creditsButton" fitHeight="44.0" fitWidth="145.0" layoutX="45.0" layoutY="38.0" onMouseClicked="#credits" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@creditsButton.png" />
+                  <Image url="@resources/Game_Buttons/creditsButton.png" />
                </image>
             </ImageView>
          </children>

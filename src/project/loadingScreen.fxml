@@ -17,7 +17,7 @@
          <children>
             <ImageView fx:id="img" fitHeight="813.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@resources/Background/Background4.jpg" />
+                  <Image url="@resources/Background/background_4.jpg" />
                </image>
             </ImageView>
             <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="318.0" layoutY="29.0" prefHeight="18.0" prefWidth="554.0" text="LOADING..." textAlignment="CENTER" textFill="WHITE">

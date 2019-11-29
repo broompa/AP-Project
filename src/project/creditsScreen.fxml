@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="760.0" fitWidth="1255.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@creditsScreen.jpg" />
+                  <Image url="@resources/Background/background_CreditsScreen.jpg" />
                </image>
             </ImageView>
             <Label layoutX="503.0" layoutY="102.0" prefHeight="54.0" prefWidth="249.0" text="Made by :" underline="true">
@@ -34,7 +34,7 @@
                </font></Label>
             <ImageView fx:id="backButton" fitHeight="56.0" fitWidth="160.0" layoutX="34.0" layoutY="24.0" onMouseClicked="#user_back" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@backButton.png" />
+                  <Image url="@resources/Game_Buttons/backButton.png" />
                </image>
             </ImageView>
          </children>
