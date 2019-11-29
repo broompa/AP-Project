@@ -32,10 +32,10 @@ public class UserComparator implements Comparator<User> {
             return 0;
         }
         else if (o1.getScore()> o2.getScore()){
-            return 1;
+            return -1;
         }
         else {
-            return -1;
+            return 1;
         }
     }
     

@@ -7,6 +7,7 @@
 package project;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -60,6 +61,12 @@ public class leaderBoardScreenController  {
     @FXML
     private ImageView backButton;
 
+    public leaderBoardScreenController() {
+        ArrayList<User>  ar = User.getUserList();
+        System.out.println(ar);
+        System.out.println(Integer.toString(ar.get(0).getScore()));
+        score1.setText(Integer.toString(ar.get(0).getScore()));
+    }
 //    public void user_back() throws IOException{
 //        backButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
 //            @Override
