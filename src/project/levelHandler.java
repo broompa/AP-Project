@@ -43,12 +43,15 @@ public class levelHandler implements Serializable {
     private float wSpawnTime;
     private final int MAX_WAVE ;
     private float initialWait ;
-    private long initialCount ; // store time instant when levelhandler instantiate, initial time delay
-    
+    private long timeInstant ; // store time instant when levelhandler instantiate, initial time delay
+    private boolean warning;
+    private boolean preparation ;
+    private float minimumWaveTime ;
     public levelHandler(int level){
       this.level = level;
-        
-        MAX_WAVE = 3;// to be changed 
+        preparation = true;
+        warning = true;
+        MAX_WAVE = 4;// to be changed 
         
         setZombieCount();
         sunToken= 0;
@@ -60,22 +63,21 @@ public class levelHandler implements Serializable {
         zombieList = new ArrayList<ArrayList<Zombie>>();
         containers();
         plantList1 = plantList;
-        wState=0;
+        wState=1;
         setWaveParameters();
-        initialWait = 7;
-        initialCount = System.currentTimeMillis();
+        initialWait = 4;
+        timeInstant = System.currentTimeMillis();
+        minimumWaveTime = 10f;
     }
     
     
     public static int getSunCount(){return sunToken;}
-    
-    
     public void setZombieCount(){
         switch(level){
             case 1 :
-                zombieCount =50 ;
+                zombieCount =5 ;
                 spawnTime = 1;//to be changed
-                wTimeGap = 1;
+                wTimeGap = 4;
                 break;
             case 2:
                 zombieCount = 10;
@@ -172,12 +174,6 @@ public class levelHandler implements Serializable {
         spawnZombies();
         shineSun();
         
-//        if ((double)(((wZombieOffset- wZombieCount))/(MAX_WAVE*wZombieOffset)+(wState-1)/MAX_WAVE) != prev){
-//            System.out.println(("Progress: "+(double)(((wZombieOffset- wZombieCount)/(MAX_WAVE*wZombieOffset))+((wState-1)/MAX_WAVE))  ));
-//        }
-//        progress.setProgress((double)(((wZombieOffset- wZombieCount)/(MAX_WAVE*wZombieOffset))+((wState-1)/MAX_WAVE)) );
-//        prev =(double)((((wZombieOffset- wZombieCount))/(MAX_WAVE*wZombieOffset))+(wState-1)/MAX_WAVE) ;
-//        
         
         
         ////////////////////////////////////////////////////////////////////
@@ -192,21 +188,13 @@ public class levelHandler implements Serializable {
              
             }
         }
-        for (int x = 0 ; x<plantList.size();x++){
-            for (int i =  0 ; i < plantList.get(x).size();i++){ 
-                if (plantList.get(x).get(i).getIsAlive()){
-                    plantList.get(x).get(i).update();
-                    Project.addToGroup(plantList.get(x).get(i).getView()); }
-                else {
-                    Project.removeFromGroup(plantList.get(x).get(i).getView());
-                    placed[plantList.get(x).get(i).getBoxNum()-1] = false; 
-                    plantList.get(x).remove(plantList.get(x).get(i));
-                }
-            }
-        }
+        boolean[] arr  =  new boolean[5];
+        int zombieCount  =0 ;
         for (int x = 0 ; x<zombieList.size();x++){
+            arr [x] = (zombieList.get(x).size()>0)?true:false;
             for (int i =  0 ; i < zombieList.get(x).size();i++){
                 if (zombieList.get(x).get(i).getIsAlive()){
+                    zombieCount += 1;
                     zombieList.get(x).get(i).update();
                     Project.addToGroup(zombieList.get(x).get(i).getView());}
                 else if (System.currentTimeMillis()-zombieList.get(x).get(i).getDeadTime()>700){
@@ -215,6 +203,36 @@ public class levelHandler implements Serializable {
                     Project.getUser().setScore(Project.getUser().getScore()+20);
                     ///////////////increment score
                 
+                }
+            }
+        }
+        if (!warning && wZombieCount <=0 && zombieCount ==0 && (System.currentTimeMillis() - timeInstant) > minimumWaveTime*1000){
+            if (wState < MAX_WAVE){
+                wState ++;
+                setWaveParameters();
+                warning = true;
+            }
+            else{
+                throw new GameWinning();
+            }
+            
+        }
+        
+        
+        
+        for (int x = 0 ; x<plantList.size();x++){
+            for (int i =  0 ; i < plantList.get(x).size();i++){ 
+                if (plantList.get(x).get(i).getIsAlive()){
+                    plantList.get(x).get(i).update();
+                    if (plantList.get(x).get(i) instanceof Shooter ){
+                        Shooter shooter = (Shooter)plantList.get(x).get(i);
+                        shooter.setShoot(arr[x]);
+                    }
+                    Project.addToGroup(plantList.get(x).get(i).getView()); }
+                else {
+                    Project.removeFromGroup(plantList.get(x).get(i).getView());
+                    placed[plantList.get(x).get(i).getBoxNum()-1] = false; 
+                    plantList.get(x).remove(plantList.get(x).get(i));
                 }
             }
         }
@@ -324,30 +342,50 @@ public class levelHandler implements Serializable {
         wZombieOffset = wZombieCount;
     
     }
+
     public void spawnZombies(){
-        if (System.currentTimeMillis()-initialCount <=  initialWait*1000){
+        if (preparation && System.currentTimeMillis()-timeInstant <=  initialWait*1000){
             return ;
+        }else if (preparation){
+            preparation = false;
+            timeInstant = System.currentTimeMillis();
+            return;
         }
-        if (System.currentTimeMillis()-lastZombieAdded>=wSpawnTime*1000 && wZombieCount-- > 0){
-            level1Controller.setOpacity(0);
-            int ran = (int)(Math.random()*5);
-            zombieList.get(ran).add(new Zombie(ran));
-            lastZombieAdded = System.currentTimeMillis();
-        }else if (wState<MAX_WAVE && wZombieCount < 0 && System.currentTimeMillis()-lastZombieAdded>=wTimeGap*1000){
-            wState++;
-            setWaveParameters();
-        }else if (wZombieCount<=0 && wState< MAX_WAVE){
-            level1Controller.setOpacity(1);
-            level1Controller.setWarning("Wave "+ (wState+1)+ " Warning.");
+        if (wState < MAX_WAVE){
+            if (warning){
+                level1Controller.setWarning("Warning Wave "+ wState);
+                level1Controller.setOpacity(1);
+                
+                if (System.currentTimeMillis()-timeInstant>wTimeGap*1000 ){
+                    System.out.println("time up");
+                    timeInstant = System.currentTimeMillis();
+                    warning = false;
+                    level1Controller.setOpacity(0);
+                    // set parameters
+                }
+            }
+            else{
+               
+                if (System.currentTimeMillis()-timeInstant>wSpawnTime*1000 && wZombieCount>0){
+                    int ran = (int)(Math.random()*5);
+                    zombieList.get(ran).add(new Zombie(ran));
+                    timeInstant = System.currentTimeMillis();
+                    wZombieCount -= 1;
+                }
             
+            }
+        
         }
+        
+        
+        
+        
+        
+        
     
     
     }
     
-    public void spawnZombies1(){
-    
-    }
     
     
     

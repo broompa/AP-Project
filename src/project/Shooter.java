@@ -21,7 +21,7 @@ public class Shooter extends Plant{
     private int shootInterval;
     private int row ;
     //final ImageView im1= new ImageView(new Image(getClass().getResourceAsStream("/project/resources/pea_shooter.gif")));
-    
+    private boolean zombieThere;
     public Shooter(int boxNum,int row){
         //////// to be imlpemented plant class feature /- time to live , last added
         lastShoot = 0L;
@@ -29,6 +29,7 @@ public class Shooter extends Plant{
         shootInterval = 5;
         setImage();
         setPosition(boxNum);
+        zombieThere = false;
     }
     public Shooter(double x , double y ,int row){
         //////// to be imlpemented plant class feature /- time to live , last added
@@ -43,7 +44,7 @@ public class Shooter extends Plant{
         view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/pea_shooter.gif"))));
         
     }
-    
+    public void setShoot(boolean x){ this.zombieThere = x;}
     
     
     
@@ -59,7 +60,7 @@ public class Shooter extends Plant{
     @Override
     public void update() {
        if (this.health <= 0){ this.isAlive = false;}
-       if (System.currentTimeMillis()-lastShoot>shootInterval*1000){
+       if (System.currentTimeMillis()-lastShoot>shootInterval*1000 && zombieThere ){
            lastShoot=System.currentTimeMillis();
            levelHandler.addPea(view.getTranslateX()+30,view.getTranslateY(),row);
        }

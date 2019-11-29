@@ -29,7 +29,7 @@ public class Zombie extends GameObject {
     Zombie(int row) {
         //////////////////////////////////////////
         move = true ;
-        speed = 1f;// to be edited
+        speed = 0.7f;// to be edited
         damage = 0.05f;
         setImage();
     /////////////////////////////////////////////////////

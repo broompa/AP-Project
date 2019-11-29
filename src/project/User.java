@@ -59,7 +59,10 @@ public class User implements Serializable{
     public void restart(){
         this.level = new levelHandler(currentLevel);
     }
-    
+    public void NextLevel(){
+        currentLevel += 1;
+        this.level = new levelHandler(currentLevel);
+    }
     
     public void update() {
         level.update();       
@@ -90,7 +93,6 @@ public class User implements Serializable{
             return "";
         }
     }   
-    
     public static String[] getPlayerList(){
         File file = new File(System.getProperty("user.dir")+"\\userFiles\\");
         File[] ls = file.listFiles();

@@ -80,7 +80,7 @@ public class Project extends Application {
         anim = new AnimationTimer(){
             @Override 
             public void handle(long now ){
-                Stage s = null;
+                
                 try{
                     user.update ();
                 }
@@ -89,7 +89,7 @@ public class Project extends Application {
                     
                 }
                 catch(GameWinning e){
-                    // to be handled
+                    
                 }
                 
             }
