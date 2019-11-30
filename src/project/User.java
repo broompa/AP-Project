@@ -84,10 +84,12 @@ public class User implements Serializable{
     
     public void restart(){
         this.level = new levelHandler(currentLevel);
+        level.restart();
     }
     public void NextLevel(){
         currentLevel += 1;
         this.level = new levelHandler(currentLevel);
+        level.restart();
     }
     
     public void update()  {

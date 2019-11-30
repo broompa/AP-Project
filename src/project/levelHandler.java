@@ -28,7 +28,6 @@ public class levelHandler implements Serializable {
     private float spawnTime; // Zombie 
     private final float sunTime ;
     private long lastSunAdded;
-    private static int sunToken;
     private ArrayList<LawnMower> lawnMowerList ; 
     private transient ProgressBar progress ;
     private double wZombieOffset;  // progress bar
@@ -64,7 +63,6 @@ public class levelHandler implements Serializable {
         MAX_WAVE = 4;// to be changed 
         
         setZombieCount();
-        sunToken= 0;
         lastZombieAdded = 0L;
         lastSunAdded = 0L;
         sunTime = 5;
@@ -84,6 +82,9 @@ public class levelHandler implements Serializable {
     public static void restart(){
         for(int x =0 ;x<45;x++){
             placed[x] = false;
+            if (plantMap.containsKey(x)){
+                plantMap.get(x).setIsAlive(false);
+            }
         
         }
         plantMap = new HashMap<Integer, Plant>();
@@ -91,7 +92,7 @@ public class levelHandler implements Serializable {
     }
     
     
-    public static int getSunCount(){return sunToken;}
+//    public static int getSunCount(){return sunToken;}
     public void setZombieCount(){
         switch(level){
             case 1 :
@@ -293,8 +294,6 @@ public class levelHandler implements Serializable {
                 Project.removeFromGroup(sunList.get(x).getView());
                 System.out.println(sunList.get(x));
                 sunList.remove(sunList.get(x));
-                
-                sunToken += 25;
                 level1Controller.setSunCount(level1Controller.getSunCount()+25);
             }
         }
