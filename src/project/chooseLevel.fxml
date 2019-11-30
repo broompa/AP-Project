@@ -10,18 +10,18 @@
 
 <StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.chooseLevelController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="500.0" prefWidth="800.0" styleClass="mainFxmlClass">
+      <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="750.0" prefWidth="1200.0" styleClass="mainFxmlClass">
           <stylesheets>
               <URL value="@chooseLevel.css" />
           </stylesheets>
          <children>
-            <ImageView fitHeight="506.0" fitWidth="822.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Background/background_UserDetailsScreen.PNG" />
                </image>
             </ImageView>
-            <Button fx:id="userScreenBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#user_back" prefHeight="30.0" prefWidth="64.0" text="Back" />
-            <ComboBox layoutX="316.0" layoutY="204.0" prefHeight="30.0" prefWidth="154.0" promptText="Choose Level" />
+            <Button fx:id="userScreenBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#user_back" prefHeight="37.0" prefWidth="131.0" text="Back" />
+            <ComboBox layoutX="480.0" layoutY="352.0" prefHeight="46.0" prefWidth="238.0" promptText="Choose Level" />
          </children>
       </AnchorPane>
    </children>
