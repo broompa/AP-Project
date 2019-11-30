@@ -55,6 +55,7 @@ public class resumeGameController implements Initializable {
             Parent root = null;
             try {
                 if (Project.setState(2)){
+                    
                     root = FXMLLoader.load(getClass().getResource("level1.fxml"));
                     Scene sc = backButton.getScene();
                     root.translateYProperty().set(-sc.getHeight());

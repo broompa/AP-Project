@@ -5,8 +5,10 @@
  */
 package project;
 
+import com.sun.javafx.font.freetype.HBGlyphLayout;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javafx.scene.Group;
 import javafx.scene.control.ProgressBar;
 
@@ -30,13 +32,21 @@ public class levelHandler implements Serializable {
     private ArrayList<LawnMower> lawnMowerList ; 
     private transient ProgressBar progress ;
     private double wZombieOffset;  // progress bar
-    ////////////////////for serialization
+    
+
+
+
+    //////plant remove 
+    private static HashMap<Integer , Plant> plantMap ;
+
+
+////////////////////for serialization
     private static final long serialVersionUID = 42L;
     
     private  ArrayList<ArrayList<Plant>> plantList1;  
     /// for zombie wave
     private static boolean[] placed = new boolean[45];
-
+    
     private int wState ;//wave state
     private float wTimeGap;
     private int wZombieCount;
@@ -68,6 +78,7 @@ public class levelHandler implements Serializable {
         initialWait = 4;
         timeInstant = System.currentTimeMillis();
         minimumWaveTime = 10f;
+        plantMap = new HashMap<Integer, Plant>();
     }
     
     
@@ -239,10 +250,14 @@ public class levelHandler implements Serializable {
                         Shooter shooter = (Shooter)plantList.get(x).get(i);
                         shooter.setShoot(arr[x]);
                     }
+                    if (!plantMap.containsKey(plantList.get(x).get(i))){
+                        plantMap.put(plantList.get(x).get(i).getBoxNum(),plantList.get(x).get(i));
+                    }
                     Project.addToGroup(plantList.get(x).get(i).getView()); }
                 else {
                     Project.removeFromGroup(plantList.get(x).get(i).getView());
-                    placed[plantList.get(x).get(i).getBoxNum()-1] = false; 
+                    placed[plantList.get(x).get(i).getBoxNum()-1] = false;
+                    plantMap.remove(plantList.get(x).get(i).getBoxNum());
                     plantList.get(x).remove(plantList.get(x).get(i));
                 }
             }
@@ -334,6 +349,17 @@ public class levelHandler implements Serializable {
         
         //////////////////to be edited
     }
+    
+    
+    public void removePlant(int boxNum){
+        plantMap.get(boxNum).setIsAlive(false);
+        
+    
+    }
+    
+    
+    
+    
     private void setWaveParameters(){
         System.out.println("Wave: "+wState);
         switch(wState){

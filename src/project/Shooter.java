@@ -6,9 +6,11 @@
 package project;
 
 
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import project.Plant;
 
 /**
@@ -42,7 +44,14 @@ public class Shooter extends Plant{
     }
     private void setImage(){
         view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/pea_shooter.gif"))));
-        
+        view.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                if(level1Controller.whatSelected().equals("shovel")){
+                    isAlive = false;
+                }
+            }
+        });
     }
     public void setShoot(boolean x){ this.zombieThere = x;}
     

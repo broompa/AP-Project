@@ -56,7 +56,7 @@ public class level1Controller  {
     private Label warning;
     
     
-    private String isSelected = null;
+    private static String isSelected = null;
     
     private static float  opacity ;
     private static String wText;
@@ -93,6 +93,8 @@ public class level1Controller  {
         
         
     }
+    
+    public static String whatSelected(){ return isSelected;}
     
     
     public static int getXPixel(int x ){
@@ -175,29 +177,39 @@ public class level1Controller  {
         double x = e.getX();
         double y = e.getY();
         System.out.println("("+x+","+y+")");
-        if (isSelected!=null && cost.get(isSelected)<=sunValue && (x>=305 && x<=1144)  && (y>=116 &&y<=696) && System.currentTimeMillis() - timeInstant.get(isSelected) >=clickDelay.get(isSelected)*1000 ){
-            System.out.println("in grid");
-            levelHandler.addPlant(x,y,getGridNumber(x, y),isSelected);
-            sunValue = sunValue - cost.get(isSelected);
-            timeInstant.put(isSelected,System.currentTimeMillis());
-        }
         
+        
+        if (isSelected!=null&&(x>=305 && x<=1144)  && (y>=116 &&y<=696)){
+            if (isSelected.equals("shovel")){
+                Project.getUser().getLevelInstance().removePlant(getGridNumber(x, y));
+            }
+            else if (cost.get(isSelected)<=sunValue  && System.currentTimeMillis() - timeInstant.get(isSelected) >=clickDelay.get(isSelected)*1000 ){
+                System.out.println("in grid");
+                levelHandler.addPlant(x,y,getGridNumber(x, y),isSelected);
+                sunValue = sunValue - cost.get(isSelected);
+                timeInstant.put(isSelected,System.currentTimeMillis());
+            }
+        }
         
         if(y>6 && y< 98){
             if (x>384 && x<440){ 
                 System.out.println("shooter selected");
                 isSelected="shooter";
             }
-            else if (x>451 && x<507){
+            else if (x>451 && x<507 && Project.getUser().getLevel() >= 2){
                 System.out.println("sunflower selected");
                 isSelected="sunflower"; 
             }
-            else if (x<574 && x> 520){
+            else if (x<574 && x> 520 && Project.getUser().getLevel() >= 4){
                 System.out.println("walnut");
                 isSelected = "walnut";
             }
-            else if (x>590 && x<645){
+            else if (x>590 && x<645 && Project.getUser().getLevel() >= 5){
+                
                 isSelected = "PotatoMine";
+            }
+            else if (x>800 && x<878 && Project.getUser().getLevel() >= 3){
+                isSelected = "shovel";
             }
             else {
                 isSelected =null;

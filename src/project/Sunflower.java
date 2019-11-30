@@ -5,9 +5,11 @@
  */
 package project;
 
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -50,7 +52,14 @@ public class Sunflower extends Plant {
     
     private void setImage(){
         view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/sun_flower.gif"))));
-        
+        view.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                if(level1Controller.whatSelected().equals("shovel")){
+                    isAlive = false;
+                }
+            }
+        });
     }
 
     @Override
