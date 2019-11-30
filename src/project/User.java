@@ -71,6 +71,8 @@ public class User implements Serializable{
     public void update() {
         level.update();       
     }
+    public levelHandler getLevelInstance(){ return level;}
+    
     
     public static boolean doesExists(String name ){
         File file = new File(System.getProperty("user.dir")+"\\userFiles\\");

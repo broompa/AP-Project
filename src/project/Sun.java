@@ -24,7 +24,7 @@ public class Sun extends GameObject{
     public Sun(boolean move, double x , double y){
         setImage();
         this.move = move ;
-        view.setOnMouseClicked(new EventHandler<MouseEvent>(){
+        view.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent e){
                 isAlive = false;

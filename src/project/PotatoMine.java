@@ -5,9 +5,11 @@
  */
 package project;
 
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 
 /**
@@ -44,6 +46,14 @@ public class PotatoMine extends Plant{
     
     private void setImage(){
         view = new Group(new ImageView(new Image(getClass().getResourceAsStream("/project/resources/potatoMine.gif"))));
+        view.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                if(level1Controller.whatSelected().equals("shovel")){
+                    isAlive = false;
+                }
+            }
+        });
     }
     
     
