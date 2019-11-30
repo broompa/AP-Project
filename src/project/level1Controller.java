@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package project;
-
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -32,36 +25,21 @@ import javafx.util.Duration;
  * @author Asus
  */
 public class level1Controller  {
-
-    /**
-     * Initializes the controller class.
-     */
     @FXML
     private Label sunCount;
-    
-    
-    
-    
-    
     private static int sunValue ;
     @FXML
     private ImageView menuButton;
     @FXML
     private StackPane container;
-    
     @FXML
     private AnchorPane anchorRoot;
-    
     @FXML
     private Label warning;
     
-    
     private static String isSelected = null;
-    
     private static float  opacity ;
     private static String wText;
-    
-    
     private static final ArrayList<Integer> xPixels = new ArrayList<Integer>(Arrays.asList(305,405,495,589,680,775,871,956,1050)); 
     private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,584));
     //private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,574));
@@ -96,7 +74,6 @@ public class level1Controller  {
     
     public static String whatSelected(){ return isSelected;}
     
-    
     public static int getXPixel(int x ){
        int var = 0;
         try {
@@ -107,7 +84,6 @@ public class level1Controller  {
         }
         return var;
     }
-    
     
     public static int getYPixel(int y ){
        int var = 0;
@@ -139,38 +115,17 @@ public class level1Controller  {
         }
     }
        
-    
-    
-    
-    public static void  setSunCount(int val ){
-        sunValue = val;
-    }
+    public static void  setSunCount(int val ){sunValue = val;}
     public static int getSunCount(){ return sunValue;}
-    public static void setOpacity(float o ){
-        opacity = o;
-    }
-    public static void setWarning (String x){
-        wText = x;
-    }
-    
-    public static float getOpacity(){
-        return opacity;
-    }
-    public static String getWarning(){
-        return wText;
-    }
-    
-    
+    public static void setOpacity(float o ){opacity = o;}
+    public static void setWarning (String x){ wText = x;}
+    public static float getOpacity(){return opacity;}
+    public static String getWarning(){return wText;}
     public void updateSunCountLabel(MouseEvent e ) throws IOException{
           sunCount.setText(Integer.toString( sunValue));
           warning.setText(wText );
           warning.setOpacity(opacity );
     }
-    
-    
-    
-   
-    
     
     // test function to check pixel boundation
     public void clickTest(MouseEvent e) throws IOException{
@@ -222,8 +177,7 @@ public class level1Controller  {
         
         
     }
-     
-     private int getGridNumber(double x , double y){
+    private int getGridNumber(double x , double y){
         int x_offset = -1;
         int y_offset = -1;
         if (305<=x && x<405){
@@ -279,6 +233,4 @@ public class level1Controller  {
         menuButton.setOpacity(1);
     } 
      
-     
-    
 }
