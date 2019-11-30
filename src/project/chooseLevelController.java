@@ -2,6 +2,7 @@
 package project;
 
 import java.io.IOException;
+import java.net.URL;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -16,6 +17,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 public class chooseLevelController  {
@@ -27,10 +30,26 @@ public class chooseLevelController  {
     private ImageView back;
     @FXML
     private ImageView proceed;
+
+    MediaPlayer a;
+    public chooseLevelController() {
+      URL resource = getClass().getResource("/project/resources/Sounds/Soul2.wav");
+        a =new MediaPlayer(new Media(resource.toString()));
+        a.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                a.seek(Duration.ZERO);
+            }
+        });
+        a.play();
+    
+    }
+    
+    
     
     
     public void user_back(ActionEvent event) throws IOException {
         if(Project.setState(4)){
+            a.stop();
         Parent root = FXMLLoader.load(getClass().getResource("resumeGame.fxml"));
         Scene sc = back.getScene();
         root.translateYProperty().set(-sc.getHeight());
@@ -47,6 +66,7 @@ public class chooseLevelController  {
     }
     
     public void user_proceed(ActionEvent event) throws IOException {
+        a.stop();//after projectsetstate ********IMPORTANT*************
     }
     
     public void backButtonEnter(MouseEvent e){

@@ -21,6 +21,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 /**
@@ -44,6 +46,19 @@ public class levelCompletedController implements Initializable {
     
     @FXML
     private AnchorPane anchorRoot;
+
+    MediaPlayer a;
+    public levelCompletedController() {
+     URL resource = getClass().getResource("/project/resources/Sounds/Soul2.wav");
+        a =new MediaPlayer(new Media(resource.toString()));
+        a.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                a.seek(Duration.ZERO);
+            }
+        });
+        a.play();
+    
+    }
     
     
     
@@ -78,6 +93,7 @@ public class levelCompletedController implements Initializable {
                  break;
         }
         if (Project.setState(2)){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource(s));
             Scene sc = restartBtn.getScene();
             root.translateYProperty().set(-sc.getHeight());
@@ -127,6 +143,7 @@ public class levelCompletedController implements Initializable {
                  break;
         }
          if (Project.setState(2)){
+             a.stop();
             Parent root = FXMLLoader.load(getClass().getResource(s));
             Scene sc = restartBtn.getScene();
             root.translateYProperty().set(-sc.getHeight());
@@ -150,6 +167,7 @@ public class levelCompletedController implements Initializable {
             System.out.println("Menu level Completed");
         }
          if (Project.setState(0)){
+             a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
             Scene sc = restartBtn.getScene();
             root.translateYProperty().set(-sc.getHeight());

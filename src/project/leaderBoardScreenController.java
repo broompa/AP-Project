@@ -27,6 +27,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 /**
  * FXML Controller class
@@ -68,11 +70,25 @@ public class leaderBoardScreenController implements Initializable {
         
     }
 
+    MediaPlayer a;
+    public leaderBoardScreenController() {
+     URL resource = getClass().getResource("/project/resources/Sounds/Soul2.wav");
+        a =new MediaPlayer(new Media(resource.toString()));
+        a.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                a.seek(Duration.ZERO);
+            }
+        });
+        a.play();
+    }
+
+    
     public void user_back1(MouseEvent event) throws IOException {
         if(Project.setState(0)){
-            System.out.println("adas");
+            a.stop();
+//            System.out.println("adas");
             Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
-            System.out.println("adas");
+//            System.out.println("adas");
             Scene sc = backButton.getScene();
             root.translateYProperty().set(-sc.getHeight());
             container.getChildren().add(root);

@@ -7,10 +7,14 @@ package project;
 
 import com.sun.javafx.font.freetype.HBGlyphLayout;
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.scene.Group;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 
 /**
@@ -76,7 +80,6 @@ public class levelHandler implements Serializable {
         initialWait = 4;
         timeInstant = System.currentTimeMillis();
         minimumWaveTime = 0f;
-        plantMap = new HashMap<Integer, Plant>();
         
     }
     
@@ -135,14 +138,14 @@ public class levelHandler implements Serializable {
         progress = new ProgressBar(0);
         progress.setLayoutX(50);
 //        progress.setRotate(180);
-        
+        plantMap = new HashMap<Integer,Plant>();
         
         Project.addToGroup(new Group(progress));
         
         
         for (int x = 0 ; x<5 ;x++){
             plantList.add(new ArrayList<Plant>());
-
+            
             if(zombieList.size()<5){
                 zombieList.add(new ArrayList<Zombie>());
             }
@@ -186,6 +189,7 @@ public class levelHandler implements Serializable {
         for (int x = 0 ; x<plantList.size();x++){
             for (int i =  0 ; i < plantList.get(x).size();i++){ 
                 plantList.get(x).get(i).load();
+                plantMap.put(plantList.get(x).get(i).getBoxNum(),plantList.get(x).get(i));
             }
         }
         for (int x = 0 ; x<zombieList.size();x++){
@@ -193,6 +197,8 @@ public class levelHandler implements Serializable {
                zombieList.get(x).get(i).load();
             }
         }
+        
+        
     
     
     }
@@ -297,6 +303,16 @@ public class levelHandler implements Serializable {
                 System.out.println(sunList.get(x));
                 sunList.remove(sunList.get(x));
                 level1Controller.setSunCount(level1Controller.getSunCount()+25);
+                MediaPlayer a;
+                URL resource = getClass().getResource("/project/resources/Sounds/suntoken.wav");
+                a =new MediaPlayer(new Media(resource.toString()));
+//                a.setOnEndOfMedia(new Runnable() {
+//                    public void run() {
+//                        a.seek(Duration.ZERO);
+//                    }
+//                });
+                a.play();
+                
             }
         }
         

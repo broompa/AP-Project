@@ -6,6 +6,7 @@
 package project;
 
 import java.io.IOException;
+import java.net.URL;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -19,6 +20,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 /**
@@ -36,9 +39,25 @@ public class creditsScreenController {
     
     @FXML
     private ImageView backButton;
+    
+    MediaPlayer a;
+    public creditsScreenController() {
+    URL resource = getClass().getResource("/project/resources/Sounds/Soul2.wav");
+        a =new MediaPlayer(new Media(resource.toString()));
+        a.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                a.seek(Duration.ZERO);
+            }
+        });
+        a.play();
+    
+    }
 
+    
+    
     public void user_back() throws IOException{
         if(Project.setState(0)){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
             Scene sc = backButton.getScene();
             root.translateYProperty().set(-sc.getHeight());

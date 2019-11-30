@@ -65,7 +65,8 @@ public class User implements Serializable{
     public void resume(){
         if (isLevelCompleted){
             currentLevel +=1;
-            restart();
+            Project.restartGame();
+            
         }
         else {
         

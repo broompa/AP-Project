@@ -1,6 +1,7 @@
 package project;
 
 import java.io.IOException;
+import java.net.URL;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -17,6 +18,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 
@@ -42,10 +45,24 @@ public class userDetailsController {
     
     @FXML
     private Label userScreenLabel;
+    MediaPlayer a;
 
+    public userDetailsController() {
+     URL resource = getClass().getResource("/project/resources/Sounds/Soul2.wav");
+        a =new MediaPlayer(new Media(resource.toString()));
+        a.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                a.seek(Duration.ZERO);
+            }
+        });
+        a.play();
+    }
+    
     public void user_back() throws IOException{
+        
         if (Project.setState(0)){
-            Parent    root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+            a.stop();
+            Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
             Scene sc = backButton.getScene();
             root.translateYProperty().set(-sc.getHeight());
             container.getChildren().add(root);
@@ -60,6 +77,7 @@ public class userDetailsController {
         }
     }
    public void user_proceed(MouseEvent event) throws IOException{
+       
         try{
             int age=Integer.parseInt(textFieldAge.getText());
             if (textFieldUsername.getText().isEmpty()|| textFieldUsername.getText().length()==0) {
@@ -86,6 +104,7 @@ public class userDetailsController {
                 userScreenLabel.setText("User Creation Succesful.");
                 try {
                     if(Project.setState(2)){
+                        a.stop();
                         Parent root = FXMLLoader.load(getClass().getResource("level_1.fxml"));
                         Scene sc = backButton.getScene();
                         root.translateYProperty().set(sc.getHeight());
