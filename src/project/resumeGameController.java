@@ -25,6 +25,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 /**
@@ -44,6 +46,19 @@ public class resumeGameController implements Initializable {
     private ImageView backButton;
     @FXML
     private ImageView proceedButton;
+
+    MediaPlayer a;
+    public resumeGameController() {
+     URL resource = getClass().getResource("/project/resources/Sounds/Soul2.wav");
+        a =new MediaPlayer(new Media(resource.toString()));
+        a.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                a.seek(Duration.ZERO);
+            }
+        });
+        a.play();
+    }
+    
     
     
     public void resume(MouseEvent e) throws Exception{
@@ -55,7 +70,7 @@ public class resumeGameController implements Initializable {
             Parent root = null;
             try {
                 if (Project.setState(2)){
-                    
+                    a.stop();
                     root = FXMLLoader.load(getClass().getResource("level1.fxml"));
                     Scene sc = backButton.getScene();
                     root.translateYProperty().set(-sc.getHeight());
@@ -84,6 +99,7 @@ public class resumeGameController implements Initializable {
     
     public void user_back(MouseEvent event) throws IOException{
         if (Project.setState(0)){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
             Scene sc = backButton.getScene();
             root.translateYProperty().set(-sc.getHeight());

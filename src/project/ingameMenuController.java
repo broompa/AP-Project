@@ -26,6 +26,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 /**
@@ -44,12 +46,26 @@ public class ingameMenuController implements Initializable {
     private ImageView backButton;
     @FXML
     private ImageView saveandexitButton;
+
+    MediaPlayer a;
+    public ingameMenuController() {
+     URL resource = getClass().getResource("/project/resources/Sounds/Soul2.wav");
+        a =new MediaPlayer(new Media(resource.toString()));
+        a.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                a.seek(Duration.ZERO);
+            }
+        });
+        a.play();
+    }
+    
     
     
     
     
     public void user_back(MouseEvent event) throws IOException{
         if (Project.setState(2)){
+            a.stop();
             Project.startAnimation();
             Parent root = FXMLLoader.load(getClass().getResource("level1.fxml"));
             Scene sc = backButton.getScene();
@@ -72,6 +88,7 @@ public class ingameMenuController implements Initializable {
             System.out.println("This is inGameMenuController");
         }
         if (Project.setState(0)){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
             Scene sc = saveandexitButton.getScene();
             root.translateYProperty().set(-sc.getHeight());

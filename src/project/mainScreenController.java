@@ -64,7 +64,9 @@ public class mainScreenController{
     
     
     public void newGame() throws IOException{
+        
         if (Project.setState(1) ){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("userDetails.fxml"));
             Scene sc = newgameButton.getScene();
             root.translateYProperty().set(sc.getHeight());
@@ -80,7 +82,9 @@ public class mainScreenController{
         }
     }
     public void resumeGame() throws IOException{
+        
         if (Project.setState(4)){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("resumeGame.fxml"));
             Scene sc = resumegameButton.getScene();
             root.translateYProperty().set(sc.getHeight());
@@ -97,11 +101,13 @@ public class mainScreenController{
     }
     
     public void exitGame() throws IOException{
+        a.stop();
         System.exit(0);
     }
     
     public void almanac() throws IOException {
         if (Project.setState(5)){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("almanacScreen.fxml"));
             Scene sc = resumegameButton.getScene();
             root.translateYProperty().set(sc.getHeight());
@@ -119,6 +125,7 @@ public class mainScreenController{
 	
     public void credits() throws IOException{
         if(Project.setState(7)){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("creditsScreen.fxml"));
             Scene sc = creditsButton.getScene();
             root.translateYProperty().set(sc.getHeight());
@@ -135,7 +142,8 @@ public class mainScreenController{
         }
     }
     public void leaderboard() throws IOException{
-        if(Project.setState(6) ){ 
+        if(Project.setState(6) ){
+            a.stop();
             Parent  root = FXMLLoader.load(getClass().getResource("leaderBoardScreen.fxml"));
             Scene sc = leaderboardButton.getScene();
             root.translateYProperty().set(sc.getHeight());

@@ -7,10 +7,14 @@ package project;
 
 import com.sun.javafx.font.freetype.HBGlyphLayout;
 import java.io.Serializable;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.scene.Group;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 
 /**
@@ -295,6 +299,16 @@ public class levelHandler implements Serializable {
                 System.out.println(sunList.get(x));
                 sunList.remove(sunList.get(x));
                 level1Controller.setSunCount(level1Controller.getSunCount()+25);
+                MediaPlayer a;
+                URL resource = getClass().getResource("/project/resources/Sounds/suntoken.wav");
+                a =new MediaPlayer(new Media(resource.toString()));
+//                a.setOnEndOfMedia(new Runnable() {
+//                    public void run() {
+//                        a.seek(Duration.ZERO);
+//                    }
+//                });
+                a.play();
+                
             }
         }
         
