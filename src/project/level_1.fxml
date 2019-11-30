@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.level_1Controller">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="anchorRoot" onMouseReleased="#clickTest" prefHeight="750.0" prefWidth="1200.0" styleClass="mainFxmlClass">
+         <stylesheets>
+            <URL value="@level1.css" />
+         </stylesheets>
+         <children>
+            <ImageView fitHeight="781.0" fitWidth="1198.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Background/background_level_1.PNG" />
+               </image>
+            </ImageView>
+            <Label fx:id="sunCount" layoutX="302.0" layoutY="77.0" prefHeight="26.0" prefWidth="57.0" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="menuButton" fitHeight="47.0" fitWidth="164.0" layoutX="1056.0" layoutY="3.0" onMouseClicked="#inGameMenu" onMouseEntered="#menuButtonEnter" onMouseExited="#menuButtonExit" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Game_Buttons/menuButton.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="warning" layoutX="28.0" layoutY="27.0" prefHeight="193.0" prefWidth="192.0" text="Label" textFill="RED">
+               <font>
+                  <Font name="Bauhaus 93" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
