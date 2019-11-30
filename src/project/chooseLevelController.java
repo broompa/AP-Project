@@ -3,6 +3,10 @@ package project;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -10,9 +14,11 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -21,7 +27,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
-public class chooseLevelController  {
+public class chooseLevelController implements Initializable{
     @FXML
     private StackPane container;
     @FXML
@@ -30,7 +36,9 @@ public class chooseLevelController  {
     private ImageView back;
     @FXML
     private ImageView proceed;
-
+    @FXML
+    private ComboBox box;
+        
     MediaPlayer a;
     public chooseLevelController() {
       URL resource = getClass().getResource("/project/resources/Sounds/Soul2.wav");
@@ -44,6 +52,49 @@ public class chooseLevelController  {
     
     }
     
+    public void resumeProceed(MouseEvent e){
+        a.stop();
+        int level = Integer.parseInt(box.getValue().toString());
+        String s = "";
+        switch(level){
+            case 1 :
+                s = "level_1.fxml";
+                break;
+            case 2 :
+                s = "level_2.fxml";
+                break;
+            case 3 :
+                s = "level_3.fxml";
+                break;    
+            case 4 :
+                s = "level_4.fxml";
+                break;
+             default:
+                 s = "level1.fxml";
+                 break;
+        }
+        Project.restartGame();
+        if(Project.setState(2)){
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource(s));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            Scene sc = back.getScene();
+            root.translateYProperty().set(-sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
+        }
+        
+    }
     
     
     
@@ -80,5 +131,16 @@ public class chooseLevelController  {
     }
     public void proceedButtonExit(MouseEvent e ){
         proceed.setOpacity(1);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        User g =  Project.getUser();
+        ArrayList<Integer> arr = new ArrayList<Integer>(); 
+        for (int x = 1 ;x<=g.getMaxLevelReached();x++){
+            arr.add(x);
+        }
+        box.getItems().addAll(arr);
+        
     }
 }

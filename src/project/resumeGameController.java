@@ -68,12 +68,11 @@ public class resumeGameController implements Initializable {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(System.getProperty("user.dir")+"//userFiles//"+chooseUser.getValue().toString()+".zzz"));
             User g = (User) in.readObject();
             g.load();
+            boolean completed  = g.getLevelCompleted();
             
-            System.out.println(g.getLevelCompleted() +  " level " + g.getLevel());
+//            System.out.println(g.getLevelCompleted() +  " level " + g.getLevel());
             Project.setUser(g);
-            
-            g.resume();
-            Parent root = null;
+            int state = 2;
             String s = "";
             switch(g.getLevel()){
                 case 1:
@@ -92,14 +91,22 @@ public class resumeGameController implements Initializable {
                     s= "level1.fxml";
                     break;
             }
+            if (completed){
+                s = "chooseLevel.fxml";
+                state = 10;
+                Project.stopAnimation();
+            }
+            g.resume();
+            Parent root = null;
             
             
             
             
+            System.out.println(s);
             
             
             try {
-                if (Project.setState(2)){
+                if (Project.setState(state)){
                     
                     root = FXMLLoader.load(getClass().getResource(s));
                     Scene sc = backButton.getScene();
@@ -116,6 +123,7 @@ public class resumeGameController implements Initializable {
                 }
             }
             catch (IOException ex) {
+                ex.printStackTrace();
                 System.out.println("IO Error");
                 System.exit(0);
             }
@@ -124,6 +132,8 @@ public class resumeGameController implements Initializable {
             ee.printStackTrace();
             System.out.println("Please select a profile.");
         }
+        
+        
     }
     
     

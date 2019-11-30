@@ -27,6 +27,9 @@ public class User implements Serializable{
     private String name ;
     private levelHandler level;
     private int score;
+    private int maxLevelReached ;
+    
+    
     
     public int getScore() {
         return score;
@@ -34,9 +37,9 @@ public class User implements Serializable{
 
     public void setScore(int score) {
         this.score = score;
-        System.out.println("Score is "+ score);
+        
     }
-    
+    public int getMaxLevelReached(){ return maxLevelReached;}
     
     @Override
     public String toString(){
@@ -63,16 +66,17 @@ public class User implements Serializable{
     
     
     public void resume(){
+        
         if (isLevelCompleted){
             currentLevel +=1;
-            Project.restartGame();
+//            Project.restartGame();
             
         }
-        else {
         
+        if (maxLevelReached < currentLevel){
+            maxLevelReached = currentLevel;
         }
     }
-    
     
     
     
@@ -93,17 +97,22 @@ public class User implements Serializable{
         isLevelCompleted = false;
         level.restart();
         System.out.println(currentLevel+" level");
+        if (maxLevelReached < currentLevel){
+            maxLevelReached = currentLevel;
+        }
     }
     
     public void update()  {
+        
         try{
             level.update();
         } 
         catch (ZombieReached z){
-           try{
-            System.out.println("Zombie Reached");
-            isLevelCompleted = false;
-            level1Controller.getReference().lose();}
+            try{
+                System.out.println("Zombie Reached");
+                Project.restartGame();
+                isLevelCompleted = false;
+                level1Controller.getReference().lose();}
             catch(IOException e){
                 System.out.println("IO Exception User class");
             }
@@ -113,9 +122,12 @@ public class User implements Serializable{
             /// change fxml
             isLevelCompleted = true ;
             try{
-            level1Controller.getReference().userWon();}
+                level1Controller.getReference().userWon();
+            }
             catch(IOException e){
                 System.out.println("IO Exception User class");
+            }
+            catch(NullPointerException n){
             }
 
         }    
