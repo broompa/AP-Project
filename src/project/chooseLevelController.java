@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
@@ -22,11 +24,15 @@ public class chooseLevelController  {
     @FXML
     private AnchorPane anchorRoot;
     @FXML
-    private Button userScreenBack;
+    private ImageView back;
+    @FXML
+    private ImageView proceed;
+    
+    
     public void user_back(ActionEvent event) throws IOException {
-        if(Project.setState(0)){
-        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
-        Scene sc = userScreenBack.getScene();
+        if(Project.setState(4)){
+        Parent root = FXMLLoader.load(getClass().getResource("resumeGame.fxml"));
+        Scene sc = back.getScene();
         root.translateYProperty().set(-sc.getHeight());
         container.getChildren().add(root);
         Timeline t = new Timeline();
@@ -38,5 +44,21 @@ public class chooseLevelController  {
         });
         t.play();
        }
-    } 
+    }
+    
+    public void user_proceed(ActionEvent event) throws IOException {
+    }
+    
+    public void backButtonEnter(MouseEvent e){
+        back.setOpacity(0.75);
+    }
+    public void backButtonExit(MouseEvent e ){
+        back.setOpacity(1);
+    }
+    public void proceedButtonEnter(MouseEvent e){
+        proceed.setOpacity(0.75);
+    }
+    public void proceedButtonExit(MouseEvent e ){
+        proceed.setOpacity(1);
+    }
 }
