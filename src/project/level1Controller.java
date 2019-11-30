@@ -38,11 +38,6 @@ public class level1Controller  {
      */
     @FXML
     private Label sunCount;
-    @FXML
-    private Label yLabel;
-    
-    @FXML
-    private Button save;
     
     
     

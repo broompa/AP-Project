@@ -119,7 +119,8 @@ public class levelHandler implements Serializable {
         
         for (int x = 0 ; x<5 ;x++){
             plantList.add(new ArrayList<Plant>());
-            zombieList.add(new ArrayList<Zombie>());
+            if(zombieList.size()<5){
+                zombieList.add(new ArrayList<Zombie>());}
             peaList.add(new ArrayList<Pea>());
             if (lawnMowerList.size()<5){
                 switch(x){
@@ -191,7 +192,12 @@ public class levelHandler implements Serializable {
         boolean[] arr  =  new boolean[5];
         int zombieCount  =0 ;
         for (int x = 0 ; x<zombieList.size();x++){
-            arr [x] = (zombieList.get(x).size()>0)?true:false;
+            try{
+                arr [x] = (zombieList.get(x).size()>0)?true:false;
+            }catch(Exception e){
+//                System.out.println(zombieList.get(x).size());
+                System.out.println("Exception");
+            }
             for (int i =  0 ; i < zombieList.get(x).size();i++){
                 if (zombieList.get(x).get(i).getIsAlive()){
                     zombieCount += 1;
