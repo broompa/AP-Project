@@ -2,6 +2,7 @@ package project;
 
 import com.sun.imageio.plugins.common.I18N;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,6 +19,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 /**
@@ -38,6 +41,7 @@ public class level1Controller  {
     @FXML
     private Label warning;
     
+    MediaPlayer a;
     private static String isSelected = null;
     private static float  opacity ;
     private static String wText;
@@ -75,6 +79,20 @@ public class level1Controller  {
         
     
     }
+
+    public level1Controller() {
+     URL resource = getClass().getResource("/project/resources/Sounds/level.wav");
+        a =new MediaPlayer(new Media(resource.toString()));
+        a.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                a.seek(Duration.ZERO);
+            }
+        });
+        a.play();
+//        a.setStopTime(Duration.ONE);
+    
+    }
+    
     
     public static void restart(){
         isSelected = null;
@@ -151,6 +169,7 @@ public class level1Controller  {
     
     public void userWon() throws IOException{
         if (Project.setState(8)){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("levelCompleted.fxml"));
             Scene sc = menuButton.getScene();
             root.translateYProperty().set(sc.getHeight());
@@ -173,6 +192,7 @@ public class level1Controller  {
     
     public void lose() throws IOException{
         if (Project.setState(9)){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("levelLost.fxml"));
             Scene sc = menuButton.getScene();
             root.translateYProperty().set(sc.getHeight());

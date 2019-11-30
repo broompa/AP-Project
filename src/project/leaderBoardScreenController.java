@@ -80,6 +80,7 @@ public class leaderBoardScreenController implements Initializable {
             }
         });
         a.play();
+//        a.setStopTime(Duration.ONE);
     }
 
     

@@ -6,11 +6,15 @@
 package project;
 
 
+import java.net.URL;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import project.Plant;
 
 /**
@@ -19,6 +23,7 @@ import project.Plant;
  */
 public class Shooter extends Plant{
 
+    MediaPlayer a;
     private long lastShoot; 
     private int shootInterval;
     private int row ;
@@ -71,6 +76,9 @@ public class Shooter extends Plant{
        if (this.health <= 0){ this.isAlive = false;}
        if (System.currentTimeMillis()-lastShoot>shootInterval*1000 && zombieThere ){
            lastShoot=System.currentTimeMillis();
+            URL resource = getClass().getResource("/project/resources/Sounds/fireball.wav");
+            a =new MediaPlayer(new Media(resource.toString()));
+            a.play();
            levelHandler.addPea(view.getTranslateX()+30,view.getTranslateY(),row);
        }
        updateCoordiante();
