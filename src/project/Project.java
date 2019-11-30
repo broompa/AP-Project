@@ -71,6 +71,7 @@ public class Project extends Application {
         user.restart();
         g = new Group();
         startAnimation();
+        level1Controller.restart();
         
     }
     public static void nextlevel(){

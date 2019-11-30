@@ -104,7 +104,7 @@ public class levelHandler implements Serializable {
     public void setZombieCount(){
         switch(level){
             case 1 :
-                zombieCount =25;
+                zombieCount =1;
                 spawnTime = 1;//to be changed
                 wTimeGap = 1;
                 break;

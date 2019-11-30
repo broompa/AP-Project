@@ -75,6 +75,7 @@ public class levelCompletedController implements Initializable {
         Project.nextlevel();
 //        Project.stopAnimation();
         String s = new String("");
+        level1Controller.restart();
         switch(Project.getUser().getLevel()){
             case 1 :
                 s = "level_1.fxml";
