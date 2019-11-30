@@ -29,7 +29,7 @@
             <Label fx:id="score3" layoutX="719.0" layoutY="354.0" prefHeight="42.0" prefWidth="154.0" />
             <Label fx:id="score4" layoutX="719.0" layoutY="456.0" prefHeight="42.0" prefWidth="154.0" />
             <Label fx:id="score5" layoutX="719.0" layoutY="568.0" prefHeight="42.0" prefWidth="154.0" />
-            <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="142.0" layoutX="14.0" layoutY="24.0" onMouseClicked="#user_back1" onMouseEntered="#backButtonEnter" onMouseExited="#backButtonExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="142.0" layoutX="14.0" layoutY="24.0" onMouseClicked="#user_back1" onMouseEntered="#buttonEnter" onMouseExited="#buttonExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/backButton.png" />
                </image>

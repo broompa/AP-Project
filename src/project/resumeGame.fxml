@@ -19,13 +19,13 @@
                   <Image url="@resources/Background/background_MainScreen.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="backButton" fitHeight="48.0" fitWidth="116.0" layoutX="32.0" layoutY="31.0" onMouseClicked="#user_back" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="backButton" fitHeight="48.0" fitWidth="116.0" layoutX="32.0" layoutY="31.0" onMouseClicked="#user_back" onMouseEntered="#backButtonEnter" onMouseExited="#backButtonExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/backButton.png" />
                </image>
             </ImageView>
             <ComboBox fx:id="chooseUser" layoutX="522.0" layoutY="383.0" prefHeight="37.0" prefWidth="180.0" promptText="Choose User" />
-            <ImageView fitHeight="47.0" fitWidth="180.0" layoutX="540.0" layoutY="452.0" onMouseClicked="#resume" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="proceedButton" fitHeight="47.0" fitWidth="180.0" layoutX="540.0" layoutY="452.0" onMouseClicked="#resume" onMouseEntered="#proceedButtonEnter" onMouseExited="#proceedButtonExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/proceedButton.png" />
                </image>

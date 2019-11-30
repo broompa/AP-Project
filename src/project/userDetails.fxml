@@ -35,12 +35,12 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Label>
-            <ImageView fx:id="proceedButton" fitHeight="52.0" fitWidth="150.0" layoutX="522.0" layoutY="469.0" onMouseClicked="#user_proceed" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="proceedButton" fitHeight="52.0" fitWidth="150.0" layoutX="522.0" layoutY="469.0" onMouseClicked="#user_proceed" onMouseEntered="#proceedButtonEnter" onMouseExited="#proceedButtonExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/proceedButton.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="backButton" fitHeight="37.0" fitWidth="113.0" layoutX="26.0" layoutY="22.0" onMouseClicked="#user_back" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="backButton" fitHeight="37.0" fitWidth="113.0" layoutX="26.0" layoutY="22.0" onMouseClicked="#user_back" onMouseEntered="#backButtonEnter" onMouseExited="#backButtonExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/backButton.png" />
                </image>
