@@ -54,7 +54,7 @@ public class leveLostController implements Initializable {
 
     MediaPlayer a;
     public leveLostController() {
-     URL resource = getClass().getResource("/project/resources/Sounds/gamelose.wav");
+     URL resource = getClass().getResource("/project/resources/Sounds/gamelose.mp3");
         a =new MediaPlayer(new Media(resource.toString()));
         a.setOnEndOfMedia(new Runnable() {
             public void run() {

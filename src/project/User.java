@@ -92,6 +92,7 @@ public class User implements Serializable{
            try{
             level1Controller.getReference().lose();}
             catch(IOException e){
+                e.printStackTrace();
                 System.out.println("IO Exception User class");
             }
 
