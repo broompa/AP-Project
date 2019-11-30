@@ -23,7 +23,7 @@ import project.Plant;
  */
 public class Shooter extends Plant{
 
-    MediaPlayer a;
+    private transient MediaPlayer a;
     private long lastShoot; 
     private int shootInterval;
     private int row ;
@@ -57,6 +57,8 @@ public class Shooter extends Plant{
                 }
             }
         });
+        URL resource = getClass().getResource("/project/resources/Sounds/fireball.wav");
+        a =new MediaPlayer(new Media(resource.toString()));
     }
     public void setShoot(boolean x){ this.zombieThere = x;}
     
@@ -76,8 +78,6 @@ public class Shooter extends Plant{
        if (this.health <= 0){ this.isAlive = false;}
        if (System.currentTimeMillis()-lastShoot>shootInterval*1000 && zombieThere ){
            lastShoot=System.currentTimeMillis();
-            URL resource = getClass().getResource("/project/resources/Sounds/fireball.wav");
-            a =new MediaPlayer(new Media(resource.toString()));
             a.play();
            levelHandler.addPea(view.getTranslateX()+30,view.getTranslateY(),row);
        }

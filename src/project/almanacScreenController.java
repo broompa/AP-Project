@@ -48,7 +48,7 @@ public class almanacScreenController{
     private ImageView walnut;
     MediaPlayer a;
     public almanacScreenController() {
-     URL resource = getClass().getResource("/project/resources/Sounds/Soul2.wav");
+    URL resource = getClass().getResource("/project/resources/Sounds/Soul2.wav");
         a =new MediaPlayer(new Media(resource.toString()));
         a.setOnEndOfMedia(new Runnable() {
             public void run() {

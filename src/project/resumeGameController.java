@@ -14,7 +14,6 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,7 +27,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-import sun.security.pkcs11.P11TlsKeyMaterialGenerator;
 
 /**
  * FXML Controller class
@@ -101,7 +99,9 @@ public class resumeGameController implements Initializable {
             
             
             
-            
+            if (g.getException().equals("ZombieReached")){
+                g.restart();
+            }
             System.out.println(s);
             
             

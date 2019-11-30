@@ -35,11 +35,11 @@ public class levelHandler implements Serializable {
     private ArrayList<LawnMower> lawnMowerList ; 
     private transient ProgressBar progress ;
     private double wZombieOffset;  // progress bar
-    MediaPlayer a;
-    MediaPlayer b;
+    private transient MediaPlayer a;
+    private transient MediaPlayer b;
     
-    MediaPlayer c;
-    MediaPlayer d;
+    private transient MediaPlayer c;
+    private transient MediaPlayer d;
 
 
     //////plant remove 
@@ -64,8 +64,6 @@ public class levelHandler implements Serializable {
     private boolean preparation ;
     private float minimumWaveTime ;
     public levelHandler(int level){
-        URL resource = getClass().getResource("/project/resources/Sounds/zombiespawn.wav");
-        b =new MediaPlayer(new Media(resource.toString()));
         this.level = level;
         preparation = true;
         warning = true;
@@ -134,6 +132,19 @@ public class levelHandler implements Serializable {
     }
     public void containers(){
         ////////////
+        
+        URL resource1 = getClass().getResource("/project/resources/Sounds/zombiespawn.wav");
+        b =new MediaPlayer(new Media(resource1.toString()));
+        
+        URL resource2 = getClass().getResource("/project/resources/Sounds/zombiedie.wav");
+        d =new MediaPlayer(new Media(resource2.toString()));
+        
+        URL resource3 = getClass().getResource("/project/resources/Sounds/wavewarning.wav");
+        c =new MediaPlayer(new Media(resource3.toString()));
+                
+        
+        URL resource4 = getClass().getResource("/project/resources/Sounds/suntoken.wav");
+        a =new MediaPlayer(new Media(resource4.toString()));
         
         plantList = new ArrayList<ArrayList<Plant>>();
         
@@ -240,8 +251,7 @@ public class levelHandler implements Serializable {
                     Project.addToGroup(zombieList.get(x).get(i).getView());}
                 else if (System.currentTimeMillis()-zombieList.get(x).get(i).getDeadTime()>700){
                     
-                    URL resource = getClass().getResource("/project/resources/Sounds/zombiedie.wav");
-                    d =new MediaPlayer(new Media(resource.toString()));
+                    
                     d.play();
                     Project.removeFromGroup(zombieList.get(x).get(i).getView());
                     zombieList.get(x).remove(zombieList.get(x).get(i));
@@ -308,14 +318,7 @@ public class levelHandler implements Serializable {
                 System.out.println(sunList.get(x));
                 sunList.remove(sunList.get(x));
                 level1Controller.setSunCount(level1Controller.getSunCount()+25);
-                MediaPlayer a;
-                URL resource = getClass().getResource("/project/resources/Sounds/suntoken.wav");
-                a =new MediaPlayer(new Media(resource.toString()));
-//                a.setOnEndOfMedia(new Runnable() {
-//                    public void run() {
-//                        a.seek(Duration.ZERO);
-//                    }
-//                });
+                
                 a.play();
                 
             }
@@ -431,8 +434,6 @@ public class levelHandler implements Serializable {
         }
         if (wState < MAX_WAVE){
             if (warning){
-                URL resource = getClass().getResource("/project/resources/Sounds/wavewarning.wav");
-                c =new MediaPlayer(new Media(resource.toString()));
                 c.play();
                 level1Controller.setWarning("Warning Wave "+ wState);
                 level1Controller.setOpacity(1);

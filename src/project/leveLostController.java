@@ -107,11 +107,15 @@ public class leveLostController implements Initializable {
     }
     public void menu(MouseEvent e) throws IOException{
         Project.getUser().setLevelCompleted(false);
+        
         try {
             Project.saveGame();
         } catch (IOException ex) {
             System.out.println("Menu level Completed");
+        }catch(NullPointerException n){
+            n.printStackTrace();
         }
+        
          if (Project.setState(0)){
              a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));

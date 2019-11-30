@@ -85,6 +85,7 @@ public class ingameMenuController implements Initializable {
         try {
             Project.saveGame();
         } catch (IOException ex) {
+            ex.printStackTrace();
             System.out.println("This is inGameMenuController");
         }
         if (Project.setState(0)){

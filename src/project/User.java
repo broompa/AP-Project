@@ -28,6 +28,12 @@ public class User implements Serializable{
     private levelHandler level;
     private int score;
     private int maxLevelReached ;
+    private String exception ;
+    
+    
+    public String getException(){
+        return exception;
+    }
     
     
     
@@ -106,11 +112,13 @@ public class User implements Serializable{
         
         try{
             level.update();
+            exception = "";
         } 
         catch (ZombieReached z){
             try{
+                exception = "ZombieReached";
                 System.out.println("Zombie Reached");
-                Project.restartGame();
+//                Project.restartGame();
                 isLevelCompleted = false;
                 level1Controller.getReference().lose();}
             catch(IOException e){
@@ -123,6 +131,7 @@ public class User implements Serializable{
             /// change fxml
             isLevelCompleted = true ;
             try{
+                exception = "GameeWinning";
                 level1Controller.getReference().userWon();
             }
             catch(IOException e){
