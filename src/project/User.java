@@ -85,17 +85,10 @@ public class User implements Serializable{
         return false;
     }
     private static String parsePlayer(String s){
-        try{
-            Pattern pat = Pattern.compile("[a-zA-Z0-9]+.zzz");
-            Matcher m = pat.matcher(s);
-            m.find();
-            String g = m.group(0);
-            return g.substring(0,g.lastIndexOf(".")).trim();
-        }
-        catch(IllegalStateException e){
-            System.out.println("parse Player error");
-            return "";
-        }
+        
+        
+        return s.substring(s.lastIndexOf("\\")+1,s.lastIndexOf("."));
+        
     }   
     public static String[] getPlayerList(){
         File file = new File(System.getProperty("user.dir")+"\\userFiles\\");

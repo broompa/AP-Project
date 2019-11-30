@@ -120,7 +120,8 @@ public class levelHandler implements Serializable {
         for (int x = 0 ; x<5 ;x++){
             plantList.add(new ArrayList<Plant>());
             if(zombieList.size()<5){
-                zombieList.add(new ArrayList<Zombie>());}
+                zombieList.add(new ArrayList<Zombie>());
+            }
             peaList.add(new ArrayList<Pea>());
             if (lawnMowerList.size()<5){
                 switch(x){
