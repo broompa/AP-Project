@@ -90,7 +90,7 @@ public class leveLostController implements Initializable {
         }
     }
     public void menu(MouseEvent e) throws IOException{
-        Project.getUser().setLevelCompleted(true);
+        Project.getUser().setLevelCompleted(false);
         try {
             Project.saveGame();
         } catch (IOException ex) {

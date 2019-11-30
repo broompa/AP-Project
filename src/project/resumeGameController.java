@@ -26,6 +26,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import sun.security.pkcs11.P11TlsKeyMaterialGenerator;
 
 /**
  * FXML Controller class
@@ -48,15 +49,44 @@ public class resumeGameController implements Initializable {
     
     public void resume(MouseEvent e) throws Exception{
         try{
+            
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(System.getProperty("user.dir")+"//userFiles//"+chooseUser.getValue().toString()+".zzz"));
             User g = (User) in.readObject();
             g.load();
+            
+            System.out.println(g.getLevelCompleted() +  " level " + g.getLevel());
             Project.setUser(g);
+            Project.restartGame();
+            g.resume();
             Parent root = null;
+            String s = "";
+            switch(g.getLevel()){
+                case 1:
+                    s = "level_1.fxml";
+                    break;
+                case 2:
+                    s = "level_2.fxml";
+                    break;
+                case 3:
+                    s= "level_3.fxml";
+                    break;
+                case 4:
+                    s= "level_4.fxml";
+                    break;
+                default:
+                    s= "level1.fxml";
+                    break;
+            }
+            
+            
+            
+            
+            
+            
             try {
                 if (Project.setState(2)){
                     
-                    root = FXMLLoader.load(getClass().getResource("level1.fxml"));
+                    root = FXMLLoader.load(getClass().getResource(s));
                     Scene sc = backButton.getScene();
                     root.translateYProperty().set(-sc.getHeight());
                     container.getChildren().add(root);
@@ -76,6 +106,7 @@ public class resumeGameController implements Initializable {
             }
         }
         catch(NullPointerException ee){
+            ee.printStackTrace();
             System.out.println("Please select a profile.");
         }
     }

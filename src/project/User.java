@@ -48,7 +48,7 @@ public class User implements Serializable{
     public User(String name){
         this.name =name;
         this.currentLevel=1;
-        this.isLevelCompleted=true;
+        this.isLevelCompleted=false;
         this.diamonds=0;
         this.level = new levelHandler(1);
         this.score= 0;
@@ -62,7 +62,15 @@ public class User implements Serializable{
     
     
     
-    
+    public void resume(){
+        if (isLevelCompleted){
+            currentLevel +=1;
+            restart();
+        }
+        else {
+        
+        }
+    }
     
     
     
@@ -81,7 +89,9 @@ public class User implements Serializable{
     public void NextLevel(){
         currentLevel += 1;
         this.level = new levelHandler(currentLevel);
+        isLevelCompleted = false;
         level.restart();
+        System.out.println(currentLevel+" level");
     }
     
     public void update()  {
@@ -90,6 +100,8 @@ public class User implements Serializable{
         } 
         catch (ZombieReached z){
            try{
+            System.out.println("Zombie Reached");
+            isLevelCompleted = false;
             level1Controller.getReference().lose();}
             catch(IOException e){
                 System.out.println("IO Exception User class");

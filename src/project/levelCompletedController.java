@@ -62,13 +62,13 @@ public class levelCompletedController implements Initializable {
         String s = new String("");
         switch(Project.getUser().getLevel()){
             case 1 :
-                s = "level_2.fxml";
+                s = "level_1.fxml";
                 break;
             case 2 :
-                s = "level_3.fxml";
+                s = "level_2.fxml";
                 break;
             case 3 :
-                s = "level_4.fxml";
+                s = "level_3.fxml";
                 break;    
             case 4 :
                 s = "level_4.fxml";

@@ -77,6 +77,7 @@ public class levelHandler implements Serializable {
         timeInstant = System.currentTimeMillis();
         minimumWaveTime = 0f;
         plantMap = new HashMap<Integer, Plant>();
+        
     }
     
     public static void restart(){
@@ -87,6 +88,7 @@ public class levelHandler implements Serializable {
             }
         
         }
+        
         plantMap = new HashMap<Integer, Plant>();
         
     }
@@ -96,7 +98,7 @@ public class levelHandler implements Serializable {
     public void setZombieCount(){
         switch(level){
             case 1 :
-                zombieCount =25;
+                zombieCount =1;
                 spawnTime = 1;//to be changed
                 wTimeGap = 1;
                 break;
