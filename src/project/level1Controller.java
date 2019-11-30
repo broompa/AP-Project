@@ -25,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import sun.awt.SunToolkit;
 
 /**
  * FXML Controller class
@@ -60,7 +61,7 @@ public class level1Controller  {
     
     private static float  opacity ;
     private static String wText;
-    
+    private static level1Controller reference;
     
     private static final ArrayList<Integer> xPixels = new ArrayList<Integer>(Arrays.asList(305,405,495,589,680,775,871,956,1050)); 
     private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,584));
@@ -90,10 +91,31 @@ public class level1Controller  {
         clickDelay.put("walnut",5f);
         clickDelay.put("PotatoMine",5f);
         
+        reference = this;
         
-        
+    
     }
     
+    public static void restart(){
+        timeInstant.put("shooter",0L);
+        timeInstant.put("sunflower",0L);
+        timeInstant.put("walnut",0L);
+        timeInstant.put("PotatoMine",0L);
+        sunValue = 0;
+        reference = null;
+    }
+    
+    
+    
+    public static level1Controller getReference(){return reference;}
+    
+
+
+
+
+
+
+
     public static String whatSelected(){ return isSelected;}
     
     
@@ -107,6 +129,8 @@ public class level1Controller  {
         }
         return var;
     }
+    
+    
     
     
     public static int getYPixel(int y ){
@@ -140,6 +164,48 @@ public class level1Controller  {
     }
        
     
+    public void userWon() throws IOException{
+        if (Project.setState(8)){
+            Parent root = FXMLLoader.load(getClass().getResource("levelCompleted.fxml"));
+            Scene sc = menuButton.getScene();
+            root.translateYProperty().set(sc.getHeight());
+            if (container == null){
+                System.out.println("www");
+            }
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
+            Project.stopAnimation();
+        }
+    
+    }
+    
+    public void lose() throws IOException{
+        if (Project.setState(9)){
+            Parent root = FXMLLoader.load(getClass().getResource("levelLost.fxml"));
+            Scene sc = menuButton.getScene();
+            root.translateYProperty().set(sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();
+            Project.stopAnimation();
+        }
+    }
+    
+    
+    
     
     
     public static void  setSunCount(int val ){
@@ -162,9 +228,9 @@ public class level1Controller  {
     
     
     public void updateSunCountLabel(MouseEvent e ) throws IOException{
-          sunCount.setText(Integer.toString( sunValue));
-          warning.setText(wText );
-          warning.setOpacity(opacity );
+        sunCount.setText(Integer.toString( sunValue));
+        warning.setText(wText );
+        warning.setOpacity(opacity );
     }
     
     
@@ -184,7 +250,6 @@ public class level1Controller  {
                 Project.getUser().getLevelInstance().removePlant(getGridNumber(x, y));
             }
             else if (cost.get(isSelected)<=sunValue  && System.currentTimeMillis() - timeInstant.get(isSelected) >=clickDelay.get(isSelected)*1000 ){
-                System.out.println("in grid");
                 levelHandler.addPlant(x,y,getGridNumber(x, y),isSelected);
                 sunValue = sunValue - cost.get(isSelected);
                 timeInstant.put(isSelected,System.currentTimeMillis());

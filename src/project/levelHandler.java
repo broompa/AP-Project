@@ -67,7 +67,7 @@ public class levelHandler implements Serializable {
         sunToken= 0;
         lastZombieAdded = 0L;
         lastSunAdded = 0L;
-        sunTime = 5;  
+        sunTime = 5;
         
         lawnMowerList = new ArrayList<LawnMower>();
         zombieList = new ArrayList<ArrayList<Zombie>>();
@@ -77,8 +77,17 @@ public class levelHandler implements Serializable {
         setWaveParameters();
         initialWait = 4;
         timeInstant = System.currentTimeMillis();
-        minimumWaveTime = 10f;
+        minimumWaveTime = 0f;
         plantMap = new HashMap<Integer, Plant>();
+    }
+    
+    public static void restart(){
+        for(int x =0 ;x<45;x++){
+            placed[x] = false;
+        
+        }
+        plantMap = new HashMap<Integer, Plant>();
+        
     }
     
     
@@ -86,9 +95,9 @@ public class levelHandler implements Serializable {
     public void setZombieCount(){
         switch(level){
             case 1 :
-                zombieCount =5 ;
+                zombieCount =1 ;
                 spawnTime = 1;//to be changed
-                wTimeGap = 4;
+                wTimeGap = 1;
                 break;
             case 2:
                 zombieCount = 10;
@@ -229,6 +238,7 @@ public class levelHandler implements Serializable {
             }
         }
         if (!warning && wZombieCount <=0 && zombieCount ==0 && (System.currentTimeMillis() - timeInstant) > minimumWaveTime*1000){
+            System.out.println("wave is "+ wState);
             if (wState < MAX_WAVE){
                 wState ++;
                 setWaveParameters();
@@ -412,6 +422,28 @@ public class levelHandler implements Serializable {
             
             }
         
+        }else if (wState == MAX_WAVE){
+            if (warning){
+                level1Controller.setWarning("Warning Wave "+ wState);
+                level1Controller.setOpacity(1);
+                
+                if (System.currentTimeMillis()-timeInstant>wTimeGap*1000 ){
+                    System.out.println("time up");
+                    timeInstant = System.currentTimeMillis();
+                    warning = false;
+                    level1Controller.setOpacity(0);
+                    // set parameters
+                }
+        
+            }else{
+               
+                if (System.currentTimeMillis()-timeInstant>wSpawnTime*1000 && wZombieCount>0){
+                    int ran = (int)(Math.random()*5);
+                    zombieList.get(ran).add(new Zombie(ran));
+                    timeInstant = System.currentTimeMillis();
+                    wZombieCount -= 1;
+                }
+            }
         }
         
         

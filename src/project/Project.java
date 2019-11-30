@@ -64,7 +64,13 @@ public class Project extends Application {
     }
     
     
-    
+    public static void restartGame(){
+        stopAnimation();
+        user.restart();
+        g = new Group();
+        startAnimation();
+        
+    }
     
     
     public static User getUser(){
@@ -80,18 +86,7 @@ public class Project extends Application {
         anim = new AnimationTimer(){
             @Override 
             public void handle(long now ){
-                
-                try{
-                    user.update ();
-                }
-                catch(ZombieReached e){
-                    stopAnimation();
-                    
-                }
-                catch(GameWinning e){
-                    
-                }
-                
+                    user.update();
             }
         };
         

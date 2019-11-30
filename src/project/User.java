@@ -16,6 +16,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.regex.Pattern;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.util.Duration;
 
 /**
  *
@@ -53,8 +61,20 @@ public class User implements Serializable{
         this.diamonds=0;
         this.level = new levelHandler(1);
         this.score= 0;
-        System.out.println(getUserList());
+     
     }
+    
+    public void setLevelCompleted (boolean x){ isLevelCompleted =x;}
+    
+    public boolean getLevelCompleted (){ return isLevelCompleted;}
+    
+    
+    
+    
+    
+    
+    
+    
     
     public String getName(){return name;}
     public int getLevel(){
@@ -70,9 +90,25 @@ public class User implements Serializable{
         this.level = new levelHandler(currentLevel);
     }
     
-    public void update() {
-        level.update();       
+    public void update()  {
+        try{
+            level.update();
+        } 
+        catch (ZombieReached z){
+            /// to do
+        }
+        catch (GameWinning g){
+            /// change fxml
+            isLevelCompleted = true ;
+            try{
+            level1Controller.getReference().userWon();}
+            catch(IOException e){
+                System.out.println("IO Exception User class");
+            }
+
+        }    
     }
+    
     public levelHandler getLevelInstance(){ return level;}
     
     
