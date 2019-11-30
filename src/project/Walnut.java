@@ -43,7 +43,7 @@ public class Walnut extends Plant{
         view.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
-                if(level1Controller.whatSelected().equals("shovel")){
+                if(level1Controller.whatSelected()!= null && level1Controller.whatSelected().equals("shovel")){
                     isAlive = false;
                 }
             }

@@ -8,10 +8,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.leveLostController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1200.0" styleClass="mainFxmlClass">
+      <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="750.0" prefWidth="1200.0" styleClass="mainFxmlClass">
          <stylesheets>
             <URL value="@levelCompleted.css" />
          </stylesheets>
@@ -26,12 +25,12 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <ImageView fitHeight="47.0" fitWidth="175.0" layoutX="862.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="menuBtn" fitHeight="47.0" fitWidth="175.0" layoutX="862.0" layoutY="640.0" onMousePressed="#menu" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/menuButton.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="47.0" fitWidth="170.0" layoutX="338.0" layoutY="640.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="restartBtn" fitHeight="47.0" fitWidth="170.0" layoutX="338.0" layoutY="640.0" onMousePressed="#restart" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/1.png" />
                </image>

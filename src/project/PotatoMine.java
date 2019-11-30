@@ -50,7 +50,7 @@ public class PotatoMine extends Plant{
             @Override
             public void handle(MouseEvent event) {
                 
-                if(level1Controller.whatSelected().equals("shovel")){
+                if(level1Controller.whatSelected()!= null && level1Controller.whatSelected().equals("shovel")){
                     isAlive = false;
                 }
             }

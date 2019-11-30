@@ -73,6 +73,14 @@ public class Project extends Application {
         startAnimation();
         
     }
+    public static void nextlevel(){
+        stopAnimation();//ask if group is a error
+        user.NextLevel();
+        user.setLevelCompleted(false);
+        g = new Group();
+        startAnimation();
+        
+    }
     
     
     public static User getUser(){

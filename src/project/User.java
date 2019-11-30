@@ -89,7 +89,12 @@ public class User implements Serializable{
             level.update();
         } 
         catch (ZombieReached z){
-            /// to do
+           try{
+            level1Controller.getReference().lose();}
+            catch(IOException e){
+                System.out.println("IO Exception User class");
+            }
+
         }
         catch (GameWinning g){
             /// change fxml

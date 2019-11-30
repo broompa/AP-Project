@@ -55,9 +55,10 @@ public class levelCompletedController implements Initializable {
     
     public void nextLevel(MouseEvent e) throws IOException{
         
-        Project.getUser().NextLevel();
-        Project.getUser().setLevelCompleted(false);
-        Project.stopAnimation();
+//        Project.getUser().NextLevel();
+//        Project.getUser().setLevelCompleted(false);
+        Project.nextlevel();
+//        Project.stopAnimation();
         String s = new String("");
         switch(Project.getUser().getLevel()){
             case 1 :
