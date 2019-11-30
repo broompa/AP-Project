@@ -43,7 +43,7 @@ public class level1Controller  {
     private static level1Controller reference;
     
     private static final ArrayList<Integer> xPixels = new ArrayList<Integer>(Arrays.asList(305,405,495,589,680,775,871,956,1050)); 
-    private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,584));
+    private static final ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,584));
     //private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,574));
     private static HashMap<String, Integer>  cost = new HashMap<String , Integer>();
     private static HashMap<String , Long> timeInstant = new HashMap<String , Long>();
@@ -76,10 +76,15 @@ public class level1Controller  {
     }
     
     public static void restart(){
-        timeInstant.put("shooter",0L);
-        timeInstant.put("sunflower",0L);
-        timeInstant.put("walnut",0L);
-        timeInstant.put("PotatoMine",0L);
+        isSelected = null;
+        wText=null;
+        cost = new HashMap<String , Integer>();
+        timeInstant = new HashMap<String , Long>();
+        clickDelay = new HashMap<String , Float>();
+//        timeInstant.put("shooter",0L);
+//        timeInstant.put("sunflower",0L);
+//        timeInstant.put("walnut",0L);
+//        timeInstant.put("PotatoMine",0L);
         sunValue = 0;
         reference = null;
     }

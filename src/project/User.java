@@ -7,23 +7,12 @@ package project;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
-import java.util.regex.Matcher;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.regex.Pattern;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.util.Duration;
 
 /**
  *
@@ -48,6 +37,8 @@ public class User implements Serializable{
         System.out.println("Score is "+ score);
     }
     
+    
+    @Override
     public String toString(){
         return new String(this.name + " :" + score);
     
@@ -84,6 +75,7 @@ public class User implements Serializable{
     
     public void restart(){
         this.level = new levelHandler(currentLevel);
+        this.level.restart();
     }
     public void NextLevel(){
         currentLevel += 1;

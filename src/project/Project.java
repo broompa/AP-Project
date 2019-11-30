@@ -39,11 +39,13 @@ public class Project extends Application {
         
     }
     public static void startAnimation(){
-        anim.start();
+        
         if (g1.getChildren().contains(g)){
+            anim.start();
             return;
         }
         g1.getChildren().add(g);
+        anim.start();
     }
     
     
@@ -65,7 +67,7 @@ public class Project extends Application {
     
     
     public static void restartGame(){
-        stopAnimation();
+        stopAnimation();//ask if group is a error
         user.restart();
         g = new Group();
         startAnimation();

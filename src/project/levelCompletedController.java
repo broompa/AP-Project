@@ -8,8 +8,6 @@ package project;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -128,6 +126,7 @@ public class levelCompletedController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource(s));
             Scene sc = restartBtn.getScene();
             root.translateYProperty().set(-sc.getHeight());
+//            sc=null;
             container.getChildren().add(root);
             Timeline t = new Timeline();
             KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
