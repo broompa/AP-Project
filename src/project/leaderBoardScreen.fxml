@@ -6,6 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.leaderBoardScreenController">
    <children>
@@ -19,16 +20,46 @@
                   <Image url="@resources/Background/background_LeaderBoardScreen.PNG" />
                </image>
             </ImageView>
-            <Label fx:id="user1" layoutX="393.0" layoutY="130.0" prefHeight="67.0" prefWidth="302.0" />
-            <Label fx:id="user2" layoutX="393.0" layoutY="231.0" prefHeight="67.0" prefWidth="302.0" />
-            <Label fx:id="user3" layoutX="393.0" layoutY="334.0" prefHeight="67.0" prefWidth="302.0" />
-            <Label fx:id="user4" layoutX="393.0" layoutY="444.0" prefHeight="67.0" prefWidth="302.0" />
-            <Label fx:id="user5" layoutX="393.0" layoutY="556.0" prefHeight="67.0" prefWidth="302.0" />
-            <Label fx:id="score1" layoutX="719.0" layoutY="142.0" prefHeight="42.0" prefWidth="154.0" />
-            <Label fx:id="score2" layoutX="719.0" layoutY="243.0" prefHeight="42.0" prefWidth="154.0" />
-            <Label fx:id="score3" layoutX="719.0" layoutY="354.0" prefHeight="42.0" prefWidth="154.0" />
-            <Label fx:id="score4" layoutX="719.0" layoutY="456.0" prefHeight="42.0" prefWidth="154.0" />
-            <Label fx:id="score5" layoutX="719.0" layoutY="568.0" prefHeight="42.0" prefWidth="154.0" />
+            <Label fx:id="user1" alignment="CENTER" layoutX="393.0" layoutY="130.0" prefHeight="67.0" prefWidth="302.0" text="boom laka laka" textFill="#ff3d3d">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="user2" alignment="CENTER" layoutX="393.0" layoutY="231.0" prefHeight="67.0" prefWidth="302.0" text="boom boom" textFill="#ffa73c">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="user3" alignment="CENTER" layoutX="393.0" layoutY="334.0" prefHeight="67.0" prefWidth="302.0" text="boom boom" textFill="#d7d542">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="user4" alignment="CENTER" layoutX="393.0" layoutY="444.0" prefHeight="67.0" prefWidth="302.0" text="boom boom" textFill="#4cfd00">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="user5" alignment="CENTER" layoutX="393.0" layoutY="556.0" prefHeight="67.0" prefWidth="302.0" text="boom boom" textFill="#23bbcf">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="score1" alignment="CENTER" layoutX="719.0" layoutY="142.0" prefHeight="42.0" prefWidth="154.0" text="90" textFill="#ff3c3c">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="score2" alignment="CENTER" layoutX="719.0" layoutY="243.0" prefHeight="42.0" prefWidth="154.0" text="90" textFill="#f8824f">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="score3" alignment="CENTER" layoutX="719.0" layoutY="354.0" prefHeight="42.0" prefWidth="154.0" text="90" textFill="#ffc641">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="score4" alignment="CENTER" layoutX="719.0" layoutY="456.0" prefHeight="42.0" prefWidth="154.0" text="90" textFill="#46d715">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font></Label>
+            <Label fx:id="score5" alignment="CENTER" layoutX="719.0" layoutY="568.0" prefHeight="42.0" prefWidth="154.0" text="90" textFill="#3dffb9">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font></Label>
             <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="142.0" layoutX="14.0" layoutY="24.0" onMouseClicked="#user_back1" onMouseEntered="#buttonEnter" onMouseExited="#buttonExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/backButton.png" />
