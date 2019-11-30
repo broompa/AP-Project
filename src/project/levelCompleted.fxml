@@ -35,7 +35,7 @@
                   <Image url="@resources/Game_Buttons/1.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="nextBtn" fitHeight="47.0" fitWidth="156.0" layoutX="928.0" layoutY="651.0" onMouseDragReleased="#nextLevel" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="nextBtn" fitHeight="47.0" fitWidth="156.0" layoutX="928.0" layoutY="651.0" onMousePressed="#nextLevel" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Game_Buttons/2.png" />
                </image>

@@ -1,5 +1,6 @@
 package project;
 
+import com.sun.imageio.plugins.common.I18N;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -81,6 +82,7 @@ public class level1Controller  {
         cost = new HashMap<String , Integer>();
         timeInstant = new HashMap<String , Long>();
         clickDelay = new HashMap<String , Float>();
+
 //        timeInstant.put("shooter",0L);
 //        timeInstant.put("sunflower",0L);
 //        timeInstant.put("walnut",0L);
