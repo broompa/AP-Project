@@ -28,14 +28,10 @@ import javafx.util.Duration;
 
 public class mainScreenController{
     
-    
     @FXML
     private StackPane container;
-    
     @FXML
     private AnchorPane anchorRoot;
-    
-    
     @FXML
     private ImageView newgameButton;
     @FXML

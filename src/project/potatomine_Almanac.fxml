@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.almanacScreenController">
+<StackPane fx:id="container" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.potatomine_AlmanacController">
    <children>
       <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="750.0" prefWidth="1200.0" styleClass="mainFxmlClass">
-          <stylesheets>
-              <URL value="@almanacScreen.css" />
-          </stylesheets>
+         <stylesheets>
+            <URL value="@almanacScreen.css" />
+         </stylesheets>
          <children>
             <ImageView fitHeight="750.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@resources/Almanac/peaShooterar.png" />
+                  <Image url="@resources/Almanac/potato%20minear.png" />
                </image>
             </ImageView>
             <ImageView fx:id="shooter" fitHeight="78.0" fitWidth="110.0" layoutX="153.0" layoutY="134.0" onMouseClicked="#almanac_shooter" pickOnBounds="true" preserveRatio="true">

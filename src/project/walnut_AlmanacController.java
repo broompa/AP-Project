@@ -6,12 +6,15 @@
 package project;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -25,9 +28,9 @@ import javafx.util.Duration;
  *
  * @author Asus
  */
-public class almanacScreenController{
+public class walnut_AlmanacController{
 
-    @FXML
+   @FXML
     private StackPane container;
     @FXML
     private AnchorPane anchorRoot;
@@ -61,26 +64,16 @@ public class almanacScreenController{
         }
     }
     public void back(MouseEvent event) throws IOException{
-       if (Project.setState(0)){
-            Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
-            Scene sc = back.getScene();
-            root.translateYProperty().set(-sc.getHeight());
-            container.getChildren().add(root);
-            Timeline t = new Timeline();
-            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
-            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
-            t.getKeyFrames().add(kf);
-            t.setOnFinished(t1->{
-                container.getChildren().remove(anchorRoot);
-            });
-            t.play();       
-        }
+        Parent root = FXMLLoader.load(getClass().getResource("potatomine_Almanac.fxml"));
+        Scene sc = back.getScene();
+        container.getChildren().add(root);
+        container.getChildren().remove(anchorRoot);
     }
     public void almanac_shooter(MouseEvent event) throws IOException{
-//        Parent root = FXMLLoader.load(getClass().getResource("almanacScreen.fxml"));
-//        Scene sc = back.getScene();
-//        container.getChildren().add(root);
-//        container.getChildren().remove(anchorRoot);
+        Parent root = FXMLLoader.load(getClass().getResource("almanacScreen.fxml"));
+        Scene sc = back.getScene();
+        container.getChildren().add(root);
+        container.getChildren().remove(anchorRoot);
     }
     public void almanac_sunflower(MouseEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("sunflower_Almanac.fxml"));
@@ -95,10 +88,10 @@ public class almanacScreenController{
         container.getChildren().remove(anchorRoot);
     }
     public void almanac_walnut(MouseEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("walnut_Almanac.fxml"));
-        Scene sc = back.getScene();
-        container.getChildren().add(root);
-        container.getChildren().remove(anchorRoot);
+//        Parent root = FXMLLoader.load(getClass().getResource("walnut_Almanac.fxml"));
+//        Scene sc = back.getScene();
+//        container.getChildren().add(root);
+//        container.getChildren().remove(anchorRoot);
     }
     
     
