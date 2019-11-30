@@ -66,11 +66,31 @@ public class level1Controller  {
     private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,584));
     //private static ArrayList<Integer> yPixels = new ArrayList<Integer> (Arrays.asList(115,222,340,463,574));
     private static HashMap<String, Integer>  cost = new HashMap<String , Integer>();
+    private static HashMap<String , Long> timeInstant = new HashMap<String , Long>();
+    private static HashMap<String , Float > clickDelay = new HashMap<String , Float>();
     {// initialization
         cost.put("shooter",25);
         cost.put("sunflower",25);
         cost.put("walnut",25);
         cost.put("PotatoMine",25);
+        
+        ///////////
+        
+        
+        timeInstant.put("shooter",0L);
+        timeInstant.put("sunflower",0L);
+        timeInstant.put("walnut",0L);
+        timeInstant.put("PotatoMine",0L);
+        
+
+        ///////////////
+        
+        clickDelay.put("shooter",5f);
+        clickDelay.put("sunflower",5f);
+        clickDelay.put("walnut",5f);
+        clickDelay.put("PotatoMine",5f);
+        
+        
         
     }
     
@@ -155,10 +175,11 @@ public class level1Controller  {
         double x = e.getX();
         double y = e.getY();
         System.out.println("("+x+","+y+")");
-        if (isSelected!=null && cost.get(isSelected)<=sunValue && x>=305 && x<=1144  && y>=116 &&y<=696){
+        if (isSelected!=null && cost.get(isSelected)<=sunValue && (x>=305 && x<=1144)  && (y>=116 &&y<=696) && System.currentTimeMillis() - timeInstant.get(isSelected) >=clickDelay.get(isSelected)*1000 ){
             System.out.println("in grid");
             levelHandler.addPlant(x,y,getGridNumber(x, y),isSelected);
             sunValue = sunValue - cost.get(isSelected);
+            timeInstant.put(isSelected,System.currentTimeMillis());
         }
         
         
