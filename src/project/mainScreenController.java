@@ -6,6 +6,7 @@
 package project;
 
 import java.io.IOException;
+import java.net.URL;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -21,12 +22,27 @@ import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 
 
 
 public class mainScreenController{
+    MediaPlayer a;
+    public mainScreenController() {
+        URL resource = getClass().getResource("/project/resources/Sounds/Codex140loop.wav");
+        a =new MediaPlayer(new Media(resource.toString()));
+        a.setOnEndOfMedia(new Runnable() {
+            public void run() {
+                a.seek(Duration.ZERO);
+            }
+        });
+        a.play();
+    }
+    
+    
     
     @FXML
     private StackPane container;
