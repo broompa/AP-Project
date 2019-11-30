@@ -196,19 +196,19 @@ public class level1Controller  {
                 System.out.println("shooter selected");
                 isSelected="shooter";
             }
-            else if (x>451 && x<507){
+            else if (x>451 && x<507 && Project.getUser().getLevel() >= 2){
                 System.out.println("sunflower selected");
                 isSelected="sunflower"; 
             }
-            else if (x<574 && x> 520){
+            else if (x<574 && x> 520 && Project.getUser().getLevel() >= 4){
                 System.out.println("walnut");
                 isSelected = "walnut";
             }
-            else if (x>590 && x<645){
+            else if (x>590 && x<645 && Project.getUser().getLevel() >= 5){
                 
                 isSelected = "PotatoMine";
             }
-            else if (x>800 && x<878){
+            else if (x>800 && x<878 && Project.getUser().getLevel() >= 3){
                 isSelected = "shovel";
             }
             else {

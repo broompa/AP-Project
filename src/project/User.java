@@ -57,7 +57,9 @@ public class User implements Serializable{
     }
     
     public String getName(){return name;}
-    
+    public int getLevel(){
+        return currentLevel;
+    }
     
     
     public void restart(){

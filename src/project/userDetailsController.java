@@ -86,7 +86,7 @@ public class userDetailsController {
                 userScreenLabel.setText("User Creation Succesful.");
                 try {
                     if(Project.setState(2)){
-                        Parent root = FXMLLoader.load(getClass().getResource("level1.fxml"));
+                        Parent root = FXMLLoader.load(getClass().getResource("level_1.fxml"));
                         Scene sc = backButton.getScene();
                         root.translateYProperty().set(sc.getHeight());
                         container.getChildren().add(root);
@@ -101,6 +101,7 @@ public class userDetailsController {
                         Project.setUser(new User(textFieldUsername.getText()));
                     }
                 } catch (IOException ex) {
+                    ex.printStackTrace();
                     System.out.println("IO Error");
                     System.exit(0);
                 }
