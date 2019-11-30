@@ -35,8 +35,11 @@ public class levelHandler implements Serializable {
     private ArrayList<LawnMower> lawnMowerList ; 
     private transient ProgressBar progress ;
     private double wZombieOffset;  // progress bar
+    MediaPlayer a;
+    MediaPlayer b;
     
-
+    MediaPlayer c;
+    MediaPlayer d;
 
 
     //////plant remove 
@@ -61,7 +64,9 @@ public class levelHandler implements Serializable {
     private boolean preparation ;
     private float minimumWaveTime ;
     public levelHandler(int level){
-      this.level = level;
+        URL resource = getClass().getResource("/project/resources/Sounds/zombiespawn.wav");
+        b =new MediaPlayer(new Media(resource.toString()));
+        this.level = level;
         preparation = true;
         warning = true;
         MAX_WAVE = 4;// to be changed 
@@ -234,6 +239,10 @@ public class levelHandler implements Serializable {
                     zombieList.get(x).get(i).update();
                     Project.addToGroup(zombieList.get(x).get(i).getView());}
                 else if (System.currentTimeMillis()-zombieList.get(x).get(i).getDeadTime()>700){
+                    
+                    URL resource = getClass().getResource("/project/resources/Sounds/zombiedie.wav");
+                    d =new MediaPlayer(new Media(resource.toString()));
+                    d.play();
                     Project.removeFromGroup(zombieList.get(x).get(i).getView());
                     zombieList.get(x).remove(zombieList.get(x).get(i));
                     Project.getUser().setScore(Project.getUser().getScore()+20);
@@ -384,6 +393,15 @@ public class levelHandler implements Serializable {
     
     
     private void setWaveParameters(){
+        
+//        a.setOnEndOfMedia(new Runnable() {
+//            public void run() {
+//                a.seek(Duration.ZERO);
+//            }
+//        });
+        b.play();
+        b.setStopTime(Duration.ONE);
+        
         System.out.println("Wave: "+wState);
         switch(wState){
             case 1:
@@ -402,7 +420,7 @@ public class levelHandler implements Serializable {
         wZombieOffset = wZombieCount;
     
     }
-
+    
     public void spawnZombies(){
         if (preparation && System.currentTimeMillis()-timeInstant <=  initialWait*1000){
             return ;
@@ -413,6 +431,9 @@ public class levelHandler implements Serializable {
         }
         if (wState < MAX_WAVE){
             if (warning){
+                URL resource = getClass().getResource("/project/resources/Sounds/wavewarning.wav");
+                c =new MediaPlayer(new Media(resource.toString()));
+                c.play();
                 level1Controller.setWarning("Warning Wave "+ wState);
                 level1Controller.setOpacity(1);
                 
