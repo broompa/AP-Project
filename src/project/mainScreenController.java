@@ -90,7 +90,18 @@ public class mainScreenController{
     
     public void almanac() throws IOException {
         if (Project.setState(5)){
-            System.exit(0);        
+            Parent root = FXMLLoader.load(getClass().getResource("almanacScreen.fxml"));
+            Scene sc = resumegameButton.getScene();
+            root.translateYProperty().set(sc.getHeight());
+            container.getChildren().add(root);
+            Timeline t = new Timeline();
+            KeyValue kv = new KeyValue(root.translateYProperty(),0,Interpolator.EASE_IN);
+            KeyFrame kf = new KeyFrame(Duration.millis(1000),kv);
+            t.getKeyFrames().add(kf);
+            t.setOnFinished(t1->{
+                container.getChildren().remove(anchorRoot);
+            });
+            t.play();       
         }
     }	
 	
