@@ -130,9 +130,9 @@ public class levelHandler implements Serializable {
                 break;
         }
     }
-    public void containers(){
-        ////////////
-        
+    
+    
+    public void player(){
         URL resource1 = getClass().getResource("/project/resources/Sounds/zombiespawn.wav");
         b =new MediaPlayer(new Media(resource1.toString()));
         
@@ -144,7 +144,13 @@ public class levelHandler implements Serializable {
                 
         
         URL resource4 = getClass().getResource("/project/resources/Sounds/suntoken.wav");
-        a =new MediaPlayer(new Media(resource4.toString()));
+        a = new MediaPlayer(new Media(resource4.toString()));
+        
+    }
+    
+    public void containers(){
+        ////////////
+        player();
         
         plantList = new ArrayList<ArrayList<Plant>>();
         
@@ -217,7 +223,7 @@ public class levelHandler implements Serializable {
     public void update(){
         spawnZombies();
         shineSun();
-        
+        player();
         
         
         ////////////////////////////////////////////////////////////////////
