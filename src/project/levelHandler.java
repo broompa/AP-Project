@@ -80,9 +80,9 @@ public class levelHandler implements Serializable {
         plantList1 = plantList;
         wState=1;
         setWaveParameters();
-        initialWait = 4;
+        initialWait = 5;
         timeInstant = System.currentTimeMillis();
-        minimumWaveTime = 2f;
+        minimumWaveTime = 5f;
         
     }
     
@@ -105,34 +105,34 @@ public class levelHandler implements Serializable {
         switch(level){
             case 1 :
                 zombieCount =5;
-                spawnTime = 2;//to be changed
+                spawnTime = 3;//to be changed
                 wTimeGap = 5;
                 break;
             case 2:
-                zombieCount = 1;
-                spawnTime = 1;
-                wTimeGap = 1;
+                zombieCount = 10;
+                spawnTime = 3;
+                wTimeGap = 4;
                 break;
             case 3 :
-                zombieCount = 1 ;
-                spawnTime = 1;
-                wTimeGap = 1;
+                zombieCount = 12 ;
+                spawnTime = 3;
+                wTimeGap = 4;
                 break;
             case 4:
-                zombieCount = 1;
-                spawnTime = 1;
-                wTimeGap = 1;
+                zombieCount = 13;
+                spawnTime = 3;
+                wTimeGap = 3;
                 break;
             case 5 :
-                zombieCount = 1;
-                spawnTime = 1;
-                wTimeGap = 1;
+                zombieCount = 14;
+                spawnTime = 3;
+                wTimeGap = 3;
                 break;
         }
     }
-    public void containers(){
-        ////////////
-        
+    
+    
+    public void player(){
         URL resource1 = getClass().getResource("/project/resources/Sounds/zombiespawn.wav");
         b =new MediaPlayer(new Media(resource1.toString()));
         
@@ -144,7 +144,13 @@ public class levelHandler implements Serializable {
                 
         
         URL resource4 = getClass().getResource("/project/resources/Sounds/suntoken.wav");
-        a =new MediaPlayer(new Media(resource4.toString()));
+        a = new MediaPlayer(new Media(resource4.toString()));
+        
+    }
+    
+    public void containers(){
+        ////////////
+        player();
         
         plantList = new ArrayList<ArrayList<Plant>>();
         
@@ -217,8 +223,9 @@ public class levelHandler implements Serializable {
     public void update(){
         spawnZombies();
         shineSun();
-        System.out.println((wState - (wZombieCount/wZombieOffset))/MAX_WAVE);
+        
         progress.setProgress((wState - (wZombieCount/wZombieOffset))/MAX_WAVE);
+        player();
         
         
         ////////////////////////////////////////////////////////////////////

@@ -149,6 +149,7 @@ public class level1Controller  {
     
     public void inGameMenu(MouseEvent event ) throws IOException{
         if (Project.setState(3)){
+            a.stop();
             Parent root = FXMLLoader.load(getClass().getResource("ingameMenu.fxml"));
             Scene sc = menuButton.getScene();
             root.translateYProperty().set(sc.getHeight());
