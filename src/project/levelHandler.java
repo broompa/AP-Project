@@ -82,7 +82,7 @@ public class levelHandler implements Serializable {
         setWaveParameters();
         initialWait = 4;
         timeInstant = System.currentTimeMillis();
-        minimumWaveTime = 0f;
+        minimumWaveTime = 2f;
         
     }
     
@@ -104,9 +104,9 @@ public class levelHandler implements Serializable {
     public void setZombieCount(){
         switch(level){
             case 1 :
-                zombieCount =1;
-                spawnTime = 1;//to be changed
-                wTimeGap = 1;
+                zombieCount =5;
+                spawnTime = 2;//to be changed
+                wTimeGap = 5;
                 break;
             case 2:
                 zombieCount = 1;
@@ -217,7 +217,8 @@ public class levelHandler implements Serializable {
     public void update(){
         spawnZombies();
         shineSun();
-        
+        System.out.println((wState - (wZombieCount/wZombieOffset))/MAX_WAVE);
+        progress.setProgress((wState - (wZombieCount/wZombieOffset))/MAX_WAVE);
         
         
         ////////////////////////////////////////////////////////////////////
@@ -397,11 +398,6 @@ public class levelHandler implements Serializable {
     
     private void setWaveParameters(){
         
-//        a.setOnEndOfMedia(new Runnable() {
-//            public void run() {
-//                a.seek(Duration.ZERO);
-//            }
-//        });
         b.play();
         b.setStopTime(Duration.ONE);
         
@@ -419,6 +415,16 @@ public class levelHandler implements Serializable {
                 wZombieCount = zombieCount;
                 wSpawnTime = spawnTime;
                 break;
+            case 4:
+                wZombieCount = zombieCount;
+                wSpawnTime = spawnTime;
+                break;
+            default:
+                wZombieCount = zombieCount;
+                wSpawnTime = spawnTime;
+                break;
+            
+            
         }
         wZombieOffset = wZombieCount;
     
