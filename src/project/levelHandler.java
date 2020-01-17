@@ -132,20 +132,27 @@ public class levelHandler implements Serializable {
     }
     
     
+    
     public void player(){
+        b = null;
+        a = null;
+        c=null;
+        d=null;
         URL resource1 = getClass().getResource("/project/resources/Sounds/zombiespawn.wav");
         b =new MediaPlayer(new Media(resource1.toString()));
+        b.seek(Duration.ZERO);
         
         URL resource2 = getClass().getResource("/project/resources/Sounds/zombiedie.wav");
         d =new MediaPlayer(new Media(resource2.toString()));
+        d.seek(Duration.ZERO);
         
         URL resource3 = getClass().getResource("/project/resources/Sounds/wavewarning.wav");
         c =new MediaPlayer(new Media(resource3.toString()));
-                
+        c.seek(Duration.ZERO);        
         
         URL resource4 = getClass().getResource("/project/resources/Sounds/suntoken.wav");
         a = new MediaPlayer(new Media(resource4.toString()));
-        
+        a.seek(Duration.ZERO);
     }
     
     public void containers(){
@@ -225,6 +232,7 @@ public class levelHandler implements Serializable {
         shineSun();
         
         progress.setProgress((wState - (wZombieCount/wZombieOffset))/MAX_WAVE);
+        Project.addToGroup(new Group(progress));
         player();
         
         
@@ -235,9 +243,6 @@ public class levelHandler implements Serializable {
                 Project.addToGroup(lawnMowerList.get(x).getView());
             }else{
                 Project.removeFromGroup(lawnMowerList.get(x).getView());
-                
-             
-             
             }
         }
         boolean[] arr  =  new boolean[5];
@@ -259,7 +264,7 @@ public class levelHandler implements Serializable {
                     Project.addToGroup(zombieList.get(x).get(i).getView());}
                 else if (System.currentTimeMillis()-zombieList.get(x).get(i).getDeadTime()>700){
                     
-                    
+                    player();
                     d.play();
                     Project.removeFromGroup(zombieList.get(x).get(i).getView());
                     zombieList.get(x).remove(zombieList.get(x).get(i));
@@ -326,7 +331,7 @@ public class levelHandler implements Serializable {
                 System.out.println(sunList.get(x));
                 sunList.remove(sunList.get(x));
                 level1Controller.setSunCount(level1Controller.getSunCount()+25);
-                
+                player();
                 a.play();
                 
             }
@@ -404,7 +409,7 @@ public class levelHandler implements Serializable {
     
     
     private void setWaveParameters(){
-        
+        player();
         b.play();
         b.setStopTime(Duration.ONE);
         
@@ -447,6 +452,7 @@ public class levelHandler implements Serializable {
         }
         if (wState < MAX_WAVE){
             if (warning){
+                player();
                 c.play();
                 level1Controller.setWarning("Warning Wave "+ wState);
                 level1Controller.setOpacity(1);
